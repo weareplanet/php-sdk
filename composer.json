@@ -1,6 +1,6 @@
 {
     "name": "weareplanet/sdk",
-    "version": "3.2.1",
+    "version": "3.2.0",
 	"description": "WeArePlanet SDK for PHP",
 	"keywords": [
 		"weareplanet",
