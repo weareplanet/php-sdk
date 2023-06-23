@@ -167,13 +167,6 @@ final class HttpRequest {
 	private $logToken;
 
 	/**
-	 * The connection time out limit in seconds.
-	 *
-	 * @var integer
-	 */
-	private $timeOut;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param ObjectSerializer $serializer the object serializer
@@ -181,7 +174,7 @@ final class HttpRequest {
 	 * @param string $method the request method (typically GET or POST)
 	 * @param string $logToken the request's log token
 	 */
-	public function __construct(ObjectSerializer $serializer, $url, $method, $logToken, $timeOut) {
+	public function __construct(ObjectSerializer $serializer, $url, $method, $logToken) {
 		$this->serializer = $serializer;
 		$this->url = $url;
 		$this->method = strtoupper($method);
@@ -191,7 +184,6 @@ final class HttpRequest {
 		$this->port = parse_url($url, PHP_URL_PORT);
 		$this->query = parse_url($url, PHP_URL_QUERY);
 		$this->logToken = $logToken;
-        $this->timeOut = $timeOut;
 
 		$this->addHeader(self::HEADER_KEY_HOST, $this->host);
 		$this->addHeader(self::HEADER_LOG_TOKEN, $this->logToken);
@@ -341,15 +333,6 @@ final class HttpRequest {
 	public function getLogToken() {
 		return $this->logToken;
 	}
-
-    /**
-    * Returns the time out.
-    *
-    * @return integer
-    */
-    public function getTimeOut() {
-        return $this->timeOut;
-    }
 
 	/**
 	 * Returns the query part of the request as string.

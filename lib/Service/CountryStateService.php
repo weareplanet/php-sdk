@@ -84,8 +84,7 @@ class CountryStateService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-     
-     *
+	 *
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
@@ -120,6 +119,7 @@ class CountryStateService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -128,7 +128,7 @@ class CountryStateService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RestCountryState[]',
 				'/country-state/all'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RestCountryState[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -180,8 +180,7 @@ class CountryStateService {
 	 * Operation countryWithHttpInfo
 	 *
 	 * Find by Country
-     
-     *
+	 *
 	 * @param string $code The country code in ISO code two letter format for which all states should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -224,6 +223,7 @@ class CountryStateService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -232,7 +232,7 @@ class CountryStateService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RestCountryState[]',
 				'/country-state/country'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RestCountryState[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

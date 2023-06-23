@@ -84,8 +84,7 @@ class LabelDescriptionGroupService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-     
-     *
+	 *
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
@@ -120,6 +119,7 @@ class LabelDescriptionGroupService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -128,7 +128,7 @@ class LabelDescriptionGroupService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\LabelDescriptorGroup[]',
 				'/label-description-group-service/all'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\LabelDescriptorGroup[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -180,8 +180,7 @@ class LabelDescriptionGroupService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $id The id of the label descriptor group which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -224,6 +223,7 @@ class LabelDescriptionGroupService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -232,7 +232,7 @@ class LabelDescriptionGroupService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\LabelDescriptorGroup',
 				'/label-description-group-service/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\LabelDescriptorGroup', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

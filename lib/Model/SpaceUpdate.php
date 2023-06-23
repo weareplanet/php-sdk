@@ -271,7 +271,6 @@ class SpaceUpdate extends AbstractSpaceUpdate
      *
      * @return boolean
      */
-    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -284,7 +283,6 @@ class SpaceUpdate extends AbstractSpaceUpdate
      *
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -298,7 +296,6 @@ class SpaceUpdate extends AbstractSpaceUpdate
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -315,7 +312,6 @@ class SpaceUpdate extends AbstractSpaceUpdate
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

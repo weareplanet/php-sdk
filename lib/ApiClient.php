@@ -47,18 +47,14 @@ final class ApiClient {
 	 *
 	 * @var array
 	 */
-	private $defaultHeaders = [
-        'x-meta-sdk-version' => "3.2.0",
-        'x-meta-sdk-language' => 'php',
-        'x-meta-sdk-provider' => "WeArePlanet",
-    ];
+	private $defaultHeaders = [];
 
 	/**
 	 * The user agent that is sent with any request.
 	 *
 	 * @var string
 	 */
-	private $userAgent = 'PHP-Client/3.2.0/php';
+	private $userAgent = 'PHP-Client/3.0.1/php';
 
 	/**
 	 * The path to the certificate authority file.
@@ -74,19 +70,13 @@ final class ApiClient {
 	 */
 	private $enableCertificateAuthorityCheck = true;
 
-    /**
-     * the constant for the default connection time out
-     *
-     * @var integer
-     */
-    const INITIAL_CONNECTION_TIMEOUT = 25;
-
-    /**
+	/**
 	 * The connection timeout in seconds.
 	 *
 	 * @var integer
 	 */
-	private $connectionTimeout;
+	private $connectionTimeout = 20;
+	CONST CONNECTION_TIMEOUT = 20;
 
 	/**
 	 * The http client type to use for communication.
@@ -144,12 +134,10 @@ final class ApiClient {
 		$this->userId = $userId;
         $this->applicationKey = $applicationKey;
 
-        $this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
 		$this->certificateAuthority = dirname(__FILE__) . '/ca-bundle.crt';
 		$this->serializer = new ObjectSerializer();
 		$this->isDebuggingEnabled() ? $this->serializer->enableDebugging() : $this->serializer->disableDebugging();
 		$this->serializer->setDebugFile($this->getDebugFile());
-		$this->addDefaultHeader('x-meta-sdk-language-version', phpversion());
 	}
 
 	/**
@@ -260,7 +248,7 @@ final class ApiClient {
 	 * @return ApiClient
 	 */
 	public function resetConnectionTimeout() {
-		$this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
+		$this->connectionTimeout = self::CONNECTION_TIMEOUT;
 		return $this;
 	}
 
@@ -323,19 +311,9 @@ final class ApiClient {
 			throw new \InvalidArgumentException('The header key must be a string.');
 		}
 
-		$this->defaultHeaders[$key] = $value;
+		$defaultHeaders[$key] = $value;
 		return $this;
 	}
-
-	/**
-     * Gets the default headers that will be sent in the request.
-	 * 
-	 * @since 3.1.2
-	 * @return string[]
-     */
-    function getDefaultHeaders() {
-        return $this->defaultHeaders;
-    }
 
 	/**
 	 * Returns true, when debugging is enabled.
@@ -467,11 +445,8 @@ final class ApiClient {
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 */
-	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null, $timeOut = null) {
-        if ($timeOut === null) {
-            $timeOut = $this->getConnectionTimeout();
-        }
-		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken(), $timeOut);
+	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null) {
+		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken());
 		$request->setUserAgent($this->getUserAgent());
 		$request->addHeaders(array_merge(
 			(array)$this->defaultHeaders,

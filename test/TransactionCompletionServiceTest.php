@@ -67,9 +67,8 @@ class TransactionCompletionServiceTest extends TestCase
 
     /**
      * Setup before running each test case
-     * @return void
      */
-    public function setUp() : void
+    public function setUp()
     {
         parent::setUp();
         

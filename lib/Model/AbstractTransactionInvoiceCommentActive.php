@@ -238,7 +238,6 @@ class AbstractTransactionInvoiceCommentActive implements ModelInterface, ArrayAc
      *
      * @return boolean
      */
-    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -251,7 +250,6 @@ class AbstractTransactionInvoiceCommentActive implements ModelInterface, ArrayAc
      *
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -265,7 +263,6 @@ class AbstractTransactionInvoiceCommentActive implements ModelInterface, ArrayAc
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -282,7 +279,6 @@ class AbstractTransactionInvoiceCommentActive implements ModelInterface, ArrayAc
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

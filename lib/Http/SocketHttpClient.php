@@ -80,7 +80,7 @@ final class SocketHttpClient implements IHttpClient {
 		$responseMessage = '';
 		$chunked = false;
 		$chunkLength = false;
-		$maxTime = $this->getStartTime() + $request->getTimeOut();
+		$maxTime = $this->getStartTime() + $apiClient->getConnectionTimeout();
 		$contentLength = -1;
 		$endReached = false;
 		while ($maxTime > time() && !feof($socket) && !$endReached) {
