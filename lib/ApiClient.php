@@ -992,5 +992,29 @@ final class ApiClient {
         return $this->userSpaceRoleService;
     }
     
+    protected $webhookListenerService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\WebhookListenerService
+     */
+    public function getWebhookListenerService() {
+        if(is_null($this->webhookListenerService)){
+            $this->webhookListenerService = new \WeArePlanet\Sdk\Service\WebhookListenerService($this);
+        }
+        return $this->webhookListenerService;
+    }
+    
+    protected $webhookUrlService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\WebhookUrlService
+     */
+    public function getWebhookUrlService() {
+        if(is_null($this->webhookUrlService)){
+            $this->webhookUrlService = new \WeArePlanet\Sdk\Service\WebhookUrlService($this);
+        }
+        return $this->webhookUrlService;
+    }
+    
 
 }
