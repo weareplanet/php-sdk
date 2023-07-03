@@ -47,18 +47,14 @@ final class ApiClient {
 	 *
 	 * @var array
 	 */
-	private $defaultHeaders = [
-        'x-meta-sdk-version' => "3.2.0",
-        'x-meta-sdk-language' => 'php',
-        'x-meta-sdk-provider' => "WeArePlanet",
-    ];
+	private $defaultHeaders = [];
 
 	/**
 	 * The user agent that is sent with any request.
 	 *
 	 * @var string
 	 */
-	private $userAgent = 'PHP-Client/3.2.0/php';
+	private $userAgent = 'PHP-Client/3.0.1/php';
 
 	/**
 	 * The path to the certificate authority file.
@@ -74,19 +70,13 @@ final class ApiClient {
 	 */
 	private $enableCertificateAuthorityCheck = true;
 
-    /**
-     * the constant for the default connection time out
-     *
-     * @var integer
-     */
-    const INITIAL_CONNECTION_TIMEOUT = 25;
-
-    /**
+	/**
 	 * The connection timeout in seconds.
 	 *
 	 * @var integer
 	 */
-	private $connectionTimeout;
+	private $connectionTimeout = 20;
+	CONST CONNECTION_TIMEOUT = 20;
 
 	/**
 	 * The http client type to use for communication.
@@ -144,12 +134,10 @@ final class ApiClient {
 		$this->userId = $userId;
         $this->applicationKey = $applicationKey;
 
-        $this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
 		$this->certificateAuthority = dirname(__FILE__) . '/ca-bundle.crt';
 		$this->serializer = new ObjectSerializer();
 		$this->isDebuggingEnabled() ? $this->serializer->enableDebugging() : $this->serializer->disableDebugging();
 		$this->serializer->setDebugFile($this->getDebugFile());
-		$this->addDefaultHeader('x-meta-sdk-language-version', phpversion());
 	}
 
 	/**
@@ -260,7 +248,7 @@ final class ApiClient {
 	 * @return ApiClient
 	 */
 	public function resetConnectionTimeout() {
-		$this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
+		$this->connectionTimeout = self::CONNECTION_TIMEOUT;
 		return $this;
 	}
 
@@ -323,19 +311,9 @@ final class ApiClient {
 			throw new \InvalidArgumentException('The header key must be a string.');
 		}
 
-		$this->defaultHeaders[$key] = $value;
+		$defaultHeaders[$key] = $value;
 		return $this;
 	}
-
-	/**
-     * Gets the default headers that will be sent in the request.
-	 * 
-	 * @since 3.1.2
-	 * @return string[]
-     */
-    function getDefaultHeaders() {
-        return $this->defaultHeaders;
-    }
 
 	/**
 	 * Returns true, when debugging is enabled.
@@ -467,11 +445,8 @@ final class ApiClient {
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 */
-	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null, $timeOut = null) {
-        if ($timeOut === null) {
-            $timeOut = $this->getConnectionTimeout();
-        }
-		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken(), $timeOut);
+	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null) {
+		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken());
 		$request->setUserAgent($this->getUserAgent());
 		$request->addHeaders(array_merge(
 			(array)$this->defaultHeaders,
@@ -729,6 +704,18 @@ final class ApiClient {
         return $this->customerService;
     }
     
+    protected $deliveryIndicationService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\DeliveryIndicationService
+     */
+    public function getDeliveryIndicationService() {
+        if(is_null($this->deliveryIndicationService)){
+            $this->deliveryIndicationService = new \WeArePlanet\Sdk\Service\DeliveryIndicationService($this);
+        }
+        return $this->deliveryIndicationService;
+    }
+    
     protected $humanUserService;
 
     /**
@@ -909,6 +896,18 @@ final class ApiClient {
         return $this->refundCommentService;
     }
     
+    protected $refundService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\RefundService
+     */
+    public function getRefundService() {
+        if(is_null($this->refundService)){
+            $this->refundService = new \WeArePlanet\Sdk\Service\RefundService($this);
+        }
+        return $this->refundService;
+    }
+    
     protected $spaceService;
 
     /**
@@ -933,6 +932,30 @@ final class ApiClient {
         return $this->staticValueService;
     }
     
+    protected $tokenService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TokenService
+     */
+    public function getTokenService() {
+        if(is_null($this->tokenService)){
+            $this->tokenService = new \WeArePlanet\Sdk\Service\TokenService($this);
+        }
+        return $this->tokenService;
+    }
+    
+    protected $tokenVersionService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TokenVersionService
+     */
+    public function getTokenVersionService() {
+        if(is_null($this->tokenVersionService)){
+            $this->tokenVersionService = new \WeArePlanet\Sdk\Service\TokenVersionService($this);
+        }
+        return $this->tokenVersionService;
+    }
+    
     protected $transactionCommentService;
 
     /**
@@ -943,6 +966,30 @@ final class ApiClient {
             $this->transactionCommentService = new \WeArePlanet\Sdk\Service\TransactionCommentService($this);
         }
         return $this->transactionCommentService;
+    }
+    
+    protected $transactionCompletionService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TransactionCompletionService
+     */
+    public function getTransactionCompletionService() {
+        if(is_null($this->transactionCompletionService)){
+            $this->transactionCompletionService = new \WeArePlanet\Sdk\Service\TransactionCompletionService($this);
+        }
+        return $this->transactionCompletionService;
+    }
+    
+    protected $transactionIframeService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TransactionIframeService
+     */
+    public function getTransactionIframeService() {
+        if(is_null($this->transactionIframeService)){
+            $this->transactionIframeService = new \WeArePlanet\Sdk\Service\TransactionIframeService($this);
+        }
+        return $this->transactionIframeService;
     }
     
     protected $transactionInvoiceCommentService;
@@ -969,6 +1016,18 @@ final class ApiClient {
         return $this->transactionInvoiceService;
     }
     
+    protected $transactionLightboxService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TransactionLightboxService
+     */
+    public function getTransactionLightboxService() {
+        if(is_null($this->transactionLightboxService)){
+            $this->transactionLightboxService = new \WeArePlanet\Sdk\Service\TransactionLightboxService($this);
+        }
+        return $this->transactionLightboxService;
+    }
+    
     protected $transactionLineItemVersionService;
 
     /**
@@ -981,6 +1040,18 @@ final class ApiClient {
         return $this->transactionLineItemVersionService;
     }
     
+    protected $transactionPaymentPageService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TransactionPaymentPageService
+     */
+    public function getTransactionPaymentPageService() {
+        if(is_null($this->transactionPaymentPageService)){
+            $this->transactionPaymentPageService = new \WeArePlanet\Sdk\Service\TransactionPaymentPageService($this);
+        }
+        return $this->transactionPaymentPageService;
+    }
+    
     protected $transactionService;
 
     /**
@@ -991,6 +1062,18 @@ final class ApiClient {
             $this->transactionService = new \WeArePlanet\Sdk\Service\TransactionService($this);
         }
         return $this->transactionService;
+    }
+    
+    protected $transactionVoidService;
+
+    /**
+     * @return \WeArePlanet\Sdk\Service\TransactionVoidService
+     */
+    public function getTransactionVoidService() {
+        if(is_null($this->transactionVoidService)){
+            $this->transactionVoidService = new \WeArePlanet\Sdk\Service\TransactionVoidService($this);
+        }
+        return $this->transactionVoidService;
     }
     
     protected $userAccountRoleService;

@@ -84,8 +84,7 @@ class PaymentConnectorService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-     
-     *
+	 *
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
@@ -120,6 +119,7 @@ class PaymentConnectorService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -128,7 +128,7 @@ class PaymentConnectorService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentConnector[]',
 				'/payment-connector/all'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentConnector[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -180,8 +180,7 @@ class PaymentConnectorService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $id The id of the connector which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -224,6 +223,7 @@ class PaymentConnectorService {
 		}
 		// make the API Call
 		try {
+			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'GET',
@@ -232,7 +232,7 @@ class PaymentConnectorService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentConnector',
 				'/payment-connector/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentConnector', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

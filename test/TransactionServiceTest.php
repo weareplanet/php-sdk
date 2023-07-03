@@ -73,9 +73,8 @@ class TransactionServiceTest extends TestCase
 
     /**
      * Setup before running each test case
-     * @return void
      */
-    public function setUp() : void
+    public function setUp()
     {
         parent::setUp();
 
@@ -152,17 +151,15 @@ class TransactionServiceTest extends TestCase
 
     /**
      * Clean up after running each test case
-     * @return void
      */
-    public function tearDown(): void
+    public function tearDown()
     {
     }
 
     /**
      * Clean up after running all test cases
-     * @return void
      */
-    public static function tearDownAfterClass(): void
+    public static function tearDownAfterClass()
     {
     }
 
