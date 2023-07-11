@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,18 +111,6 @@ class WebhookUrlCreate extends AbstractWebhookUrlUpdate
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
-        }
-
-        if (!is_null($this->container['url']) && (mb_strlen($this->container['url']) > 500)) {
-            $invalidProperties[] = "invalid value for 'url', the character length must be smaller than or equal to 500.";
-        }
-
-        if (!is_null($this->container['url']) && (mb_strlen($this->container['url']) < 9)) {
-            $invalidProperties[] = "invalid value for 'url', the character length must be bigger than or equal to 9.";
-        }
 
         return $invalidProperties;
     }

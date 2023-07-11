@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,38 +120,6 @@ class TransactionPending extends AbstractTransactionPending
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        if (!is_null($this->container['customer_email_address']) && (mb_strlen($this->container['customer_email_address']) > 254)) {
-            $invalidProperties[] = "invalid value for 'customer_email_address', the character length must be smaller than or equal to 254.";
-        }
-
-        if (!is_null($this->container['failed_url']) && (mb_strlen($this->container['failed_url']) > 2000)) {
-            $invalidProperties[] = "invalid value for 'failed_url', the character length must be smaller than or equal to 2000.";
-        }
-
-        if (!is_null($this->container['failed_url']) && (mb_strlen($this->container['failed_url']) < 9)) {
-            $invalidProperties[] = "invalid value for 'failed_url', the character length must be bigger than or equal to 9.";
-        }
-
-        if (!is_null($this->container['invoice_merchant_reference']) && (mb_strlen($this->container['invoice_merchant_reference']) > 100)) {
-            $invalidProperties[] = "invalid value for 'invoice_merchant_reference', the character length must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['merchant_reference']) && (mb_strlen($this->container['merchant_reference']) > 100)) {
-            $invalidProperties[] = "invalid value for 'merchant_reference', the character length must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['shipping_method']) && (mb_strlen($this->container['shipping_method']) > 200)) {
-            $invalidProperties[] = "invalid value for 'shipping_method', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['success_url']) && (mb_strlen($this->container['success_url']) > 2000)) {
-            $invalidProperties[] = "invalid value for 'success_url', the character length must be smaller than or equal to 2000.";
-        }
-
-        if (!is_null($this->container['success_url']) && (mb_strlen($this->container['success_url']) < 9)) {
-            $invalidProperties[] = "invalid value for 'success_url', the character length must be bigger than or equal to 9.";
-        }
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";

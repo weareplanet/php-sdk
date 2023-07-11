@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,10 +113,6 @@ class RefundCommentCreate extends AbstractRefundCommentActive
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        if (!is_null($this->container['content']) && (mb_strlen($this->container['content']) > 262144)) {
-            $invalidProperties[] = "invalid value for 'content', the character length must be smaller than or equal to 262144.";
-        }
 
         if ($this->container['refund'] === null) {
             $invalidProperties[] = "'refund' can't be null";

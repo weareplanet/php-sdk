@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,6 +56,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'labels' => '\WeArePlanet\Sdk\Model\Label[]',
         'language' => 'string',
         'line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
+        'linked_space_id' => 'int',
         'next_update_on' => '\DateTime',
         'planned_purge_date' => '\DateTime',
         'processing_on' => '\DateTime',
@@ -83,6 +84,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'labels' => null,
         'language' => null,
         'line_items' => null,
+        'linked_space_id' => 'int64',
         'next_update_on' => 'date-time',
         'planned_purge_date' => 'date-time',
         'processing_on' => 'date-time',
@@ -111,6 +113,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'labels' => 'labels',
         'language' => 'language',
         'line_items' => 'lineItems',
+        'linked_space_id' => 'linkedSpaceId',
         'next_update_on' => 'nextUpdateOn',
         'planned_purge_date' => 'plannedPurgeDate',
         'processing_on' => 'processingOn',
@@ -138,6 +141,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'labels' => 'setLabels',
         'language' => 'setLanguage',
         'line_items' => 'setLineItems',
+        'linked_space_id' => 'setLinkedSpaceId',
         'next_update_on' => 'setNextUpdateOn',
         'planned_purge_date' => 'setPlannedPurgeDate',
         'processing_on' => 'setProcessingOn',
@@ -165,6 +169,7 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         'labels' => 'getLabels',
         'language' => 'getLanguage',
         'line_items' => 'getLineItems',
+        'linked_space_id' => 'getLinkedSpaceId',
         'next_update_on' => 'getNextUpdateOn',
         'planned_purge_date' => 'getPlannedPurgeDate',
         'processing_on' => 'getProcessingOn',
@@ -208,6 +213,8 @@ class TransactionLineItemVersion extends TransactionAwareEntity
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         
         $this->container['line_items'] = isset($data['line_items']) ? $data['line_items'] : null;
+        
+        $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
         
         $this->container['next_update_on'] = isset($data['next_update_on']) ? $data['next_update_on'] : null;
         
@@ -540,6 +547,31 @@ class TransactionLineItemVersion extends TransactionAwareEntity
     public function setLineItems($line_items)
     {
         $this->container['line_items'] = $line_items;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets linked_space_id
+     *
+     * @return int
+     */
+    public function getLinkedSpaceId()
+    {
+        return $this->container['linked_space_id'];
+    }
+
+    /**
+     * Sets linked_space_id
+     *
+     * @param int $linked_space_id The ID of the space this object belongs to.
+     *
+     * @return $this
+     */
+    public function setLinkedSpaceId($linked_space_id)
+    {
+        $this->container['linked_space_id'] = $linked_space_id;
 
         return $this;
     }

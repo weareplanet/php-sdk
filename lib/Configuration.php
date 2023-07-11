@@ -1,9 +1,9 @@
 <?php
 
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'WeArePlanet\Sdk/2.0.14/php';
+    protected $userAgent = 'WeArePlanet\Sdk/2.1.4/php';
 
     /**
      * Debug switch (default set to false)
@@ -388,8 +388,8 @@ class Configuration
         $report  = 'PHP SDK (WeArePlanet\Sdk) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    OpenAPI Spec Version: 2.0.14' . PHP_EOL;
-        $report .= '    SDK Package Version: 2.0.14' . PHP_EOL;
+        $report .= '    OpenAPI Spec Version: 2.1.4' . PHP_EOL;
+        $report .= '    SDK Package Version: 2.1.4' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;

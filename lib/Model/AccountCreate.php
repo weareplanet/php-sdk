@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -120,14 +120,6 @@ class AccountCreate extends AbstractAccountUpdate
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 200)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 200.";
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 3)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 3.";
-        }
 
         if ($this->container['scope'] === null) {
             $invalidProperties[] = "'scope' can't be null";

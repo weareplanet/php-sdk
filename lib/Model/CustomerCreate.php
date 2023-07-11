@@ -1,8 +1,8 @@
 <?php
 /**
- *  SDK
+ * WeArePlanet SDK
  *
- * This library allows to interact with the  payment service.
+ * This library allows to interact with the WeArePlanet payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -111,22 +111,6 @@ class CustomerCreate extends AbstractCustomerActive
     public function listInvalidProperties()
     {
         $invalidProperties = parent::listInvalidProperties();
-
-        if (!is_null($this->container['customer_id']) && (mb_strlen($this->container['customer_id']) > 100)) {
-            $invalidProperties[] = "invalid value for 'customer_id', the character length must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['email_address']) && (mb_strlen($this->container['email_address']) > 254)) {
-            $invalidProperties[] = "invalid value for 'email_address', the character length must be smaller than or equal to 254.";
-        }
-
-        if (!is_null($this->container['family_name']) && (mb_strlen($this->container['family_name']) > 100)) {
-            $invalidProperties[] = "invalid value for 'family_name', the character length must be smaller than or equal to 100.";
-        }
-
-        if (!is_null($this->container['given_name']) && (mb_strlen($this->container['given_name']) > 100)) {
-            $invalidProperties[] = "invalid value for 'given_name', the character length must be smaller than or equal to 100.";
-        }
 
         return $invalidProperties;
     }
