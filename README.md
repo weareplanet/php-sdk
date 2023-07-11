@@ -56,9 +56,9 @@ $secret = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
 // Setup API client
 $client = new \WeArePlanet\Sdk\ApiClient($userId, $secret);
 
-// Get API service instance
-$client->getTransactionService();
-$client->getTransactionPaymentPageService();
+// Create API service instance
+$transactionService = new \WeArePlanet\Sdk\Service\TransactionService($client);
+$transactionPaymentPageService = new \WeArePlanet\Sdk\Service\TransactionPaymentPageService($client);
 
 ```
 
@@ -75,6 +75,10 @@ $secret = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
 // Setup API client
 $client = new \WeArePlanet\Sdk\ApiClient($userId, $secret);
 
+// Create API service instance
+$transactionService = new \WeArePlanet\Sdk\Service\TransactionService($client);
+$transactionPaymentPageService = new \WeArePlanet\Sdk\Service\TransactionPaymentPageService($client);
+
 // Create transaction
 $lineItem = new \WeArePlanet\Sdk\Model\LineItemCreate();
 $lineItem->setName('Red T-Shirt');
@@ -85,15 +89,15 @@ $lineItem->setAmountIncludingTax(29.95);
 $lineItem->setType(\WeArePlanet\Sdk\Model\LineItemType::PRODUCT);
 
 
-$transactionPayload = new \WeArePlanet\Sdk\Model\TransactionCreate();
-$transactionPayload->setCurrency('EUR');
-$transactionPayload->setLineItems(array($lineItem));
-$transactionPayload->setAutoConfirmationEnabled(true);
+$transaction = new \WeArePlanet\Sdk\Model\TransactionCreate();
+$transaction->setCurrency('EUR');
+$transaction->setLineItems(array($lineItem));
+$transaction->setAutoConfirmationEnabled(true);
 
-$transaction = $client->getTransactionService()->create($spaceId, $transactionPayload);
+$createdTransaction = $transactionService->create($spaceId, $transaction);
 
 // Create Payment Page URL:
-$redirectionUrl = $client->getTransactionPaymentPageService()->paymentPageUrl($spaceId, $transaction->getId());
+$redirectionUrl = $transactionPaymentPageService->paymentPageUrl($spaceId, $createdTransaction->getId());
 
 header('Location: ' . $redirectionUrl);
 
@@ -108,14 +112,11 @@ $userId = 512;
 $secret = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
 
 // Setup API client
-$client = new \WeArePlanet\Sdk\ApiClient($userId, $secret);
+$client = new \WeArePlanet\Sdk\Sdk\ApiClient($userId, $secret);
 
-$httpClientType = \WeArePlanet\Sdk\Http\HttpClientFactory::TYPE_CURL; // or \WeArePlanet\Sdk\Http\HttpClientFactory::TYPE_SOCKET
+$httpClientType = \WeArePlanet\Sdk\Sdk\Http\HttpClientFactory::TYPE_CURL; // or \WeArePlanet\Sdk\Sdk\Http\HttpClientFactory::TYPE_SOCKET
 
 $client->setHttpClientType($httpClientType);
-
-//Setup a custom connection timeout if needed. (Default value is: 25 seconds)
-$client->setConnectionTimeout(20);
 ```
 
 You can also specify the HTTP client via the `PLN_HTTP_CLIENT` environment variable. The possible string values are `curl` or `socket`.

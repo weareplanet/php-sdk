@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,8 @@ use WeArePlanet\Sdk\Model\AddressCreate;
 use WeArePlanet\Sdk\Model\LineItemCreate;
 use WeArePlanet\Sdk\Model\LineItemType;
 use WeArePlanet\Sdk\Model\TransactionCreate;
+use WeArePlanet\Sdk\Service\TransactionLightboxService;
+use WeArePlanet\Sdk\Service\TransactionService;
 
 /**
  * This class tests the basic functionality of the SDK.
@@ -47,7 +49,10 @@ class TransactionLightboxServiceTest extends TestCase
     /**
      * @var WeArePlanet\Sdk\Model\TransactionCreate
      */
-    private $transactionPayload;
+    private $transactionBag;
+
+    private $transactionLightboxService;
+    private $transactionService;
 
     /**
      * @var int
@@ -66,14 +71,20 @@ class TransactionLightboxServiceTest extends TestCase
 
     /**
      * Setup before running each test case
-     * @return void
      */
-    public function setUp() : void
+    public function setUp()
     {
         parent::setUp();
-        
-        $this->apiClient = $this->getApiClient();
-        $this->transactionPayload = $this->getTransactionPayload();
+
+        if (is_null($this->transactionLightboxService)) {
+            $this->transactionLightboxService = new TransactionLightboxService($this->getApiClient());
+        }
+
+        if (is_null($this->transactionService)) {
+            $this->transactionService = new TransactionService($this->getApiClient());
+        }
+
+        $this->transactionBag = $this->getTransactionBag();
     }
 
     /**
@@ -106,9 +117,9 @@ class TransactionLightboxServiceTest extends TestCase
     /**
      * @return TransactionCreate
      */
-    private function getTransactionPayload()
+    private function getTransactionBag()
     {
-        if (is_null($this->transactionPayload)) {
+        if (is_null($this->transactionBag)) {
             // line item
             $lineItem = new LineItemCreate();
             $lineItem->setName('Red T-Shirt');
@@ -122,7 +133,7 @@ class TransactionLightboxServiceTest extends TestCase
             $billingAddress = new AddressCreate();
             $billingAddress->setCity('Winterthur');
             $billingAddress->setCountry('CH');
-            $billingAddress->setEmailAddress('test@example.com');
+            $billingAddress->setEmailAddress('test@WeArePlanet.com');
             $billingAddress->setFamilyName('Customer');
             $billingAddress->setGivenName('Good');
             $billingAddress->setPostCode('8400');
@@ -131,14 +142,14 @@ class TransactionLightboxServiceTest extends TestCase
             $billingAddress->setPhoneNumber('+41791234567');
             $billingAddress->setSalutation('Ms');
 
-            $this->transactionPayload = new TransactionCreate();
-            $this->transactionPayload->setCurrency('CHF');
-            $this->transactionPayload->setLineItems([$lineItem]);
-            $this->transactionPayload->setAutoConfirmationEnabled(true);
-            $this->transactionPayload->setBillingAddress($billingAddress);
-            $this->transactionPayload->setShippingAddress($billingAddress);
+            $this->transactionBag = new TransactionCreate();
+            $this->transactionBag->setCurrency('CHF');
+            $this->transactionBag->setLineItems([$lineItem]);
+            $this->transactionBag->setAutoConfirmationEnabled(true);
+            $this->transactionBag->setBillingAddress($billingAddress);
+            $this->transactionBag->setShippingAddress($billingAddress);
         }
-        return $this->transactionPayload;
+        return $this->transactionBag;
     }
 
     /**
@@ -149,8 +160,8 @@ class TransactionLightboxServiceTest extends TestCase
      */
     public function testJavascriptUrl()
     {
-        $transaction = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
-        $javascriptUrl = $this->apiClient->getTransactionLightboxService()->javascriptUrl($this->spaceId, $transaction->getId());
+        $transaction = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
+        $javascriptUrl      = $this->transactionLightboxService->javascriptUrl($this->spaceId, $transaction->getId());
         $this->assertEquals(0, strpos($javascriptUrl, 'http'));
     }
 }

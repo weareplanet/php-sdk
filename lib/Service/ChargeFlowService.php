@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class ChargeFlowService {
 	 * Operation applyFlowWithHttpInfo
 	 *
 	 * applyFlow
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The transaction id of the transaction which should be process asynchronously. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class ChargeFlowService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Transaction',
 				'/charge-flow/applyFlow'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Transaction', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,8 +198,7 @@ class ChargeFlowService {
 	 * Operation cancelChargeFlowWithHttpInfo
 	 *
 	 * Cancel Charge Flow
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The ID of the transaction for which the charge flow should be canceled. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -259,7 +257,7 @@ class ChargeFlowService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Transaction',
 				'/charge-flow/cancel-charge-flow'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Transaction', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -312,8 +310,7 @@ class ChargeFlowService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -370,7 +367,7 @@ class ChargeFlowService {
 				$headerParams,
 				'int',
 				'/charge-flow/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -423,8 +420,7 @@ class ChargeFlowService {
 	 * Operation fetchChargeFlowPaymentPageUrlWithHttpInfo
 	 *
 	 * Fetch Charge Flow Payment Page URL
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The transaction id of the transaction for which the URL of the charge flow should be fetched. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -483,7 +479,7 @@ class ChargeFlowService {
 				$headerParams,
 				'string',
 				'/charge-flow/fetch-charge-flow-payment-page-url'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'string', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -536,8 +532,7 @@ class ChargeFlowService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the charge flow which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -596,7 +591,7 @@ class ChargeFlowService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeFlow',
 				'/charge-flow/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeFlow', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -649,8 +644,7 @@ class ChargeFlowService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the charge flows which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -711,7 +705,7 @@ class ChargeFlowService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeFlow[]',
 				'/charge-flow/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeFlow[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -766,8 +760,7 @@ class ChargeFlowService {
 	 * Operation updateRecipientWithHttpInfo
 	 *
 	 * updateRecipient
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $transaction_id The transaction id of the transaction whose recipient should be updated. (required)
 	 * @param int $type The id of the charge flow configuration type to recipient should be updated for. (required)
@@ -842,7 +835,7 @@ class ChargeFlowService {
 				$headerParams,
 				null,
 				'/charge-flow/updateRecipient'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

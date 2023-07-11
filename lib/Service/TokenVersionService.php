@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TokenVersionService {
 	 * Operation activeVersionWithHttpInfo
 	 *
 	 * Active Version
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of a token for which you want to look up the current active token version. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class TokenVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TokenVersion',
 				'/token-version/active-version'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TokenVersion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,8 +198,7 @@ class TokenVersionService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -257,7 +255,7 @@ class TokenVersionService {
 				$headerParams,
 				'int',
 				'/token-version/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -310,8 +308,7 @@ class TokenVersionService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the token version which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -370,7 +367,7 @@ class TokenVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TokenVersion',
 				'/token-version/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TokenVersion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -423,8 +420,7 @@ class TokenVersionService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the token versions which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -485,7 +481,7 @@ class TokenVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TokenVersion[]',
 				'/token-version/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TokenVersion[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

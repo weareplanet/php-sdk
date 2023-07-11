@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TransactionInvoiceService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -144,7 +143,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'int',
 				'/transaction-invoice/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -197,8 +196,7 @@ class TransactionInvoiceService {
 	 * Operation getInvoiceDocumentWithHttpInfo
 	 *
 	 * getInvoiceDocument
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoice to get the document for. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -257,7 +255,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RenderedDocument',
 				'/transaction-invoice/getInvoiceDocument'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RenderedDocument', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -311,8 +309,7 @@ class TransactionInvoiceService {
 	 * Operation getInvoiceDocumentWithTargetMediaTypeWithHttpInfo
 	 *
 	 * getInvoiceDocumentWithTargetMediaType
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoice to get the document for. (required)
 	 * @param int $target_media_type_id The id of the target media type for which the invoice should be generated for. (required)
@@ -379,7 +376,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RenderedDocument',
 				'/transaction-invoice/getInvoiceDocumentWithTargetMediaType'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RenderedDocument', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -432,8 +429,7 @@ class TransactionInvoiceService {
 	 * Operation isReplacementPossibleWithHttpInfo
 	 *
 	 * isReplacementPossible
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The invoice which should be checked if a replacement is possible. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -492,7 +488,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'bool',
 				'/transaction-invoice/isReplacementPossible'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'bool', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -545,8 +541,7 @@ class TransactionInvoiceService {
 	 * Operation markAsDerecognizedWithHttpInfo
 	 *
 	 * Mark as Derecognized
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoice which should be marked as derecognized. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -605,7 +600,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionInvoice',
 				'/transaction-invoice/markAsDerecognized'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionInvoice', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -658,8 +653,7 @@ class TransactionInvoiceService {
 	 * Operation markAsPaidWithHttpInfo
 	 *
 	 * Mark as Paid
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoice which should be marked as paid. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -718,7 +712,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionInvoice',
 				'/transaction-invoice/markAsPaid'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionInvoice', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -771,8 +765,7 @@ class TransactionInvoiceService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoices which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -831,7 +824,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionInvoice',
 				'/transaction-invoice/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionInvoice', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -885,8 +878,7 @@ class TransactionInvoiceService {
 	 * Operation replaceWithHttpInfo
 	 *
 	 * replace
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction invoices which should be replaced. (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionInvoiceReplacement $replacement  (required)
@@ -955,7 +947,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionInvoice',
 				'/transaction-invoice/replace'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionInvoice', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -1008,8 +1000,7 @@ class TransactionInvoiceService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the transaction invoices which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -1070,7 +1061,7 @@ class TransactionInvoiceService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionInvoice[]',
 				'/transaction-invoice/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionInvoice[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

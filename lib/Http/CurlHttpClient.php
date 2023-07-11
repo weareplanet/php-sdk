@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,8 +40,8 @@ final class CurlHttpClient implements IHttpClient {
 	public function send(ApiClient $apiClient, HttpRequest $request) {
 		$curl = curl_init();
 		// set timeout, if needed
-		if ($request->getTimeOut() !== 0) {
-			curl_setopt($curl, CURLOPT_TIMEOUT, $request->getTimeOut());
+		if ($apiClient->getConnectionTimeout() !== 0) {
+			curl_setopt($curl, CURLOPT_TIMEOUT, $apiClient->getConnectionTimeout());
 		}
 
         // set life-time for DNS cache entries

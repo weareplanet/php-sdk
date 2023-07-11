@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class CustomerCommentService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -144,7 +143,7 @@ class CustomerCommentService {
 				$headerParams,
 				'int',
 				'/customer-comment/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -197,8 +196,7 @@ class CustomerCommentService {
 	 * Operation createWithHttpInfo
 	 *
 	 * Create
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\CustomerCommentCreate $entity The customer object which should be created. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -259,7 +257,7 @@ class CustomerCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\CustomerComment',
 				'/customer-comment/create'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\CustomerComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -312,8 +310,7 @@ class CustomerCommentService {
 	 * Operation deleteWithHttpInfo
 	 *
 	 * Delete
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -374,7 +371,7 @@ class CustomerCommentService {
 				$headerParams,
 				null,
 				'/customer-comment/delete'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -427,8 +424,7 @@ class CustomerCommentService {
 	 * Operation pinCommentWithHttpInfo
 	 *
 	 * pinComment
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the customer comment to pin to the top. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -487,7 +483,7 @@ class CustomerCommentService {
 				$headerParams,
 				null,
 				'/customer-comment/pin-comment'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -540,8 +536,7 @@ class CustomerCommentService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the customer which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -600,7 +595,7 @@ class CustomerCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\CustomerComment',
 				'/customer-comment/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\CustomerComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -653,8 +648,7 @@ class CustomerCommentService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the customers which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -715,7 +709,7 @@ class CustomerCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\CustomerComment[]',
 				'/customer-comment/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\CustomerComment[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -768,8 +762,7 @@ class CustomerCommentService {
 	 * Operation unpinCommentWithHttpInfo
 	 *
 	 * unpinComment
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the customer comment to unpin. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -828,7 +821,7 @@ class CustomerCommentService {
 				$headerParams,
 				null,
 				'/customer-comment/unpin-comment'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -881,8 +874,7 @@ class CustomerCommentService {
 	 * Operation updateWithHttpInfo
 	 *
 	 * Update
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\CustomerCommentActive $entity The customer object with the properties which should be updated. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -943,7 +935,7 @@ class CustomerCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\CustomerComment',
 				'/customer-comment/update'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\CustomerComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TransactionLightboxService {
 	 * Operation javascriptUrlWithHttpInfo
 	 *
 	 * Build JavaScript URL
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class TransactionLightboxService {
 				$headerParams,
 				'string',
 				'/transaction-lightbox/javascript-url'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'string', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

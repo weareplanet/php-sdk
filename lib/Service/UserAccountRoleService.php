@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,8 +88,7 @@ class UserAccountRoleService {
 	 * Operation addRoleWithHttpInfo
 	 *
 	 * Add Role
-     
-     *
+	 *
 	 * @param int $user_id The id of the user to whom the role is assigned. (required)
 	 * @param int $account_id The account to which the role is mapped. (required)
 	 * @param int $role_id The role which is mapped to the user and account. (required)
@@ -160,7 +159,7 @@ class UserAccountRoleService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\UserAccountRole',
 				'/user-account-role/addRole'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\UserAccountRole', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -213,8 +212,7 @@ class UserAccountRoleService {
 	 * Operation callListWithHttpInfo
 	 *
 	 * List Roles
-     
-     *
+	 *
 	 * @param int $user_id The id of the user to whom the role is assigned. (required)
 	 * @param int $account_id The account to which the role is mapped. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -273,7 +271,7 @@ class UserAccountRoleService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\UserAccountRole[]',
 				'/user-account-role/list'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\UserAccountRole[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -325,8 +323,7 @@ class UserAccountRoleService {
 	 * Operation removeRoleWithHttpInfo
 	 *
 	 * Remove Role
-     
-     *
+	 *
 	 * @param int $id The id of user account role which should be removed (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -377,7 +374,7 @@ class UserAccountRoleService {
 				$headerParams,
 				null,
 				'/user-account-role/removeRole'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

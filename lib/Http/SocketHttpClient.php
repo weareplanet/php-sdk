@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ final class SocketHttpClient implements IHttpClient {
 		$responseMessage = '';
 		$chunked = false;
 		$chunkLength = false;
-		$maxTime = $this->getStartTime() + $request->getTimeOut();
+		$maxTime = $this->getStartTime() + $apiClient->getConnectionTimeout();
 		$contentLength = -1;
 		$endReached = false;
 		while ($maxTime > time() && !feof($socket) && !$endReached) {
@@ -103,11 +103,6 @@ final class SocketHttpClient implements IHttpClient {
 				}
 				$responseMessage .= $line;
 			} else {
-				// If the content of the response is empty, there is nothing to be read.
-				if ($contentLength == 0) {
-                    $endReached = true;
-                    break;
-                }
 				// Check if we can read without chunks
 				if (!$chunked) {
 					$readBytes = 4096;

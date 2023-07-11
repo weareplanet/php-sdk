@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TransactionCompletionService {
 	 * Operation completeOfflineWithHttpInfo
 	 *
 	 * completeOffline
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction which should be completed. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/transaction-completion/completeOffline'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,8 +198,7 @@ class TransactionCompletionService {
 	 * Operation completeOnlineWithHttpInfo
 	 *
 	 * completeOnline
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction which should be completed. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -259,7 +257,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/transaction-completion/completeOnline'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -312,8 +310,7 @@ class TransactionCompletionService {
 	 * Operation completePartiallyOfflineWithHttpInfo
 	 *
 	 * completePartiallyOffline
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionCompletionRequest $completion  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -374,7 +371,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/transaction-completion/completePartiallyOffline'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -427,8 +424,7 @@ class TransactionCompletionService {
 	 * Operation completePartiallyOnlineWithHttpInfo
 	 *
 	 * completePartiallyOnline
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionCompletionRequest $completion  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -489,7 +485,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/transaction-completion/completePartiallyOnline'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -542,8 +538,7 @@ class TransactionCompletionService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -600,7 +595,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'int',
 				'/transaction-completion/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -653,8 +648,7 @@ class TransactionCompletionService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the transaction completions which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -713,7 +707,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/transaction-completion/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -766,8 +760,7 @@ class TransactionCompletionService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the transaction completions which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -828,7 +821,7 @@ class TransactionCompletionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion[]',
 				'/transaction-completion/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

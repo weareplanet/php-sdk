@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,10 +30,11 @@ use WeArePlanet\Sdk\Model\EntityQueryFilter;
 use WeArePlanet\Sdk\Model\EntityQueryFilterType;
 use WeArePlanet\Sdk\Model\LineItemCreate;
 use WeArePlanet\Sdk\Model\LineItemType;
-use WeArePlanet\Sdk\Model\PaymentMethodConfiguration;
 use WeArePlanet\Sdk\Model\TransactionCreate;
 use WeArePlanet\Sdk\Model\TransactionPending;
 use WeArePlanet\Sdk\Model\TransactionState;
+use WeArePlanet\Sdk\Service\TransactionService;
+
 
 /**
  * This class tests the basic functionality of the SDK.
@@ -54,7 +55,12 @@ class TransactionServiceTest extends TestCase
     /**
      * @var WeArePlanet\Sdk\Model\TransactionCreate
      */
-    private $transactionPayload;
+    private $transactionBag;
+
+    /**
+     * @var WeArePlanet\Sdk\Service\TransactionService
+     */
+    private $transactionService;
 
     /**
      * @var int
@@ -72,23 +78,32 @@ class TransactionServiceTest extends TestCase
     private $secret = 'FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=';
 
     /**
-     * Setup before running each test case
-     * @return void
+     * Setup before running any test cases
      */
-    public function setUp() : void
+    public static function setUpBeforeClass()
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp()
     {
         parent::setUp();
 
-        $this->apiClient = $this->getApiClient();
-        $this->transactionPayload = $this->getTransactionPayload();
+        if (is_null($this->transactionService)) {
+            $this->transactionService = new TransactionService($this->getApiClient());
+        }
+
+        $this->transactionBag = $this->getTransactionBag();
     }
 
     /**
      * @return TransactionCreate
      */
-    private function getTransactionPayload()
+    private function getTransactionBag()
     {
-        if (is_null($this->transactionPayload)) {
+        if (is_null($this->transactionBag)) {
             // line item
             $lineItem = new LineItemCreate();
             $lineItem->setName('Red T-Shirt');
@@ -102,7 +117,7 @@ class TransactionServiceTest extends TestCase
             $billingAddress = new AddressCreate();
             $billingAddress->setCity('Winterthur');
             $billingAddress->setCountry('CH');
-            $billingAddress->setEmailAddress('test@example.com');
+            $billingAddress->setEmailAddress('test@WeArePlanet.com');
             $billingAddress->setFamilyName('Customer');
             $billingAddress->setGivenName('Good');
             $billingAddress->setPostCode('8400');
@@ -111,15 +126,14 @@ class TransactionServiceTest extends TestCase
             $billingAddress->setPhoneNumber('+41791234567');
             $billingAddress->setSalutation('Ms');
 
-            $this->transactionPayload = new TransactionCreate();
-            $this->transactionPayload->setCurrency('CHF');
-            $this->transactionPayload->setLineItems([$lineItem]);
-            $this->transactionPayload->setAutoConfirmationEnabled(true);
-            $this->transactionPayload->setBillingAddress($billingAddress);
-            $this->transactionPayload->setShippingAddress($billingAddress);
-            $this->transactionPayload->setToken(767);
+            $this->transactionBag = new TransactionCreate();
+            $this->transactionBag->setCurrency('CHF');
+            $this->transactionBag->setLineItems([$lineItem]);
+            $this->transactionBag->setAutoConfirmationEnabled(true);
+            $this->transactionBag->setBillingAddress($billingAddress);
+            $this->transactionBag->setShippingAddress($billingAddress);
         }
-        return $this->transactionPayload;
+        return $this->transactionBag;
     }
 
     /**
@@ -152,17 +166,15 @@ class TransactionServiceTest extends TestCase
 
     /**
      * Clean up after running each test case
-     * @return void
      */
-    public function tearDown(): void
+    public function tearDown()
     {
     }
 
     /**
      * Clean up after running all test cases
-     * @return void
      */
-    public static function tearDownAfterClass(): void
+    public static function tearDownAfterClass()
     {
     }
 
@@ -184,14 +196,14 @@ class TransactionServiceTest extends TestCase
      */
     public function testCount()
     {
-        $transaction       = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
+        $transaction       = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
         $entityQueryFilter = new EntityQueryFilter([
             'field_name' => 'id',
             'value'      => $transaction->getId(),
             'type'       => EntityQueryFilterType::LEAF,
             'operator'   => CriteriaOperator::EQUALS,
         ]);
-        $transactionCount  = $this->apiClient->getTransactionService()->count($this->spaceId, $entityQueryFilter);
+        $transactionCount  = $this->transactionService->count($this->spaceId, $entityQueryFilter);
         $this->assertEquals($transactionCount, 1);
     }
 
@@ -203,7 +215,7 @@ class TransactionServiceTest extends TestCase
      */
     public function testCreate()
     {
-        $transaction = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
+        $transaction = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
         $this->assertEquals($transaction->getState(), TransactionState::PENDING);
     }
 
@@ -255,16 +267,11 @@ class TransactionServiceTest extends TestCase
      * Test case for fetchPossiblePaymentMethods
      *
      * Fetch Possible Payment Methods.
-     * payment_page, iframe, lightbox, mobile_web_view, terminal, payment_link, charge_flow, direct_card_processing
+     * @todo
      *
      */
-    public function testFetchPaymentMethods()
+    public function testFetchPossiblePaymentMethods()
     {
-
-        $transaction = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
-        $possiblePaymentMethods = $this->apiClient->getTransactionService()->fetchPaymentMethods($this->spaceId, $transaction->getId(), 'payment_page');
-        $this->assertEquals(true, is_array($possiblePaymentMethods));
-        $this->assertInstanceOf(PaymentMethodConfiguration::class, $possiblePaymentMethods[0]);
     }
 
     /**
@@ -274,7 +281,7 @@ class TransactionServiceTest extends TestCase
      * @todo
      *
      */
-    public function testFetchPaymentMethodsWithCredentials()
+    public function testFetchPossiblePaymentMethodsWithCredentials()
     {
     }
 
@@ -287,9 +294,9 @@ class TransactionServiceTest extends TestCase
     public function testGetInvoiceDocument()
     {
         /*
-        $transaction = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
-        $transaction = $this->apiClient->getTransactionService()->processWithoutUserInteraction($this->spaceId, $transaction->getId());
-        $renderedDocument = $this->apiClient->getTransactionService()->getInvoiceDocument($this->spaceId, $transaction->getId());
+        $transaction = $transactionService->create($this->spaceId, $this->getTransactionBag());
+        $transaction = $this->transactionService->processWithoutUserInteraction($this->spaceId, $transaction->getId());
+        $renderedDocument = $this->transactionService->getInvoiceDocument($this->spaceId, $transaction->getId());
         $this->assertEquals(true, !is_null($renderedDocument));
         */
     }
@@ -336,10 +343,10 @@ class TransactionServiceTest extends TestCase
      */
     public function testProcessWithoutUserInteraction()
     {
-        $transaction = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
+        $transaction = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
         $this->assertEquals($transaction->getState(), TransactionState::PENDING);
-        $transaction = $this->apiClient->getTransactionService()->processWithoutUserInteraction($this->spaceId, $transaction->getId());
-        $this->assertEquals(true, in_array($transaction->getState(), [TransactionState::AUTHORIZED, TransactionState::FULFILL, TransactionState::PROCESSING]));
+        $transaction = $this->transactionService->processWithoutUserInteraction($this->spaceId, $transaction->getId());
+        $this->assertEquals(true, in_array($transaction->getState(), [TransactionState::AUTHORIZED, TransactionState::FULFILL]));
     }
 
     /**
@@ -350,8 +357,8 @@ class TransactionServiceTest extends TestCase
      */
     public function testRead()
     {
-        $transaction     = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
-        $transactionRead = $this->apiClient->getTransactionService()->read($this->spaceId, $transaction->getId());
+        $transaction     = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
+        $transactionRead = $this->transactionService->read($this->spaceId, $transaction->getId());
         $this->assertEquals($transactionRead->getState(), $transaction->getState());
     }
 
@@ -374,7 +381,7 @@ class TransactionServiceTest extends TestCase
      */
     public function testSearch()
     {
-        $transaction       = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
+        $transaction       = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
         $entityQueryFilter = new EntityQueryFilter([
             'field_name' => 'id',
             'value'      => $transaction->getId(),
@@ -382,7 +389,7 @@ class TransactionServiceTest extends TestCase
             'operator'   => CriteriaOperator::EQUALS,
         ]);
         $entityQuery       = new EntityQuery(['filter' => $entityQueryFilter]);
-        $transactions      = $this->apiClient->getTransactionService()->search($this->spaceId, $entityQuery);
+        $transactions      = $this->transactionService->search($this->spaceId, $entityQuery);
         $this->assertEquals(count($transactions), 1);
         foreach ($transactions as $transactionItem) {
             $this->assertEquals($transaction->getState(), $transactionItem->getState());
@@ -397,14 +404,14 @@ class TransactionServiceTest extends TestCase
      */
     public function testUpdate()
     {
-        $transaction        = $this->apiClient->getTransactionService()->create($this->spaceId, $this->getTransactionPayload());
+        $transaction        = $this->transactionService->create($this->spaceId, $this->getTransactionBag());
         $transactionPending = new TransactionPending();
         $transactionPending->setId($transaction->getId());
         $transactionPending->setMetaData(['key' => 'value']);
         $transactionPending->setLanguage('en-US');
         $transactionPending->setVersion($transaction->getVersion());
 
-        $transactionUpdate = $this->apiClient->getTransactionService()->update($this->spaceId, $transactionPending);
+        $transactionUpdate = $this->transactionService->update($this->spaceId, $transactionPending);
 
         $this->assertEquals($transaction->getState(), $transactionUpdate->getState());
         $this->assertEquals($transactionPending->getLanguage(), $transactionUpdate->getLanguage());

@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -84,8 +84,7 @@ class PaymentProcessorService {
 	 * Operation allWithHttpInfo
 	 *
 	 * All
-     
-     *
+	 *
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
@@ -128,7 +127,7 @@ class PaymentProcessorService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentProcessor[]',
 				'/payment-processor/all'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentProcessor[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -180,8 +179,7 @@ class PaymentProcessorService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $id The id of the processor which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -232,7 +230,7 @@ class PaymentProcessorService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentProcessor',
 				'/payment-processor/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentProcessor', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

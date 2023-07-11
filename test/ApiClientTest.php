@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,17 +40,11 @@ final class ApiClientTest extends TestCase
      * @var WeArePlanet\Sdk\ApiClient
      */
     protected $apiClient;
-    
-    /**
-     * @var int
-     */
-    private $spaceId = 405;
 
     /**
      * Setup before running each test case
-     * @return void
      */
-    public function setUp() : void
+    public function setUp()
     {
         parent::setUp();
         $userId          = getenv('APPLICATION_USER_ID') ? getenv('APPLICATION_USER_ID') : 512;
@@ -64,9 +58,8 @@ final class ApiClientTest extends TestCase
 
     /**
      * Clean up after running each test case
-     * @return void
      */
-    public function tearDown(): void
+    public function tearDown()
     {
         $this->apiClient = null;
     }
@@ -88,7 +81,8 @@ final class ApiClientTest extends TestCase
     private function callApi($httpClientType = null)
     {
         $this->apiClient->setHttpClientType($httpClientType);
-        $response = $this->apiClient->getPaymentMethodService()->allWithHttpInfo();
+        $service  = new PaymentMethodService($this->apiClient);
+        $response = $service->allWithHttpInfo();
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertTrue(is_array($response->getData()));
     }
@@ -108,46 +102,8 @@ final class ApiClientTest extends TestCase
     public function testEnvClient()
     {
         putenv('PLN_HTTP_CLIENT=' . HttpClientFactory::TYPE_CURL);
-        $this->assertEquals(HttpClientFactory::getClient(HttpClientFactory::TYPE_CURL), HttpClientFactory::getClient());
-        
-        putenv('PLN_HTTP_CLIENT=' . HttpClientFactory::TYPE_SOCKET);
-        $this->assertEquals(HttpClientFactory::getClient(HttpClientFactory::TYPE_SOCKET), HttpClientFactory::getClient());
-    }
-    
-    /**
-     * Test case for an empty response
-     */
-    public function testEmptyResponseWithSocketClient()
-    {
-    	$this->apiClient->setHttpClientType(HttpClientFactory::TYPE_SOCKET);
-    	$this->apiClient->getTransactionService()->read($this->spaceId, 1);
-    }
-    
-    /**
-     * Test case for an empty response
-     */
-    public function testEmptyResponseWithCurlClient()
-    {
-    	$this->apiClient->setHttpClientType(HttpClientFactory::TYPE_CURL);
-    	$this->apiClient->getTransactionService()->read($this->spaceId, 1);
-    }
-
-    /**
-     * Tests that the headers in the response contain headers with SDK information by default.
-     *
-     * @since 3.1.2
-     * @return void
-     */
-    public function testSdkHeaders()
-    {
-        $headers = $this->apiClient->getDefaultHeaders();
-        $this->assertGreaterThanOrEqual(4, count($headers));
-
-        // Check SDK default header values.
-        $this->assertEquals($headers['x-meta-sdk-version'], "3.2.0");
-        $this->assertEquals($headers['x-meta-sdk-language'], 'php');
-        $this->assertEquals($headers['x-meta-sdk-provider'], "WeArePlanet");
-        $this->assertEquals($headers['x-meta-sdk-language-version'], phpversion());
+        echo getenv('PLN_HTTP_CLIENT') . PHP_EOL;
+        $this->callApi();
     }
 
 }

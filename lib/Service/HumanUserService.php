@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,8 +85,7 @@ class HumanUserService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -135,7 +134,7 @@ class HumanUserService {
 				$headerParams,
 				'int',
 				'/human-user/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -187,8 +186,7 @@ class HumanUserService {
 	 * Operation createWithHttpInfo
 	 *
 	 * Create
-     
-     *
+	 *
 	 * @param \WeArePlanet\Sdk\Model\HumanUserCreate $entity The human user object with the properties which should be created. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -241,7 +239,7 @@ class HumanUserService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\HumanUser',
 				'/human-user/create'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\HumanUser', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -293,8 +291,7 @@ class HumanUserService {
 	 * Operation deleteWithHttpInfo
 	 *
 	 * Delete
-     
-     *
+	 *
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -347,7 +344,7 @@ class HumanUserService {
 				$headerParams,
 				null,
 				'/human-user/delete'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -399,8 +396,7 @@ class HumanUserService {
 	 * Operation exportWithHttpInfo
 	 *
 	 * Export
-     
-     *
+	 *
 	 * @param \WeArePlanet\Sdk\Model\EntityExportRequest $request The request controls the entries which are exported. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -453,7 +449,7 @@ class HumanUserService {
 				$headerParams,
 				'string',
 				'/human-user/export'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'string', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -505,8 +501,7 @@ class HumanUserService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $id The id of the human user which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -557,7 +552,7 @@ class HumanUserService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\HumanUser',
 				'/human-user/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\HumanUser', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -609,8 +604,7 @@ class HumanUserService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the human users which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -663,7 +657,7 @@ class HumanUserService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\HumanUser[]',
 				'/human-user/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\HumanUser[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -715,8 +709,7 @@ class HumanUserService {
 	 * Operation updateWithHttpInfo
 	 *
 	 * Update
-     
-     *
+	 *
 	 * @param \WeArePlanet\Sdk\Model\HumanUserUpdate $entity The object with all the properties which should be updated. The id and the version are required properties. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
@@ -769,7 +762,7 @@ class HumanUserService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\HumanUser',
 				'/human-user/update'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\HumanUser', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

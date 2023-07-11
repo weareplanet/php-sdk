@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,18 +47,14 @@ final class ApiClient {
 	 *
 	 * @var array
 	 */
-	private $defaultHeaders = [
-        'x-meta-sdk-version' => "3.2.0",
-        'x-meta-sdk-language' => 'php',
-        'x-meta-sdk-provider' => "WeArePlanet",
-    ];
+	private $defaultHeaders = [];
 
 	/**
 	 * The user agent that is sent with any request.
 	 *
 	 * @var string
 	 */
-	private $userAgent = 'PHP-Client/3.2.0/php';
+	private $userAgent = 'PHP-Client/2.0.14/php';
 
 	/**
 	 * The path to the certificate authority file.
@@ -74,19 +70,12 @@ final class ApiClient {
 	 */
 	private $enableCertificateAuthorityCheck = true;
 
-    /**
-     * the constant for the default connection time out
-     *
-     * @var integer
-     */
-    const INITIAL_CONNECTION_TIMEOUT = 25;
-
-    /**
+	/**
 	 * The connection timeout in seconds.
 	 *
 	 * @var integer
 	 */
-	private $connectionTimeout;
+	private $connectionTimeout = 20;
 
 	/**
 	 * The http client type to use for communication.
@@ -144,12 +133,10 @@ final class ApiClient {
 		$this->userId = $userId;
         $this->applicationKey = $applicationKey;
 
-        $this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
 		$this->certificateAuthority = dirname(__FILE__) . '/ca-bundle.crt';
 		$this->serializer = new ObjectSerializer();
 		$this->isDebuggingEnabled() ? $this->serializer->enableDebugging() : $this->serializer->disableDebugging();
 		$this->serializer->setDebugFile($this->getDebugFile());
-		$this->addDefaultHeader('x-meta-sdk-language-version', phpversion());
 	}
 
 	/**
@@ -255,16 +242,6 @@ final class ApiClient {
 	}
 
 	/**
-	 * Resets the connection timeout in seconds.
-	 *
-	 * @return ApiClient
-	 */
-	public function resetConnectionTimeout() {
-		$this->connectionTimeout = self::INITIAL_CONNECTION_TIMEOUT;
-		return $this;
-	}
-
-	/**
 	 * Return the http client type to use for communication.
 	 *
 	 * @return string
@@ -323,19 +300,9 @@ final class ApiClient {
 			throw new \InvalidArgumentException('The header key must be a string.');
 		}
 
-		$this->defaultHeaders[$key] = $value;
+		$defaultHeaders[$key] = $value;
 		return $this;
 	}
-
-	/**
-     * Gets the default headers that will be sent in the request.
-	 * 
-	 * @since 3.1.2
-	 * @return string[]
-     */
-    function getDefaultHeaders() {
-        return $this->defaultHeaders;
-    }
 
 	/**
 	 * Returns true, when debugging is enabled.
@@ -461,17 +428,12 @@ final class ApiClient {
 	 * @param array  $headerParams the header parameters
 	 * @param string $responseType the expected response type
 	 * @param string $endpointPath the path to the method endpoint before expanding parameters
-	 *
-	 * @return \WeArePlanet\Sdk\ApiResponse
-	 * @throws \WeArePlanet\Sdk\ApiException
-	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
-	 * @throws \WeArePlanet\Sdk\VersioningException
+	 * @throws ApiException on a non 2xx response
+	 * @throws VersioningException on a versioning/locking problem
+	 * @return mixed
 	 */
-	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null, $timeOut = null) {
-        if ($timeOut === null) {
-            $timeOut = $this->getConnectionTimeout();
-        }
-		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken(), $timeOut);
+	public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null) {
+		$request = new HttpRequest($this->getSerializer(), $this->buildRequestUrl($resourcePath, $queryParams), $method, $this->generateUniqueToken());
 		$request->setUserAgent($this->getUserAgent());
 		$request->addHeaders(array_merge(
 			(array)$this->defaultHeaders,
@@ -570,584 +532,5 @@ final class ApiClient {
 	        substr($s,16,4). '-' .
 	        substr($s,20);
 	}
-
-    // Builder pattern to get API instances for this client.
-    
-    protected $accountService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\AccountService
-     */
-    public function getAccountService() {
-        if(is_null($this->accountService)){
-            $this->accountService = new \WeArePlanet\Sdk\Service\AccountService($this);
-        }
-        return $this->accountService;
-    }
-    
-    protected $applicationUserService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ApplicationUserService
-     */
-    public function getApplicationUserService() {
-        if(is_null($this->applicationUserService)){
-            $this->applicationUserService = new \WeArePlanet\Sdk\Service\ApplicationUserService($this);
-        }
-        return $this->applicationUserService;
-    }
-    
-    protected $chargeAttemptService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ChargeAttemptService
-     */
-    public function getChargeAttemptService() {
-        if(is_null($this->chargeAttemptService)){
-            $this->chargeAttemptService = new \WeArePlanet\Sdk\Service\ChargeAttemptService($this);
-        }
-        return $this->chargeAttemptService;
-    }
-    
-    protected $chargeFlowLevelPaymentLinkService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ChargeFlowLevelPaymentLinkService
-     */
-    public function getChargeFlowLevelPaymentLinkService() {
-        if(is_null($this->chargeFlowLevelPaymentLinkService)){
-            $this->chargeFlowLevelPaymentLinkService = new \WeArePlanet\Sdk\Service\ChargeFlowLevelPaymentLinkService($this);
-        }
-        return $this->chargeFlowLevelPaymentLinkService;
-    }
-    
-    protected $chargeFlowLevelService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ChargeFlowLevelService
-     */
-    public function getChargeFlowLevelService() {
-        if(is_null($this->chargeFlowLevelService)){
-            $this->chargeFlowLevelService = new \WeArePlanet\Sdk\Service\ChargeFlowLevelService($this);
-        }
-        return $this->chargeFlowLevelService;
-    }
-    
-    protected $chargeFlowService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ChargeFlowService
-     */
-    public function getChargeFlowService() {
-        if(is_null($this->chargeFlowService)){
-            $this->chargeFlowService = new \WeArePlanet\Sdk\Service\ChargeFlowService($this);
-        }
-        return $this->chargeFlowService;
-    }
-    
-    protected $conditionTypeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ConditionTypeService
-     */
-    public function getConditionTypeService() {
-        if(is_null($this->conditionTypeService)){
-            $this->conditionTypeService = new \WeArePlanet\Sdk\Service\ConditionTypeService($this);
-        }
-        return $this->conditionTypeService;
-    }
-    
-    protected $countryService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CountryService
-     */
-    public function getCountryService() {
-        if(is_null($this->countryService)){
-            $this->countryService = new \WeArePlanet\Sdk\Service\CountryService($this);
-        }
-        return $this->countryService;
-    }
-    
-    protected $countryStateService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CountryStateService
-     */
-    public function getCountryStateService() {
-        if(is_null($this->countryStateService)){
-            $this->countryStateService = new \WeArePlanet\Sdk\Service\CountryStateService($this);
-        }
-        return $this->countryStateService;
-    }
-    
-    protected $currencyService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CurrencyService
-     */
-    public function getCurrencyService() {
-        if(is_null($this->currencyService)){
-            $this->currencyService = new \WeArePlanet\Sdk\Service\CurrencyService($this);
-        }
-        return $this->currencyService;
-    }
-    
-    protected $customerAddressService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CustomerAddressService
-     */
-    public function getCustomerAddressService() {
-        if(is_null($this->customerAddressService)){
-            $this->customerAddressService = new \WeArePlanet\Sdk\Service\CustomerAddressService($this);
-        }
-        return $this->customerAddressService;
-    }
-    
-    protected $customerCommentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CustomerCommentService
-     */
-    public function getCustomerCommentService() {
-        if(is_null($this->customerCommentService)){
-            $this->customerCommentService = new \WeArePlanet\Sdk\Service\CustomerCommentService($this);
-        }
-        return $this->customerCommentService;
-    }
-    
-    protected $customerService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\CustomerService
-     */
-    public function getCustomerService() {
-        if(is_null($this->customerService)){
-            $this->customerService = new \WeArePlanet\Sdk\Service\CustomerService($this);
-        }
-        return $this->customerService;
-    }
-    
-    protected $deliveryIndicationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\DeliveryIndicationService
-     */
-    public function getDeliveryIndicationService() {
-        if(is_null($this->deliveryIndicationService)){
-            $this->deliveryIndicationService = new \WeArePlanet\Sdk\Service\DeliveryIndicationService($this);
-        }
-        return $this->deliveryIndicationService;
-    }
-    
-    protected $humanUserService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\HumanUserService
-     */
-    public function getHumanUserService() {
-        if(is_null($this->humanUserService)){
-            $this->humanUserService = new \WeArePlanet\Sdk\Service\HumanUserService($this);
-        }
-        return $this->humanUserService;
-    }
-    
-    protected $labelDescriptionGroupService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\LabelDescriptionGroupService
-     */
-    public function getLabelDescriptionGroupService() {
-        if(is_null($this->labelDescriptionGroupService)){
-            $this->labelDescriptionGroupService = new \WeArePlanet\Sdk\Service\LabelDescriptionGroupService($this);
-        }
-        return $this->labelDescriptionGroupService;
-    }
-    
-    protected $labelDescriptionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\LabelDescriptionService
-     */
-    public function getLabelDescriptionService() {
-        if(is_null($this->labelDescriptionService)){
-            $this->labelDescriptionService = new \WeArePlanet\Sdk\Service\LabelDescriptionService($this);
-        }
-        return $this->labelDescriptionService;
-    }
-    
-    protected $languageService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\LanguageService
-     */
-    public function getLanguageService() {
-        if(is_null($this->languageService)){
-            $this->languageService = new \WeArePlanet\Sdk\Service\LanguageService($this);
-        }
-        return $this->languageService;
-    }
-    
-    protected $legalOrganizationFormService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\LegalOrganizationFormService
-     */
-    public function getLegalOrganizationFormService() {
-        if(is_null($this->legalOrganizationFormService)){
-            $this->legalOrganizationFormService = new \WeArePlanet\Sdk\Service\LegalOrganizationFormService($this);
-        }
-        return $this->legalOrganizationFormService;
-    }
-    
-    protected $manualTaskService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\ManualTaskService
-     */
-    public function getManualTaskService() {
-        if(is_null($this->manualTaskService)){
-            $this->manualTaskService = new \WeArePlanet\Sdk\Service\ManualTaskService($this);
-        }
-        return $this->manualTaskService;
-    }
-    
-    protected $paymentConnectorConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentConnectorConfigurationService
-     */
-    public function getPaymentConnectorConfigurationService() {
-        if(is_null($this->paymentConnectorConfigurationService)){
-            $this->paymentConnectorConfigurationService = new \WeArePlanet\Sdk\Service\PaymentConnectorConfigurationService($this);
-        }
-        return $this->paymentConnectorConfigurationService;
-    }
-    
-    protected $paymentConnectorService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentConnectorService
-     */
-    public function getPaymentConnectorService() {
-        if(is_null($this->paymentConnectorService)){
-            $this->paymentConnectorService = new \WeArePlanet\Sdk\Service\PaymentConnectorService($this);
-        }
-        return $this->paymentConnectorService;
-    }
-    
-    protected $paymentMethodBrandService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentMethodBrandService
-     */
-    public function getPaymentMethodBrandService() {
-        if(is_null($this->paymentMethodBrandService)){
-            $this->paymentMethodBrandService = new \WeArePlanet\Sdk\Service\PaymentMethodBrandService($this);
-        }
-        return $this->paymentMethodBrandService;
-    }
-    
-    protected $paymentMethodConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentMethodConfigurationService
-     */
-    public function getPaymentMethodConfigurationService() {
-        if(is_null($this->paymentMethodConfigurationService)){
-            $this->paymentMethodConfigurationService = new \WeArePlanet\Sdk\Service\PaymentMethodConfigurationService($this);
-        }
-        return $this->paymentMethodConfigurationService;
-    }
-    
-    protected $paymentMethodService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentMethodService
-     */
-    public function getPaymentMethodService() {
-        if(is_null($this->paymentMethodService)){
-            $this->paymentMethodService = new \WeArePlanet\Sdk\Service\PaymentMethodService($this);
-        }
-        return $this->paymentMethodService;
-    }
-    
-    protected $paymentProcessorConfigurationService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentProcessorConfigurationService
-     */
-    public function getPaymentProcessorConfigurationService() {
-        if(is_null($this->paymentProcessorConfigurationService)){
-            $this->paymentProcessorConfigurationService = new \WeArePlanet\Sdk\Service\PaymentProcessorConfigurationService($this);
-        }
-        return $this->paymentProcessorConfigurationService;
-    }
-    
-    protected $paymentProcessorService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PaymentProcessorService
-     */
-    public function getPaymentProcessorService() {
-        if(is_null($this->paymentProcessorService)){
-            $this->paymentProcessorService = new \WeArePlanet\Sdk\Service\PaymentProcessorService($this);
-        }
-        return $this->paymentProcessorService;
-    }
-    
-    protected $permissionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\PermissionService
-     */
-    public function getPermissionService() {
-        if(is_null($this->permissionService)){
-            $this->permissionService = new \WeArePlanet\Sdk\Service\PermissionService($this);
-        }
-        return $this->permissionService;
-    }
-    
-    protected $refundCommentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\RefundCommentService
-     */
-    public function getRefundCommentService() {
-        if(is_null($this->refundCommentService)){
-            $this->refundCommentService = new \WeArePlanet\Sdk\Service\RefundCommentService($this);
-        }
-        return $this->refundCommentService;
-    }
-    
-    protected $refundService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\RefundService
-     */
-    public function getRefundService() {
-        if(is_null($this->refundService)){
-            $this->refundService = new \WeArePlanet\Sdk\Service\RefundService($this);
-        }
-        return $this->refundService;
-    }
-    
-    protected $spaceService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\SpaceService
-     */
-    public function getSpaceService() {
-        if(is_null($this->spaceService)){
-            $this->spaceService = new \WeArePlanet\Sdk\Service\SpaceService($this);
-        }
-        return $this->spaceService;
-    }
-    
-    protected $staticValueService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\StaticValueService
-     */
-    public function getStaticValueService() {
-        if(is_null($this->staticValueService)){
-            $this->staticValueService = new \WeArePlanet\Sdk\Service\StaticValueService($this);
-        }
-        return $this->staticValueService;
-    }
-    
-    protected $tokenService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TokenService
-     */
-    public function getTokenService() {
-        if(is_null($this->tokenService)){
-            $this->tokenService = new \WeArePlanet\Sdk\Service\TokenService($this);
-        }
-        return $this->tokenService;
-    }
-    
-    protected $tokenVersionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TokenVersionService
-     */
-    public function getTokenVersionService() {
-        if(is_null($this->tokenVersionService)){
-            $this->tokenVersionService = new \WeArePlanet\Sdk\Service\TokenVersionService($this);
-        }
-        return $this->tokenVersionService;
-    }
-    
-    protected $transactionCommentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionCommentService
-     */
-    public function getTransactionCommentService() {
-        if(is_null($this->transactionCommentService)){
-            $this->transactionCommentService = new \WeArePlanet\Sdk\Service\TransactionCommentService($this);
-        }
-        return $this->transactionCommentService;
-    }
-    
-    protected $transactionCompletionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionCompletionService
-     */
-    public function getTransactionCompletionService() {
-        if(is_null($this->transactionCompletionService)){
-            $this->transactionCompletionService = new \WeArePlanet\Sdk\Service\TransactionCompletionService($this);
-        }
-        return $this->transactionCompletionService;
-    }
-    
-    protected $transactionIframeService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionIframeService
-     */
-    public function getTransactionIframeService() {
-        if(is_null($this->transactionIframeService)){
-            $this->transactionIframeService = new \WeArePlanet\Sdk\Service\TransactionIframeService($this);
-        }
-        return $this->transactionIframeService;
-    }
-    
-    protected $transactionInvoiceCommentService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionInvoiceCommentService
-     */
-    public function getTransactionInvoiceCommentService() {
-        if(is_null($this->transactionInvoiceCommentService)){
-            $this->transactionInvoiceCommentService = new \WeArePlanet\Sdk\Service\TransactionInvoiceCommentService($this);
-        }
-        return $this->transactionInvoiceCommentService;
-    }
-    
-    protected $transactionInvoiceService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionInvoiceService
-     */
-    public function getTransactionInvoiceService() {
-        if(is_null($this->transactionInvoiceService)){
-            $this->transactionInvoiceService = new \WeArePlanet\Sdk\Service\TransactionInvoiceService($this);
-        }
-        return $this->transactionInvoiceService;
-    }
-    
-    protected $transactionLightboxService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionLightboxService
-     */
-    public function getTransactionLightboxService() {
-        if(is_null($this->transactionLightboxService)){
-            $this->transactionLightboxService = new \WeArePlanet\Sdk\Service\TransactionLightboxService($this);
-        }
-        return $this->transactionLightboxService;
-    }
-    
-    protected $transactionLineItemVersionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionLineItemVersionService
-     */
-    public function getTransactionLineItemVersionService() {
-        if(is_null($this->transactionLineItemVersionService)){
-            $this->transactionLineItemVersionService = new \WeArePlanet\Sdk\Service\TransactionLineItemVersionService($this);
-        }
-        return $this->transactionLineItemVersionService;
-    }
-    
-    protected $transactionPaymentPageService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionPaymentPageService
-     */
-    public function getTransactionPaymentPageService() {
-        if(is_null($this->transactionPaymentPageService)){
-            $this->transactionPaymentPageService = new \WeArePlanet\Sdk\Service\TransactionPaymentPageService($this);
-        }
-        return $this->transactionPaymentPageService;
-    }
-    
-    protected $transactionService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionService
-     */
-    public function getTransactionService() {
-        if(is_null($this->transactionService)){
-            $this->transactionService = new \WeArePlanet\Sdk\Service\TransactionService($this);
-        }
-        return $this->transactionService;
-    }
-    
-    protected $transactionVoidService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\TransactionVoidService
-     */
-    public function getTransactionVoidService() {
-        if(is_null($this->transactionVoidService)){
-            $this->transactionVoidService = new \WeArePlanet\Sdk\Service\TransactionVoidService($this);
-        }
-        return $this->transactionVoidService;
-    }
-    
-    protected $userAccountRoleService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\UserAccountRoleService
-     */
-    public function getUserAccountRoleService() {
-        if(is_null($this->userAccountRoleService)){
-            $this->userAccountRoleService = new \WeArePlanet\Sdk\Service\UserAccountRoleService($this);
-        }
-        return $this->userAccountRoleService;
-    }
-    
-    protected $userSpaceRoleService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\UserSpaceRoleService
-     */
-    public function getUserSpaceRoleService() {
-        if(is_null($this->userSpaceRoleService)){
-            $this->userSpaceRoleService = new \WeArePlanet\Sdk\Service\UserSpaceRoleService($this);
-        }
-        return $this->userSpaceRoleService;
-    }
-    
-    protected $webhookListenerService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\WebhookListenerService
-     */
-    public function getWebhookListenerService() {
-        if(is_null($this->webhookListenerService)){
-            $this->webhookListenerService = new \WeArePlanet\Sdk\Service\WebhookListenerService($this);
-        }
-        return $this->webhookListenerService;
-    }
-    
-    protected $webhookUrlService;
-
-    /**
-     * @return \WeArePlanet\Sdk\Service\WebhookUrlService
-     */
-    public function getWebhookUrlService() {
-        if(is_null($this->webhookUrlService)){
-            $this->webhookUrlService = new \WeArePlanet\Sdk\Service\WebhookUrlService($this);
-        }
-        return $this->webhookUrlService;
-    }
-    
 
 }

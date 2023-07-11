@@ -1,6 +1,6 @@
 {
     "name": "weareplanet/sdk",
-    "version": "3.2.0",
+    "version": "2.0.14",
 	"description": "WeArePlanet SDK for PHP",
 	"keywords": [
 		"weareplanet",
@@ -13,8 +13,8 @@
 	"license": "Apache-2.0",
 	"authors": [
 		{
-			"name": "wallee AG",
-			"homepage": "https://wallee.com"
+			"name": "customweb GmbH",
+			"homepage": "https://customweb.com"
 		}
 	],
 	"require": {
@@ -23,7 +23,7 @@
 		"ext-mbstring": "*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~8"
+		"phpunit/phpunit": "~4.8"
 	},
 	"autoload": {
 		"psr-4": { "WeArePlanet\\Sdk\\" : "lib/" }

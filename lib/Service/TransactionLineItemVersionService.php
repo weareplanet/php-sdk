@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TransactionLineItemVersionService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -144,7 +143,7 @@ class TransactionLineItemVersionService {
 				$headerParams,
 				'int',
 				'/transaction-line-item-version/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -197,8 +196,7 @@ class TransactionLineItemVersionService {
 	 * Operation createWithHttpInfo
 	 *
 	 * create
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionLineItemVersionCreate $line_item_version The line item version object which should be created. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -259,7 +257,7 @@ class TransactionLineItemVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionLineItemVersion',
 				'/transaction-line-item-version/create'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionLineItemVersion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -312,8 +310,7 @@ class TransactionLineItemVersionService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The ID of the line item version which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -372,7 +369,7 @@ class TransactionLineItemVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionLineItemVersion',
 				'/transaction-line-item-version/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionLineItemVersion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -425,8 +422,7 @@ class TransactionLineItemVersionService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts line item versions which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -487,7 +483,7 @@ class TransactionLineItemVersionService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionLineItemVersion[]',
 				'/transaction-line-item-version/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionLineItemVersion[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

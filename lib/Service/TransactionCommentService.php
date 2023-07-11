@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TransactionCommentService {
 	 * Operation allWithHttpInfo
 	 *
 	 * Find by transaction
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $transaction_id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class TransactionCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionComment[]',
 				'/transaction-comment/all'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionComment[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,8 +198,7 @@ class TransactionCommentService {
 	 * Operation createWithHttpInfo
 	 *
 	 * Create
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionCommentCreate $entity  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -261,7 +259,7 @@ class TransactionCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionComment',
 				'/transaction-comment/create'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -314,8 +312,7 @@ class TransactionCommentService {
 	 * Operation deleteWithHttpInfo
 	 *
 	 * Delete
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -374,7 +371,7 @@ class TransactionCommentService {
 				$headerParams,
 				null,
 				'/transaction-comment/delete'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -427,8 +424,7 @@ class TransactionCommentService {
 	 * Operation pinWithHttpInfo
 	 *
 	 * Pin
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -487,7 +483,7 @@ class TransactionCommentService {
 				$headerParams,
 				null,
 				'/transaction-comment/pin'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -540,8 +536,7 @@ class TransactionCommentService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -600,7 +595,7 @@ class TransactionCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionComment',
 				'/transaction-comment/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -653,8 +648,7 @@ class TransactionCommentService {
 	 * Operation unpinWithHttpInfo
 	 *
 	 * Unpin
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -713,7 +707,7 @@ class TransactionCommentService {
 				$headerParams,
 				null,
 				'/transaction-comment/unpin'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -766,8 +760,7 @@ class TransactionCommentService {
 	 * Operation updateWithHttpInfo
 	 *
 	 * Update
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TransactionCommentActive $entity  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -828,7 +821,7 @@ class TransactionCommentService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionComment',
 				'/transaction-comment/update'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionComment', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

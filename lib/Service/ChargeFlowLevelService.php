@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class ChargeFlowLevelService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -144,7 +143,7 @@ class ChargeFlowLevelService {
 				$headerParams,
 				'int',
 				'/charge-flow-level/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -197,8 +196,7 @@ class ChargeFlowLevelService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the payment flow level which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -257,7 +255,7 @@ class ChargeFlowLevelService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeFlowLevel',
 				'/charge-flow-level/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeFlowLevel', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -310,8 +308,7 @@ class ChargeFlowLevelService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the payment flow levels which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -372,7 +369,7 @@ class ChargeFlowLevelService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeFlowLevel[]',
 				'/charge-flow-level/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeFlowLevel[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -425,8 +422,7 @@ class ChargeFlowLevelService {
 	 * Operation sendMessageWithHttpInfo
 	 *
 	 * Send Payment Link
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the charge flow level whose payment link should be sent. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -485,7 +481,7 @@ class ChargeFlowLevelService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeFlowLevel',
 				'/charge-flow-level/sendMessage'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeFlowLevel', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class RefundService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -144,7 +143,7 @@ class RefundService {
 				$headerParams,
 				'int',
 				'/refund/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -197,8 +196,7 @@ class RefundService {
 	 * Operation failWithHttpInfo
 	 *
 	 * fail
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $refund_id The id of the refund which should be marked as failed. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -257,7 +255,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund',
 				'/refund/fail'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -310,8 +308,7 @@ class RefundService {
 	 * Operation getRefundDocumentWithHttpInfo
 	 *
 	 * getRefundDocument
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the refund to get the document for. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -370,7 +367,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RenderedDocument',
 				'/refund/getRefundDocument'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RenderedDocument', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -424,8 +421,7 @@ class RefundService {
 	 * Operation getRefundDocumentWithTargetMediaTypeWithHttpInfo
 	 *
 	 * getRefundDocumentWithTargetMediaType
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the refund to get the document for. (required)
 	 * @param int $target_media_type_id The id of the target media type for which the refund should be generated for. (required)
@@ -492,7 +488,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\RenderedDocument',
 				'/refund/getRefundDocumentWithTargetMediaType'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\RenderedDocument', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -545,8 +541,7 @@ class RefundService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the refund which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -605,7 +600,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund',
 				'/refund/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -658,8 +653,7 @@ class RefundService {
 	 * Operation refundWithHttpInfo
 	 *
 	 * create
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\RefundCreate $refund The refund object which should be created. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -720,7 +714,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund',
 				'/refund/refund'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -773,8 +767,7 @@ class RefundService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the refunds which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -835,7 +828,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund[]',
 				'/refund/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -888,8 +881,7 @@ class RefundService {
 	 * Operation succeedWithHttpInfo
 	 *
 	 * succeed
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $refund_id The id of the refund which should be marked as successful. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -948,7 +940,7 @@ class RefundService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund',
 				'/refund/succeed'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

@@ -1,8 +1,8 @@
 <?php
 /**
- * WeArePlanet SDK
+ *  SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the  payment service.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,7 @@ class TokenService {
 	 * Operation checkTokenCreationPossibleWithHttpInfo
 	 *
 	 * Check If Token Creation Is Possible
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $transaction_id The id of the transaction for which we want to check if the token can be created or not. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -146,7 +145,7 @@ class TokenService {
 				$headerParams,
 				'bool',
 				'/token/check-token-creation-possible'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'bool', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,8 +198,7 @@ class TokenService {
 	 * Operation countWithHttpInfo
 	 *
 	 * Count
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQueryFilter $filter The filter which restricts the entities which are used to calculate the count. (optional)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -257,7 +255,7 @@ class TokenService {
 				$headerParams,
 				'int',
 				'/token/count'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), 'int', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -310,8 +308,7 @@ class TokenService {
 	 * Operation createWithHttpInfo
 	 *
 	 * Create
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TokenCreate $entity The token object with the properties which should be created. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -372,7 +369,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Token',
 				'/token/create'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Token', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -425,8 +422,7 @@ class TokenService {
 	 * Operation createTokenBasedOnTransactionWithHttpInfo
 	 *
 	 * Create Token Based On Transaction
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $transaction_id The id of the transaction for which we want to create the token. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -485,7 +481,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TokenVersion',
 				'/token/create-token-based-on-transaction'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TokenVersion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -538,8 +534,7 @@ class TokenService {
 	 * Operation createTransactionForTokenUpdateWithHttpInfo
 	 *
 	 * Create Transaction for Token Update
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $token_id The id of the token which should be updated. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -598,7 +593,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Transaction',
 				'/token/createTransactionForTokenUpdate'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Transaction', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -651,8 +646,7 @@ class TokenService {
 	 * Operation deleteWithHttpInfo
 	 *
 	 * Delete
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id  (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -713,7 +707,7 @@ class TokenService {
 				$headerParams,
 				null,
 				'/token/delete'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -766,8 +760,7 @@ class TokenService {
 	 * Operation processTransactionWithHttpInfo
 	 *
 	 * Process Transaction
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $transaction_id The id of the transaction for which we want to check if the token can be created or not. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -826,7 +819,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Charge',
 				'/token/process-transaction'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Charge', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -879,8 +872,7 @@ class TokenService {
 	 * Operation readWithHttpInfo
 	 *
 	 * Read
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param int $id The id of the token which should be returned. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -939,7 +931,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Token',
 				'/token/read'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Token', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -992,8 +984,7 @@ class TokenService {
 	 * Operation searchWithHttpInfo
 	 *
 	 * Search
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\EntityQuery $query The query restricts the tokens which are returned by the search. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -1054,7 +1045,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Token[]',
 				'/token/search'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Token[]', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -1107,8 +1098,7 @@ class TokenService {
 	 * Operation updateWithHttpInfo
 	 *
 	 * Update
-     
-     *
+	 *
 	 * @param int $space_id  (required)
 	 * @param \WeArePlanet\Sdk\Model\TokenUpdate $entity The object with all the properties which should be updated. The id and the version are required properties. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -1169,7 +1159,7 @@ class TokenService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Token',
 				'/token/update'
-            );
+			);
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Token', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
