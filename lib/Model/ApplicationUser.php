@@ -48,9 +48,9 @@ class ApplicationUser extends User
       */
     protected static $swaggerTypes = [
         'name' => 'string',
-        'primary_account' => 'int',
+        'primary_account' => '\WeArePlanet\Sdk\Model\Account',
         'request_limit' => 'int',
-        'scope' => 'int'
+        'scope' => '\WeArePlanet\Sdk\Model\Scope'
     ];
 
     /**
@@ -60,9 +60,9 @@ class ApplicationUser extends User
       */
     protected static $swaggerFormats = [
         'name' => null,
-        'primary_account' => 'int64',
+        'primary_account' => null,
         'request_limit' => 'int64',
-        'scope' => 'int64'
+        'scope' => null
     ];
 
     /**
@@ -232,7 +232,7 @@ class ApplicationUser extends User
     /**
      * Sets name
      *
-     * @param string $name The name used to identify the application user.
+     * @param string $name The user name is used to identify the application user in administrative interfaces.
      *
      * @return $this
      */
@@ -251,7 +251,7 @@ class ApplicationUser extends User
     /**
      * Gets primary_account
      *
-     * @return int
+     * @return \WeArePlanet\Sdk\Model\Account
      */
     public function getPrimaryAccount()
     {
@@ -261,7 +261,7 @@ class ApplicationUser extends User
     /**
      * Sets primary_account
      *
-     * @param int $primary_account The primary account that the user belongs to.
+     * @param \WeArePlanet\Sdk\Model\Account $primary_account The account that this user is associated with. The account owner will be able to manage this user.
      *
      * @return $this
      */
@@ -286,7 +286,7 @@ class ApplicationUser extends User
     /**
      * Sets request_limit
      *
-     * @param int $request_limit The maximum number of API requests that are accepted every 2 minutes.
+     * @param int $request_limit The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
      *
      * @return $this
      */
@@ -301,7 +301,7 @@ class ApplicationUser extends User
     /**
      * Gets scope
      *
-     * @return int
+     * @return \WeArePlanet\Sdk\Model\Scope
      */
     public function getScope()
     {
@@ -311,7 +311,7 @@ class ApplicationUser extends User
     /**
      * Sets scope
      *
-     * @param int $scope The scope that the user belongs to.
+     * @param \WeArePlanet\Sdk\Model\Scope $scope The scope to which the user belongs to.
      *
      * @return $this
      */

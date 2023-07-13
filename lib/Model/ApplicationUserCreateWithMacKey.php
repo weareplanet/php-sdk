@@ -207,7 +207,7 @@ class ApplicationUserCreateWithMacKey extends ApplicationUser
     /**
      * Sets mac_key
      *
-     * @param string $mac_key The user's authentication key securing requests. Only displayed a single time after the user has been created.
+     * @param string $mac_key 
      *
      * @return $this
      */

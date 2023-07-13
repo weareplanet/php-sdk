@@ -49,7 +49,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'application_managed' => 'bool',
         'id' => 'int',
         'linked_space_id' => 'int',
         'name' => 'string',
@@ -65,7 +64,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'application_managed' => null,
         'id' => 'int64',
         'linked_space_id' => 'int64',
         'name' => null,
@@ -82,7 +80,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'application_managed' => 'applicationManaged',
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
         'name' => 'name',
@@ -98,7 +95,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'application_managed' => 'setApplicationManaged',
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
         'name' => 'setName',
@@ -114,7 +110,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'application_managed' => 'getApplicationManaged',
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
         'name' => 'getName',
@@ -141,8 +136,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        
-        $this->container['application_managed'] = isset($data['application_managed']) ? $data['application_managed'] : null;
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
@@ -262,31 +255,6 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets application_managed
-     *
-     * @return bool
-     */
-    public function getApplicationManaged()
-    {
-        return $this->container['application_managed'];
-    }
-
-    /**
-     * Sets application_managed
-     *
-     * @param bool $application_managed Whether the webhook URL is managed by the application, and therefore cannot be changed via the user interface.
-     *
-     * @return $this
-     */
-    public function setApplicationManaged($application_managed)
-    {
-        $this->container['application_managed'] = $application_managed;
-
-        return $this;
-    }
-    
-
-    /**
      * Gets id
      *
      * @return int
@@ -299,7 +267,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -324,7 +292,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */
@@ -349,7 +317,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name used to identify the webhook URL.
+     * @param string $name The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
      *
      * @return $this
      */
@@ -378,7 +346,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -403,7 +371,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
      *
      * @return $this
      */
@@ -428,7 +396,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url The actual URL where notifications about entity changes are sent to.
+     * @param string $url The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
      *
      * @return $this
      */
@@ -460,7 +428,7 @@ class WebhookUrl implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */

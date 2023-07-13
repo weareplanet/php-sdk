@@ -334,7 +334,7 @@ class AbstractTokenUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets language
      *
-     * @param string $language The language that is linked to the object.
+     * @param string $language 
      *
      * @return $this
      */

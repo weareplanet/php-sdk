@@ -252,7 +252,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -277,7 +277,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */
@@ -302,7 +302,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name used to identify the webhook identity.
+     * @param string $name The identity name is used internally to identify the webhook identity in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
      *
      * @return $this
      */
@@ -331,7 +331,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -356,7 +356,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
      *
      * @return $this
      */
@@ -381,7 +381,7 @@ class WebhookIdentity implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */

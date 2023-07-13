@@ -51,7 +51,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'currency_code' => 'string',
         'fraction_digits' => 'int',
-        'name' => 'string',
         'numeric_code' => 'int'
     ];
 
@@ -63,7 +62,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'currency_code' => null,
         'fraction_digits' => 'int32',
-        'name' => null,
         'numeric_code' => 'int32'
     ];
 
@@ -76,7 +74,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'currency_code' => 'currencyCode',
         'fraction_digits' => 'fractionDigits',
-        'name' => 'name',
         'numeric_code' => 'numericCode'
     ];
 
@@ -88,7 +85,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
     protected static $setters = [
         'currency_code' => 'setCurrencyCode',
         'fraction_digits' => 'setFractionDigits',
-        'name' => 'setName',
         'numeric_code' => 'setNumericCode'
     ];
 
@@ -100,7 +96,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
     protected static $getters = [
         'currency_code' => 'getCurrencyCode',
         'fraction_digits' => 'getFractionDigits',
-        'name' => 'getName',
         'numeric_code' => 'getNumericCode'
     ];
 
@@ -125,8 +120,6 @@ class RestCurrency implements ModelInterface, ArrayAccess
         $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
         
         $this->container['fraction_digits'] = isset($data['fraction_digits']) ? $data['fraction_digits'] : null;
-        
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         
         $this->container['numeric_code'] = isset($data['numeric_code']) ? $data['numeric_code'] : null;
         
@@ -234,7 +227,7 @@ class RestCurrency implements ModelInterface, ArrayAccess
     /**
      * Sets currency_code
      *
-     * @param string $currency_code The currency's three-letter code (ISO 4217 format).
+     * @param string $currency_code The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).
      *
      * @return $this
      */
@@ -259,38 +252,13 @@ class RestCurrency implements ModelInterface, ArrayAccess
     /**
      * Sets fraction_digits
      *
-     * @param int $fraction_digits The currency's number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.
+     * @param int $fraction_digits The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.
      *
      * @return $this
      */
     public function setFractionDigits($fraction_digits)
     {
         $this->container['fraction_digits'] = $fraction_digits;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the currency.
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
 
         return $this;
     }
@@ -309,7 +277,7 @@ class RestCurrency implements ModelInterface, ArrayAccess
     /**
      * Sets numeric_code
      *
-     * @param int $numeric_code The currency's three-digit code (ISO 4217 format).
+     * @param int $numeric_code The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).
      *
      * @return $this
      */

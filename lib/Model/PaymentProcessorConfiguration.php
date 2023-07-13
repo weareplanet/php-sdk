@@ -49,7 +49,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'application_managed' => 'bool',
         'contract_id' => 'int',
         'id' => 'int',
         'linked_space_id' => 'int',
@@ -66,7 +65,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'application_managed' => null,
         'contract_id' => 'int64',
         'id' => 'int64',
         'linked_space_id' => 'int64',
@@ -84,7 +82,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'application_managed' => 'applicationManaged',
         'contract_id' => 'contractId',
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
@@ -101,7 +98,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'application_managed' => 'setApplicationManaged',
         'contract_id' => 'setContractId',
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
@@ -118,7 +114,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'application_managed' => 'getApplicationManaged',
         'contract_id' => 'getContractId',
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
@@ -146,8 +141,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        
-        $this->container['application_managed'] = isset($data['application_managed']) ? $data['application_managed'] : null;
         
         $this->container['contract_id'] = isset($data['contract_id']) ? $data['contract_id'] : null;
         
@@ -261,31 +254,6 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets application_managed
-     *
-     * @return bool
-     */
-    public function getApplicationManaged()
-    {
-        return $this->container['application_managed'];
-    }
-
-    /**
-     * Sets application_managed
-     *
-     * @param bool $application_managed The configuration is managed by the application and cannot be changed via the user interface.
-     *
-     * @return $this
-     */
-    public function setApplicationManaged($application_managed)
-    {
-        $this->container['application_managed'] = $application_managed;
-
-        return $this;
-    }
-    
-
-    /**
      * Gets contract_id
      *
      * @return int
@@ -323,7 +291,7 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -348,7 +316,7 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */
@@ -402,7 +370,7 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -452,7 +420,7 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
      *
      * @return $this
      */
@@ -477,7 +445,7 @@ class PaymentProcessorConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */

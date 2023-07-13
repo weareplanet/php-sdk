@@ -234,7 +234,7 @@ class ChargeFlowLevelConfigurationType implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param map[string,string] $description The localized description of the object.
+     * @param map[string,string] $description 
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class ChargeFlowLevelConfigurationType implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -309,7 +309,7 @@ class ChargeFlowLevelConfigurationType implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name The localized name of the object.
+     * @param map[string,string] $name 
      *
      * @return $this
      */

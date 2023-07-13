@@ -246,7 +246,7 @@ class ChargeFlowLevelPaymentLink extends TransactionAwareEntity
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */

@@ -35,7 +35,6 @@ class PaymentTerminalState
     /**
      * Possible values of this enum
      */
-    const CREATE = 'CREATE';
     const PREPARING = 'PREPARING';
     const ACTIVE = 'ACTIVE';
     const INACTIVE = 'INACTIVE';
@@ -49,7 +48,6 @@ class PaymentTerminalState
     public static function getAllowableEnumValues()
     {
         return [
-            self::CREATE,
             self::PREPARING,
             self::ACTIVE,
             self::INACTIVE,

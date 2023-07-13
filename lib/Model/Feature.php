@@ -269,7 +269,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets beta
      *
-     * @param bool $beta Whether the feature is in beta stage and there may still be some issues.
+     * @param bool $beta 
      *
      * @return $this
      */
@@ -294,7 +294,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param \WeArePlanet\Sdk\Model\FeatureCategory $category The category that the feature belongs to.
+     * @param \WeArePlanet\Sdk\Model\FeatureCategory $category 
      *
      * @return $this
      */
@@ -319,7 +319,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param map[string,string] $description The localized description of the object.
+     * @param map[string,string] $description 
      *
      * @return $this
      */
@@ -344,7 +344,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -369,7 +369,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets logo_path
      *
-     * @param string $logo_path The path to the feature's logo image.
+     * @param string $logo_path 
      *
      * @return $this
      */
@@ -394,7 +394,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name The localized name of the object.
+     * @param map[string,string] $name 
      *
      * @return $this
      */
@@ -419,7 +419,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets required_features
      *
-     * @param int[] $required_features The features that must be enabled for this feature to work properly.
+     * @param int[] $required_features 
      *
      * @return $this
      */
@@ -444,7 +444,7 @@ class Feature implements ModelInterface, ArrayAccess
     /**
      * Sets sort_order
      *
-     * @param int $sort_order When listing features, they can be sorted by this number.
+     * @param int $sort_order 
      *
      * @return $this
      */

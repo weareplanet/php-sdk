@@ -51,10 +51,10 @@ class Role implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'account' => '\WeArePlanet\Sdk\Model\Account',
         'id' => 'int',
-        'name' => 'map[string,string]',
+        'name' => '\WeArePlanet\Sdk\Model\DatabaseTranslatedString',
         'permissions' => '\WeArePlanet\Sdk\Model\Permission[]',
         'planned_purge_date' => '\DateTime',
-        'state' => '\WeArePlanet\Sdk\Model\RoleState',
+        'state' => '\WeArePlanet\Sdk\Model\CreationEntityState',
         'two_factor_required' => 'bool',
         'version' => 'int'
     ];
@@ -262,7 +262,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param \WeArePlanet\Sdk\Model\Account $account The account the role belongs to. The role can only be assigned within this account.
+     * @param \WeArePlanet\Sdk\Model\Account $account The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
      *
      * @return $this
      */
@@ -287,7 +287,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -302,7 +302,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Gets name
      *
-     * @return map[string,string]
+     * @return \WeArePlanet\Sdk\Model\DatabaseTranslatedString
      */
     public function getName()
     {
@@ -312,7 +312,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name The name used to identify the role.
+     * @param \WeArePlanet\Sdk\Model\DatabaseTranslatedString $name The name of this role is used to identify the role within administrative interfaces.
      *
      * @return $this
      */
@@ -337,7 +337,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets permissions
      *
-     * @param \WeArePlanet\Sdk\Model\Permission[] $permissions The permissions granted to users with this role.
+     * @param \WeArePlanet\Sdk\Model\Permission[] $permissions Set of permissions that are granted to this role.
      *
      * @return $this
      */
@@ -362,7 +362,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -377,7 +377,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Gets state
      *
-     * @return \WeArePlanet\Sdk\Model\RoleState
+     * @return \WeArePlanet\Sdk\Model\CreationEntityState
      */
     public function getState()
     {
@@ -387,7 +387,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\RoleState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets two_factor_required
      *
-     * @param bool $two_factor_required Whether users with this role are required to use two-factor authentication.
+     * @param bool $two_factor_required Defines whether having been granted this role will force a user to use two-factor authentication.
      *
      * @return $this
      */
@@ -437,7 +437,7 @@ class Role implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */

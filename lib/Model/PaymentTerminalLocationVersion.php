@@ -50,7 +50,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'address' => '\WeArePlanet\Sdk\Model\PaymentTerminalAddress',
-        'contact_address' => '\WeArePlanet\Sdk\Model\PaymentTerminalAddress',
         'created_by' => 'int',
         'created_on' => '\DateTime',
         'id' => 'int',
@@ -69,7 +68,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'address' => null,
-        'contact_address' => null,
         'created_by' => 'int64',
         'created_on' => 'date-time',
         'id' => 'int64',
@@ -89,7 +87,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'address' => 'address',
-        'contact_address' => 'contactAddress',
         'created_by' => 'createdBy',
         'created_on' => 'createdOn',
         'id' => 'id',
@@ -108,7 +105,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'address' => 'setAddress',
-        'contact_address' => 'setContactAddress',
         'created_by' => 'setCreatedBy',
         'created_on' => 'setCreatedOn',
         'id' => 'setId',
@@ -127,7 +123,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'address' => 'getAddress',
-        'contact_address' => 'getContactAddress',
         'created_by' => 'getCreatedBy',
         'created_on' => 'getCreatedOn',
         'id' => 'getId',
@@ -158,8 +153,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     {
         
         $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        
-        $this->container['contact_address'] = isset($data['contact_address']) ? $data['contact_address'] : null;
         
         $this->container['created_by'] = isset($data['created_by']) ? $data['created_by'] : null;
         
@@ -296,31 +289,6 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets contact_address
-     *
-     * @return \WeArePlanet\Sdk\Model\PaymentTerminalAddress
-     */
-    public function getContactAddress()
-    {
-        return $this->container['contact_address'];
-    }
-
-    /**
-     * Sets contact_address
-     *
-     * @param \WeArePlanet\Sdk\Model\PaymentTerminalAddress $contact_address 
-     *
-     * @return $this
-     */
-    public function setContactAddress($contact_address)
-    {
-        $this->container['contact_address'] = $contact_address;
-
-        return $this;
-    }
-    
-
-    /**
      * Gets created_by
      *
      * @return int
@@ -358,7 +326,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets created_on
      *
-     * @param \DateTime $created_on The date and time when the object was created.
+     * @param \DateTime $created_on The created on date indicates the date on which the entity was stored into the database.
      *
      * @return $this
      */
@@ -383,7 +351,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -408,7 +376,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */
@@ -458,7 +426,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -483,7 +451,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationVersionState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationVersionState $state 
      *
      * @return $this
      */
@@ -508,7 +476,7 @@ class PaymentTerminalLocationVersion implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */

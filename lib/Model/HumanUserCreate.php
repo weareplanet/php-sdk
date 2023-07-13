@@ -207,7 +207,7 @@ class HumanUserCreate extends AbstractHumanUserUpdate
     /**
      * Sets primary_account
      *
-     * @param int $primary_account The primary account that the user belongs to.
+     * @param int $primary_account The primary account links the user to a specific account.
      *
      * @return $this
      */

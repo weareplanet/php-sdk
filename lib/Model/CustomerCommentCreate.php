@@ -210,7 +210,7 @@ class CustomerCommentCreate extends AbstractCustomerCommentActive
     /**
      * Sets customer
      *
-     * @param int $customer The customer that the object belongs to.
+     * @param int $customer 
      *
      * @return $this
      */

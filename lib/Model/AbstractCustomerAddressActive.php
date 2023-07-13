@@ -219,7 +219,7 @@ class AbstractCustomerAddressActive implements ModelInterface, ArrayAccess
     /**
      * Sets address
      *
-     * @param \WeArePlanet\Sdk\Model\CustomerPostalAddressCreate $address The actual postal address.
+     * @param \WeArePlanet\Sdk\Model\CustomerPostalAddressCreate $address 
      *
      * @return $this
      */
@@ -244,7 +244,7 @@ class AbstractCustomerAddressActive implements ModelInterface, ArrayAccess
     /**
      * Sets address_type
      *
-     * @param \WeArePlanet\Sdk\Model\CustomerAddressType $address_type Whether the address is for billing or shipping or both.
+     * @param \WeArePlanet\Sdk\Model\CustomerAddressType $address_type 
      *
      * @return $this
      */

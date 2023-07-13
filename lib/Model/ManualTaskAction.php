@@ -234,7 +234,7 @@ class ManualTaskAction implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -259,7 +259,7 @@ class ManualTaskAction implements ModelInterface, ArrayAccess
     /**
      * Sets label
      *
-     * @param map[string,string] $label The action's label.
+     * @param map[string,string] $label 
      *
      * @return $this
      */
@@ -284,7 +284,7 @@ class ManualTaskAction implements ModelInterface, ArrayAccess
     /**
      * Sets style
      *
-     * @param \WeArePlanet\Sdk\Model\ManualTaskActionStyle $style The action's style.
+     * @param \WeArePlanet\Sdk\Model\ManualTaskActionStyle $style 
      *
      * @return $this
      */
@@ -309,7 +309,7 @@ class ManualTaskAction implements ModelInterface, ArrayAccess
     /**
      * Sets task_type
      *
-     * @param int $task_type The type of manual tasks this action belongs to.
+     * @param int $task_type 
      *
      * @return $this
      */

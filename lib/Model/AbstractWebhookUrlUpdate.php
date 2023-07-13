@@ -238,7 +238,7 @@ class AbstractWebhookUrlUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name used to identify the webhook URL.
+     * @param string $name The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
      *
      * @return $this
      */
@@ -267,7 +267,7 @@ class AbstractWebhookUrlUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\CreationEntityState $state 
      *
      * @return $this
      */
@@ -292,7 +292,7 @@ class AbstractWebhookUrlUpdate implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string $url The actual URL where notifications about entity changes are sent to.
+     * @param string $url The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter=value.
      *
      * @return $this
      */

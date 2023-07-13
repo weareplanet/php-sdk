@@ -227,7 +227,7 @@ class WebhookListenerEntity implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -252,7 +252,7 @@ class WebhookListenerEntity implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name The name used to identify the webhook listener entity.
+     * @param map[string,string] $name 
      *
      * @return $this
      */
@@ -277,7 +277,7 @@ class WebhookListenerEntity implements ModelInterface, ArrayAccess
     /**
      * Sets technical_name
      *
-     * @param string $technical_name The name used to programmatically identify the webhook listener entity.
+     * @param string $technical_name 
      *
      * @return $this
      */

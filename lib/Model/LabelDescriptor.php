@@ -262,7 +262,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param \WeArePlanet\Sdk\Model\LabelDescriptorCategory $category The label's category.
+     * @param \WeArePlanet\Sdk\Model\LabelDescriptorCategory $category 
      *
      * @return $this
      */
@@ -287,7 +287,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param map[string,string] $description The localized description of the object.
+     * @param map[string,string] $description 
      *
      * @return $this
      */
@@ -312,7 +312,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets features
      *
-     * @param int[] $features The features that this label belongs to.
+     * @param int[] $features 
      *
      * @return $this
      */
@@ -337,7 +337,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets group
      *
-     * @param int $group The group that this label belongs to.
+     * @param int $group 
      *
      * @return $this
      */
@@ -362,7 +362,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -387,7 +387,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param map[string,string] $name The localized name of the object.
+     * @param map[string,string] $name 
      *
      * @return $this
      */
@@ -412,7 +412,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int $type The type of the label's value.
+     * @param int $type 
      *
      * @return $this
      */
@@ -437,7 +437,7 @@ class LabelDescriptor implements ModelInterface, ArrayAccess
     /**
      * Sets weight
      *
-     * @param int $weight When listing labels, they can be sorted by this number.
+     * @param int $weight 
      *
      * @return $this
      */

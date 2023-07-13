@@ -49,7 +49,9 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'external_id' => 'string',
+        'contact_address' => '\WeArePlanet\Sdk\Model\PaymentTerminalContactAddress',
+        'default_configuration' => '\WeArePlanet\Sdk\Model\PaymentTerminalConfiguration',
+        'delivery_address' => '\WeArePlanet\Sdk\Model\PaymentTerminalAddress',
         'id' => 'int',
         'linked_space_id' => 'int',
         'name' => 'string',
@@ -64,7 +66,9 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'external_id' => null,
+        'contact_address' => null,
+        'default_configuration' => null,
+        'delivery_address' => null,
         'id' => 'int64',
         'linked_space_id' => 'int64',
         'name' => null,
@@ -80,7 +84,9 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'external_id' => 'externalId',
+        'contact_address' => 'contactAddress',
+        'default_configuration' => 'defaultConfiguration',
+        'delivery_address' => 'deliveryAddress',
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
         'name' => 'name',
@@ -95,7 +101,9 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'external_id' => 'setExternalId',
+        'contact_address' => 'setContactAddress',
+        'default_configuration' => 'setDefaultConfiguration',
+        'delivery_address' => 'setDeliveryAddress',
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
         'name' => 'setName',
@@ -110,7 +118,9 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'external_id' => 'getExternalId',
+        'contact_address' => 'getContactAddress',
+        'default_configuration' => 'getDefaultConfiguration',
+        'delivery_address' => 'getDeliveryAddress',
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
         'name' => 'getName',
@@ -137,7 +147,11 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['contact_address'] = isset($data['contact_address']) ? $data['contact_address'] : null;
+        
+        $this->container['default_configuration'] = isset($data['default_configuration']) ? $data['default_configuration'] : null;
+        
+        $this->container['delivery_address'] = isset($data['delivery_address']) ? $data['delivery_address'] : null;
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
@@ -247,25 +261,75 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets external_id
+     * Gets contact_address
      *
-     * @return string
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalContactAddress
      */
-    public function getExternalId()
+    public function getContactAddress()
     {
-        return $this->container['external_id'];
+        return $this->container['contact_address'];
     }
 
     /**
-     * Sets external_id
+     * Sets contact_address
      *
-     * @param string $external_id A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalContactAddress $contact_address 
      *
      * @return $this
      */
-    public function setExternalId($external_id)
+    public function setContactAddress($contact_address)
     {
-        $this->container['external_id'] = $external_id;
+        $this->container['contact_address'] = $contact_address;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets default_configuration
+     *
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalConfiguration
+     */
+    public function getDefaultConfiguration()
+    {
+        return $this->container['default_configuration'];
+    }
+
+    /**
+     * Sets default_configuration
+     *
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalConfiguration $default_configuration 
+     *
+     * @return $this
+     */
+    public function setDefaultConfiguration($default_configuration)
+    {
+        $this->container['default_configuration'] = $default_configuration;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets delivery_address
+     *
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalAddress
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->container['delivery_address'];
+    }
+
+    /**
+     * Sets delivery_address
+     *
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalAddress $delivery_address 
+     *
+     * @return $this
+     */
+    public function setDeliveryAddress($delivery_address)
+    {
+        $this->container['delivery_address'] = $delivery_address;
 
         return $this;
     }
@@ -284,7 +348,7 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id A unique identifier for the object.
+     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
      *
      * @return $this
      */
@@ -309,7 +373,7 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     /**
      * Sets linked_space_id
      *
-     * @param int $linked_space_id The ID of the space this object belongs to.
+     * @param int $linked_space_id The linked space id holds the ID of the space to which the entity belongs to.
      *
      * @return $this
      */
@@ -363,7 +427,7 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     /**
      * Sets planned_purge_date
      *
-     * @param \DateTime $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     * @param \DateTime $planned_purge_date The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
      *
      * @return $this
      */
@@ -388,7 +452,7 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     /**
      * Sets state
      *
-     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationState $state The object's current state.
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationState $state 
      *
      * @return $this
      */
@@ -413,7 +477,7 @@ class PaymentTerminalLocation implements ModelInterface, ArrayAccess
     /**
      * Sets version
      *
-     * @param int $version The version is used for optimistic locking and incremented whenever the object is updated.
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
      *
      * @return $this
      */
