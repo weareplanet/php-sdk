@@ -82,7 +82,7 @@ final class HttpClientFactory {
 	 * @return IHttpClient
 	 */
 	private function getClientInternal($type = null) {
-        $type = empty($type) ? getenv('WLE_HTTP_CLIENT') : $type;
+        $type = empty($type) ? getenv('PLN_HTTP_CLIENT') : $type;
         if(empty($type)){
             foreach ($this->clients as $client) {
                 if ($client->isSupported()) {

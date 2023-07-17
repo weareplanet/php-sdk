@@ -370,7 +370,7 @@ class TransactionCreate extends AbstractTransactionPending
     /**
      * Sets customers_presence
      *
-     * @param \WeArePlanet\Sdk\Model\CustomersPresence $customers_presence The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
+     * @param \WeArePlanet\Sdk\Model\CustomersPresence $customers_presence The customer's presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
      *
      * @return $this
      */
