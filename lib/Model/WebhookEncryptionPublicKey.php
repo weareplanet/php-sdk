@@ -19,18 +19,20 @@
 
 
 namespace WeArePlanet\Sdk\Model;
+
+use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * CustomerCommentActive model
+ * WebhookEncryptionPublicKey model
  *
  * @category    Class
- * @description 
+ * @description The webhook encryption public key is used to verify the webhook content signature.
  * @package     WeArePlanet\Sdk
  * @author      customweb GmbH
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
-class CustomerCommentActive extends AbstractCustomerCommentActive 
+class WebhookEncryptionPublicKey implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -39,7 +41,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CustomerComment.Active';
+    protected static $swaggerModelName = 'WebhookEncryptionPublicKey';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -47,8 +49,8 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'version' => 'int'
+        'id' => 'string',
+        'public_key' => 'string'
     ];
 
     /**
@@ -57,8 +59,8 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int64',
-        'version' => 'int64'
+        'id' => null,
+        'public_key' => null
     ];
 
     /**
@@ -69,7 +71,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'version' => 'version'
+        'public_key' => 'publicKey'
     ];
 
     /**
@@ -79,7 +81,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     protected static $setters = [
         'id' => 'setId',
-        'version' => 'setVersion'
+        'public_key' => 'setPublicKey'
     ];
 
     /**
@@ -89,11 +91,17 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     protected static $getters = [
         'id' => 'getId',
-        'version' => 'getVersion'
+        'public_key' => 'getPublicKey'
     ];
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -103,12 +111,10 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
-        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
+        $this->container['public_key'] = isset($data['public_key']) ? $data['public_key'] : null;
         
     }
 
@@ -119,18 +125,8 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
-        if (!is_null($this->container['content']) && (mb_strlen($this->container['content']) > 262144)) {
-            $invalidProperties[] = "invalid value for 'content', the character length must be smaller than or equal to 262144.";
-        }
-
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['version'] === null) {
-            $invalidProperties[] = "'version' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -141,7 +137,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public static function swaggerTypes()
     {
-        return self::$swaggerTypes + parent::swaggerTypes();
+        return self::$swaggerTypes;
     }
 
     /**
@@ -151,7 +147,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public static function swaggerFormats()
     {
-        return self::$swaggerFormats + parent::swaggerFormats();
+        return self::$swaggerFormats;
     }
 
 
@@ -163,7 +159,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -173,7 +169,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -183,7 +179,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -214,7 +210,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -224,7 +220,7 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
     /**
      * Sets id
      *
-     * @param int $id The ID is the primary key of the entity. The ID identifies the entity uniquely.
+     * @param string $id The ID of encryption key
      *
      * @return $this
      */
@@ -237,25 +233,25 @@ class CustomerCommentActive extends AbstractCustomerCommentActive
     
 
     /**
-     * Gets version
+     * Gets public_key
      *
-     * @return int
+     * @return string
      */
-    public function getVersion()
+    public function getPublicKey()
     {
-        return $this->container['version'];
+        return $this->container['public_key'];
     }
 
     /**
-     * Sets version
+     * Sets public_key
      *
-     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     * @param string $public_key The BASE64 encoded public key
      *
      * @return $this
      */
-    public function setVersion($version)
+    public function setPublicKey($public_key)
     {
-        $this->container['version'] = $version;
+        $this->container['public_key'] = $public_key;
 
         return $this;
     }

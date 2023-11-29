@@ -50,7 +50,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         'asynchronous_charge' => 'int',
         'configuration' => '\WeArePlanet\Sdk\Model\ChargeFlowLevelConfiguration',
         'created_on' => '\DateTime',
-        'linked_space_id' => 'int',
         'planned_purge_date' => '\DateTime',
         'state' => '\WeArePlanet\Sdk\Model\ChargeFlowLevelState',
         'synchronous_charge' => 'int',
@@ -69,7 +68,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         'asynchronous_charge' => 'int64',
         'configuration' => null,
         'created_on' => 'date-time',
-        'linked_space_id' => 'int64',
         'planned_purge_date' => 'date-time',
         'state' => null,
         'synchronous_charge' => 'int64',
@@ -89,7 +87,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         'asynchronous_charge' => 'asynchronousCharge',
         'configuration' => 'configuration',
         'created_on' => 'createdOn',
-        'linked_space_id' => 'linkedSpaceId',
         'planned_purge_date' => 'plannedPurgeDate',
         'state' => 'state',
         'synchronous_charge' => 'synchronousCharge',
@@ -108,7 +105,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         'asynchronous_charge' => 'setAsynchronousCharge',
         'configuration' => 'setConfiguration',
         'created_on' => 'setCreatedOn',
-        'linked_space_id' => 'setLinkedSpaceId',
         'planned_purge_date' => 'setPlannedPurgeDate',
         'state' => 'setState',
         'synchronous_charge' => 'setSynchronousCharge',
@@ -127,7 +123,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         'asynchronous_charge' => 'getAsynchronousCharge',
         'configuration' => 'getConfiguration',
         'created_on' => 'getCreatedOn',
-        'linked_space_id' => 'getLinkedSpaceId',
         'planned_purge_date' => 'getPlannedPurgeDate',
         'state' => 'getState',
         'synchronous_charge' => 'getSynchronousCharge',
@@ -156,8 +151,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
         $this->container['configuration'] = isset($data['configuration']) ? $data['configuration'] : null;
         
         $this->container['created_on'] = isset($data['created_on']) ? $data['created_on'] : null;
-        
-        $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
         
         $this->container['planned_purge_date'] = isset($data['planned_purge_date']) ? $data['planned_purge_date'] : null;
         
@@ -334,31 +327,6 @@ class ChargeFlowLevel extends TransactionAwareEntity
     public function setCreatedOn($created_on)
     {
         $this->container['created_on'] = $created_on;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets linked_space_id
-     *
-     * @return int
-     */
-    public function getLinkedSpaceId()
-    {
-        return $this->container['linked_space_id'];
-    }
-
-    /**
-     * Sets linked_space_id
-     *
-     * @param int $linked_space_id The ID of the space this object belongs to.
-     *
-     * @return $this
-     */
-    public function setLinkedSpaceId($linked_space_id)
-    {
-        $this->container['linked_space_id'] = $linked_space_id;
 
         return $this;
     }
@@ -545,6 +513,7 @@ class ChargeFlowLevel extends TransactionAwareEntity
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -557,6 +526,7 @@ class ChargeFlowLevel extends TransactionAwareEntity
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -570,6 +540,7 @@ class ChargeFlowLevel extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -586,6 +557,7 @@ class ChargeFlowLevel extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

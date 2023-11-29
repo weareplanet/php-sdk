@@ -60,7 +60,6 @@ class TransactionCompletion extends TransactionAwareEntity
         'last_completion' => 'bool',
         'line_item_version' => '\WeArePlanet\Sdk\Model\TransactionLineItemVersion',
         'line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
-        'linked_space_id' => 'int',
         'mode' => '\WeArePlanet\Sdk\Model\TransactionCompletionMode',
         'next_update_on' => '\DateTime',
         'payment_information' => 'string',
@@ -97,7 +96,6 @@ class TransactionCompletion extends TransactionAwareEntity
         'last_completion' => null,
         'line_item_version' => null,
         'line_items' => null,
-        'linked_space_id' => 'int64',
         'mode' => null,
         'next_update_on' => 'date-time',
         'payment_information' => null,
@@ -135,7 +133,6 @@ class TransactionCompletion extends TransactionAwareEntity
         'last_completion' => 'lastCompletion',
         'line_item_version' => 'lineItemVersion',
         'line_items' => 'lineItems',
-        'linked_space_id' => 'linkedSpaceId',
         'mode' => 'mode',
         'next_update_on' => 'nextUpdateOn',
         'payment_information' => 'paymentInformation',
@@ -172,7 +169,6 @@ class TransactionCompletion extends TransactionAwareEntity
         'last_completion' => 'setLastCompletion',
         'line_item_version' => 'setLineItemVersion',
         'line_items' => 'setLineItems',
-        'linked_space_id' => 'setLinkedSpaceId',
         'mode' => 'setMode',
         'next_update_on' => 'setNextUpdateOn',
         'payment_information' => 'setPaymentInformation',
@@ -209,7 +205,6 @@ class TransactionCompletion extends TransactionAwareEntity
         'last_completion' => 'getLastCompletion',
         'line_item_version' => 'getLineItemVersion',
         'line_items' => 'getLineItems',
-        'linked_space_id' => 'getLinkedSpaceId',
         'mode' => 'getMode',
         'next_update_on' => 'getNextUpdateOn',
         'payment_information' => 'getPaymentInformation',
@@ -266,8 +261,6 @@ class TransactionCompletion extends TransactionAwareEntity
         $this->container['line_item_version'] = isset($data['line_item_version']) ? $data['line_item_version'] : null;
         
         $this->container['line_items'] = isset($data['line_items']) ? $data['line_items'] : null;
-        
-        $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
         
         $this->container['mode'] = isset($data['mode']) ? $data['mode'] : null;
         
@@ -743,31 +736,6 @@ class TransactionCompletion extends TransactionAwareEntity
     
 
     /**
-     * Gets linked_space_id
-     *
-     * @return int
-     */
-    public function getLinkedSpaceId()
-    {
-        return $this->container['linked_space_id'];
-    }
-
-    /**
-     * Sets linked_space_id
-     *
-     * @param int $linked_space_id The ID of the space this object belongs to.
-     *
-     * @return $this
-     */
-    public function setLinkedSpaceId($linked_space_id)
-    {
-        $this->container['linked_space_id'] = $linked_space_id;
-
-        return $this;
-    }
-    
-
-    /**
      * Gets mode
      *
      * @return \WeArePlanet\Sdk\Model\TransactionCompletionMode
@@ -1152,6 +1120,7 @@ class TransactionCompletion extends TransactionAwareEntity
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -1164,6 +1133,7 @@ class TransactionCompletion extends TransactionAwareEntity
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -1177,6 +1147,7 @@ class TransactionCompletion extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -1193,6 +1164,7 @@ class TransactionCompletion extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);

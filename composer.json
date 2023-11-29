@@ -1,6 +1,6 @@
 {
     "name": "weareplanet/sdk",
-    "version": "2.1.4",
+    "version": "4.0.1",
 	"description": "WeArePlanet SDK for PHP",
 	"keywords": [
 		"weareplanet",
@@ -23,7 +23,7 @@
 		"ext-mbstring": "*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~4.8"
+		"phpunit/phpunit": "~8"
 	},
 	"autoload": {
 		"psr-4": { "WeArePlanet\\Sdk\\" : "lib/" }

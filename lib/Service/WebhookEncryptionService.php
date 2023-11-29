@@ -27,14 +27,14 @@ use WeArePlanet\Sdk\Http\HttpRequest;
 use WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * PermissionService service
+ * WebhookEncryptionService service
  *
  * @category Class
  * @package  WeArePlanet\Sdk
  * @author   customweb GmbH
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
-class PermissionService {
+class WebhookEncryptionService {
 
 	/**
 	 * The API client instance.
@@ -67,110 +67,15 @@ class PermissionService {
 
 
 	/**
-	 * Operation all
-	 *
-	 * All
-	 *
-	 * @throws \WeArePlanet\Sdk\ApiException
-	 * @throws \WeArePlanet\Sdk\VersioningException
-	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
-	 * @return \WeArePlanet\Sdk\Model\Permission[]
-	 */
-	public function all() {
-		return $this->allWithHttpInfo()->getData();
-	}
-
-	/**
-	 * Operation allWithHttpInfo
-	 *
-	 * All
-     
-     *
-	 * @throws \WeArePlanet\Sdk\ApiException
-	 * @throws \WeArePlanet\Sdk\VersioningException
-	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
-	 * @return ApiResponse
-	 */
-	public function allWithHttpInfo() {
-		// header params
-		$headerParams = [];
-		$headerAccept = $this->apiClient->selectHeaderAccept(['application/json;charset=utf-8']);
-		if (!is_null($headerAccept)) {
-			$headerParams[HttpRequest::HEADER_KEY_ACCEPT] = $headerAccept;
-		}
-		$headerParams[HttpRequest::HEADER_KEY_CONTENT_TYPE] = $this->apiClient->selectHeaderContentType(['*/*']);
-
-		// query params
-		$queryParams = [];
-
-		// path params
-		$resourcePath = '/permission/all';
-		// default format to json
-		$resourcePath = str_replace('{format}', 'json', $resourcePath);
-
-		// form params
-		$formParams = [];
-		
-		// for model (json/xml)
-		$httpBody = '';
-		if (isset($tempBody)) {
-			$httpBody = $tempBody; // $tempBody is the method argument, if present
-		} elseif (!empty($formParams)) {
-			$httpBody = $formParams; // for HTTP post (form)
-		}
-		// make the API Call
-		try {
-			$response = $this->apiClient->callApi(
-				$resourcePath,
-				'GET',
-				$queryParams,
-				$httpBody,
-				$headerParams,
-				'\WeArePlanet\Sdk\Model\Permission[]',
-				'/permission/all'
-            );
-			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Permission[]', $response->getHeaders()));
-		} catch (ApiException $e) {
-			switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\WeArePlanet\Sdk\Model\Permission[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                break;
-                case 442:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\WeArePlanet\Sdk\Model\ClientError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                break;
-                case 542:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\WeArePlanet\Sdk\Model\ServerError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                break;
-			}
-			throw $e;
-		}
-	}
-
-	/**
 	 * Operation read
 	 *
 	 * Read
 	 *
-	 * @param int $id The id of the permission which should be returned. (required)
+	 * @param string $id The ID of the key version. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
-	 * @return \WeArePlanet\Sdk\Model\Permission
+	 * @return \WeArePlanet\Sdk\Model\WebhookEncryptionPublicKey
 	 */
 	public function read($id) {
 		return $this->readWithHttpInfo($id)->getData();
@@ -182,7 +87,7 @@ class PermissionService {
 	 * Read
      
      *
-	 * @param int $id The id of the permission which should be returned. (required)
+	 * @param string $id The ID of the key version. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
 	 * @throws \WeArePlanet\Sdk\VersioningException
 	 * @throws \WeArePlanet\Sdk\Http\ConnectionException
@@ -208,7 +113,7 @@ class PermissionService {
 		}
 
 		// path params
-		$resourcePath = '/permission/read';
+		$resourcePath = '/webhook-encryption/read';
 		// default format to json
 		$resourcePath = str_replace('{format}', 'json', $resourcePath);
 
@@ -230,16 +135,16 @@ class PermissionService {
 				$queryParams,
 				$httpBody,
 				$headerParams,
-				'\WeArePlanet\Sdk\Model\Permission',
-				'/permission/read'
+				'\WeArePlanet\Sdk\Model\WebhookEncryptionPublicKey',
+				'/webhook-encryption/read'
             );
-			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Permission', $response->getHeaders()));
+			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\WebhookEncryptionPublicKey', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\WeArePlanet\Sdk\Model\Permission',
+                        '\WeArePlanet\Sdk\Model\WebhookEncryptionPublicKey',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

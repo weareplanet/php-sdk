@@ -86,7 +86,8 @@ class PaymentWebAppService {
 	 * Operation activateProcessorForProductionWithHttpInfo
 	 *
 	 * Activate Processor for Production
-	 *
+     
+     *
 	 * @param int $space_id The space ID identifies the space in which the processor is installed in. (required)
 	 * @param string $external_id The external ID identifies the processor. The external ID corresponds to the ID provided during inserting of the processor. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -137,7 +138,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -146,7 +146,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentAppProcessor',
 				'/payment-web-app/activate-processor-for-production'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentAppProcessor', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -199,7 +199,8 @@ class PaymentWebAppService {
 	 * Operation deleteConnectorWithHttpInfo
 	 *
 	 * Delete Connector
-	 *
+     
+     *
 	 * @param int $space_id The space ID identifies the space in which the connector is installed in. (required)
 	 * @param string $external_id The external ID identifies the connector. The external ID corresponds to the ID provided during inserting of the connector. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -250,7 +251,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -259,7 +259,7 @@ class PaymentWebAppService {
 				$headerParams,
 				null,
 				'/payment-web-app/delete-connector'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -304,7 +304,8 @@ class PaymentWebAppService {
 	 * Operation deleteProcessorWithHttpInfo
 	 *
 	 * Delete Processor
-	 *
+     
+     *
 	 * @param int $space_id The space ID identifies the space in which the processor is installed in. (required)
 	 * @param string $external_id The external ID identifies the processor. The external ID corresponds to the ID provided during inserting of the processor. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -355,7 +356,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -364,7 +364,7 @@ class PaymentWebAppService {
 				$headerParams,
 				null,
 				'/payment-web-app/delete-processor'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders());
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -409,7 +409,8 @@ class PaymentWebAppService {
 	 * Operation insertOrUpdateConnectorWithHttpInfo
 	 *
 	 * Insert or Update Connector
-	 *
+     
+     *
 	 * @param int $space_id The space ID identifies the space into which the connector should be inserted into. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppConnectorCreationRequest $request The connector object contains all the details required to create or update a web app connector. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -462,7 +463,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -471,7 +471,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentAppConnector',
 				'/payment-web-app/insert-or-update-connector'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentAppConnector', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -524,7 +524,8 @@ class PaymentWebAppService {
 	 * Operation insertOrUpdateProcessorWithHttpInfo
 	 *
 	 * Insert or Update Processor
-	 *
+     
+     *
 	 * @param int $space_id The space ID identifies the space into which the processor should be inserted into. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppProcessorCreationRequest $request The processor object contains all the details required to create or update a web app processor. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -577,7 +578,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -586,7 +586,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\PaymentAppProcessor',
 				'/payment-web-app/insert-or-update-processor'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\PaymentAppProcessor', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -639,7 +639,8 @@ class PaymentWebAppService {
 	 * Operation updateChargeAttemptWithHttpInfo
 	 *
 	 * Update Charge Attempt
-	 *
+     
+     *
 	 * @param int $space_id This is the ID of the space in which the charge attempt is located in. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppChargeAttemptUpdateRequest $request The charge attempt update request allows to update the state of a charge attempt. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -692,7 +693,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -701,7 +701,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\ChargeAttempt',
 				'/payment-web-app/update-charge-attempt'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\ChargeAttempt', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -754,7 +754,8 @@ class PaymentWebAppService {
 	 * Operation updateCompletionWithHttpInfo
 	 *
 	 * Update Completion
-	 *
+     
+     *
 	 * @param int $space_id This is the ID of the space in which the completion is located in. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppCompletionUpdateRequest $request The completion update request allows to update the state of a completion. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -807,7 +808,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -816,7 +816,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionCompletion',
 				'/payment-web-app/update-completion'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionCompletion', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -869,7 +869,8 @@ class PaymentWebAppService {
 	 * Operation updateRefundWithHttpInfo
 	 *
 	 * Update Refund
-	 *
+     
+     *
 	 * @param int $space_id This is the ID of the space in which the refund is located in. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppRefundUpdateRequest $request The refund update request allows to update the state of a refund. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -922,7 +923,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -931,7 +931,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\Refund',
 				'/payment-web-app/update-refund'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\Refund', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {
@@ -984,7 +984,8 @@ class PaymentWebAppService {
 	 * Operation updateVoidWithHttpInfo
 	 *
 	 * Update Void
-	 *
+     
+     *
 	 * @param int $space_id This is the ID of the space in which the void is located in. (required)
 	 * @param \WeArePlanet\Sdk\Model\PaymentAppVoidUpdateRequest $request The void update request allows to update the state of a void. (required)
 	 * @throws \WeArePlanet\Sdk\ApiException
@@ -1037,7 +1038,6 @@ class PaymentWebAppService {
 		}
 		// make the API Call
 		try {
-			$this->apiClient->setConnectionTimeout(ApiClient::CONNECTION_TIMEOUT);
 			$response = $this->apiClient->callApi(
 				$resourcePath,
 				'POST',
@@ -1046,7 +1046,7 @@ class PaymentWebAppService {
 				$headerParams,
 				'\WeArePlanet\Sdk\Model\TransactionVoid',
 				'/payment-web-app/update-void'
-			);
+            );
 			return new ApiResponse($response->getStatusCode(), $response->getHeaders(), $this->apiClient->getSerializer()->deserialize($response->getData(), '\WeArePlanet\Sdk\Model\TransactionVoid', $response->getHeaders()));
 		} catch (ApiException $e) {
 			switch ($e->getCode()) {

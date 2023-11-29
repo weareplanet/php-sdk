@@ -59,7 +59,6 @@ class ChargeAttempt extends TransactionAwareEntity
         'invocation' => '\WeArePlanet\Sdk\Model\ConnectorInvocation',
         'labels' => '\WeArePlanet\Sdk\Model\Label[]',
         'language' => 'string',
-        'linked_space_id' => 'int',
         'next_update_on' => '\DateTime',
         'planned_purge_date' => '\DateTime',
         'redirection_url' => 'string',
@@ -73,7 +72,7 @@ class ChargeAttempt extends TransactionAwareEntity
         'token_version' => '\WeArePlanet\Sdk\Model\TokenVersion',
         'user_failure_message' => 'string',
         'version' => 'int',
-        'wallet_type' => '\WeArePlanet\Sdk\Model\WalletType'
+        'wallet' => '\WeArePlanet\Sdk\Model\WalletType'
     ];
 
     /**
@@ -94,7 +93,6 @@ class ChargeAttempt extends TransactionAwareEntity
         'invocation' => null,
         'labels' => null,
         'language' => null,
-        'linked_space_id' => 'int64',
         'next_update_on' => 'date-time',
         'planned_purge_date' => 'date-time',
         'redirection_url' => null,
@@ -108,7 +106,7 @@ class ChargeAttempt extends TransactionAwareEntity
         'token_version' => null,
         'user_failure_message' => null,
         'version' => 'int32',
-        'wallet_type' => null
+        'wallet' => null
     ];
 
     /**
@@ -130,7 +128,6 @@ class ChargeAttempt extends TransactionAwareEntity
         'invocation' => 'invocation',
         'labels' => 'labels',
         'language' => 'language',
-        'linked_space_id' => 'linkedSpaceId',
         'next_update_on' => 'nextUpdateOn',
         'planned_purge_date' => 'plannedPurgeDate',
         'redirection_url' => 'redirectionUrl',
@@ -144,7 +141,7 @@ class ChargeAttempt extends TransactionAwareEntity
         'token_version' => 'tokenVersion',
         'user_failure_message' => 'userFailureMessage',
         'version' => 'version',
-        'wallet_type' => 'walletType'
+        'wallet' => 'wallet'
     ];
 
     /**
@@ -165,7 +162,6 @@ class ChargeAttempt extends TransactionAwareEntity
         'invocation' => 'setInvocation',
         'labels' => 'setLabels',
         'language' => 'setLanguage',
-        'linked_space_id' => 'setLinkedSpaceId',
         'next_update_on' => 'setNextUpdateOn',
         'planned_purge_date' => 'setPlannedPurgeDate',
         'redirection_url' => 'setRedirectionUrl',
@@ -179,7 +175,7 @@ class ChargeAttempt extends TransactionAwareEntity
         'token_version' => 'setTokenVersion',
         'user_failure_message' => 'setUserFailureMessage',
         'version' => 'setVersion',
-        'wallet_type' => 'setWalletType'
+        'wallet' => 'setWallet'
     ];
 
     /**
@@ -200,7 +196,6 @@ class ChargeAttempt extends TransactionAwareEntity
         'invocation' => 'getInvocation',
         'labels' => 'getLabels',
         'language' => 'getLanguage',
-        'linked_space_id' => 'getLinkedSpaceId',
         'next_update_on' => 'getNextUpdateOn',
         'planned_purge_date' => 'getPlannedPurgeDate',
         'redirection_url' => 'getRedirectionUrl',
@@ -214,7 +209,7 @@ class ChargeAttempt extends TransactionAwareEntity
         'token_version' => 'getTokenVersion',
         'user_failure_message' => 'getUserFailureMessage',
         'version' => 'getVersion',
-        'wallet_type' => 'getWalletType'
+        'wallet' => 'getWallet'
     ];
 
     
@@ -255,8 +250,6 @@ class ChargeAttempt extends TransactionAwareEntity
         
         $this->container['language'] = isset($data['language']) ? $data['language'] : null;
         
-        $this->container['linked_space_id'] = isset($data['linked_space_id']) ? $data['linked_space_id'] : null;
-        
         $this->container['next_update_on'] = isset($data['next_update_on']) ? $data['next_update_on'] : null;
         
         $this->container['planned_purge_date'] = isset($data['planned_purge_date']) ? $data['planned_purge_date'] : null;
@@ -283,7 +276,7 @@ class ChargeAttempt extends TransactionAwareEntity
         
         $this->container['version'] = isset($data['version']) ? $data['version'] : null;
         
-        $this->container['wallet_type'] = isset($data['wallet_type']) ? $data['wallet_type'] : null;
+        $this->container['wallet'] = isset($data['wallet']) ? $data['wallet'] : null;
         
     }
 
@@ -681,31 +674,6 @@ class ChargeAttempt extends TransactionAwareEntity
     
 
     /**
-     * Gets linked_space_id
-     *
-     * @return int
-     */
-    public function getLinkedSpaceId()
-    {
-        return $this->container['linked_space_id'];
-    }
-
-    /**
-     * Sets linked_space_id
-     *
-     * @param int $linked_space_id The ID of the space this object belongs to.
-     *
-     * @return $this
-     */
-    public function setLinkedSpaceId($linked_space_id)
-    {
-        $this->container['linked_space_id'] = $linked_space_id;
-
-        return $this;
-    }
-    
-
-    /**
      * Gets next_update_on
      *
      * @return \DateTime
@@ -1035,25 +1003,25 @@ class ChargeAttempt extends TransactionAwareEntity
     
 
     /**
-     * Gets wallet_type
+     * Gets wallet
      *
      * @return \WeArePlanet\Sdk\Model\WalletType
      */
-    public function getWalletType()
+    public function getWallet()
     {
-        return $this->container['wallet_type'];
+        return $this->container['wallet'];
     }
 
     /**
-     * Sets wallet_type
+     * Sets wallet
      *
-     * @param \WeArePlanet\Sdk\Model\WalletType $wallet_type 
+     * @param \WeArePlanet\Sdk\Model\WalletType $wallet 
      *
      * @return $this
      */
-    public function setWalletType($wallet_type)
+    public function setWallet($wallet)
     {
-        $this->container['wallet_type'] = $wallet_type;
+        $this->container['wallet'] = $wallet;
 
         return $this;
     }
@@ -1065,6 +1033,7 @@ class ChargeAttempt extends TransactionAwareEntity
      *
      * @return boolean
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return isset($this->container[$offset]);
@@ -1077,6 +1046,7 @@ class ChargeAttempt extends TransactionAwareEntity
      *
      * @return mixed
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return isset($this->container[$offset]) ? $this->container[$offset] : null;
@@ -1090,6 +1060,7 @@ class ChargeAttempt extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if (is_null($offset)) {
@@ -1106,6 +1077,7 @@ class ChargeAttempt extends TransactionAwareEntity
      *
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->container[$offset]);
