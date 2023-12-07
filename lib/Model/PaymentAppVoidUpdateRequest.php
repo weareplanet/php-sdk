@@ -29,7 +29,7 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @category    Class
  * @description The void update request allows to change the state of a void. The void must be linked with a processor that was created by the payment Web App that invokes the operation.
  * @package     WeArePlanet\Sdk
- * @author      customweb GmbH
+ * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class PaymentAppVoidUpdateRequest implements ModelInterface, ArrayAccess

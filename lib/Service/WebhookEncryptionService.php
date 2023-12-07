@@ -25,13 +25,14 @@ use WeArePlanet\Sdk\ApiException;
 use WeArePlanet\Sdk\ApiResponse;
 use WeArePlanet\Sdk\Http\HttpRequest;
 use WeArePlanet\Sdk\ObjectSerializer;
+use WeArePlanet\Sdk\EncryptionUtil;
 
 /**
  * WebhookEncryptionService service
  *
  * @category Class
  * @package  WeArePlanet\Sdk
- * @author   customweb GmbH
+ * @author   Planet Merchant Services Ltd.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 class WebhookEncryptionService {
@@ -168,6 +169,31 @@ class WebhookEncryptionService {
 			}
 			throw $e;
 		}
+	}
+
+	/**
+     * Verify webhook content with content signature
+     *
+     * @param $signatureHeader raw X-Signature header value
+     * @param $contentToVerify raw body content
+     * @return true if content is verified by the signature
+     */
+	public function isContentValid($signatureHeader, $contentToVerify) {
+        $regex = "/^algorithm=([a-zA-Z0-9]+),\skeyId=([a-z0-9\-]+),\s{1}signature=([a-zA-Z0-9+\/=]+)$/";
+        if (preg_match($regex, $signatureHeader, $matches)) {
+            $signatureAlgorithm = $matches[1];
+            $publicKeyId = $matches[2];
+            $contentSignature = $matches[3];
+
+            $publicKey = $this->read($publicKeyId);
+            if (is_null($publicKey->getPublicKey())) {
+                throw new \InvalidArgumentException('Unknown webhook encryption key');
+            }
+
+            return EncryptionUtil::isContentValid($contentToVerify, $contentSignature, $publicKey->getPublicKey(), $signatureAlgorithm);
+        } else {
+            throw new \InvalidArgumentException('Invalid webhook signature header. Expected format: "algorithm=<algorithm>, keyId=<keyId>, signature=<signature>"');
+        }
 	}
 
 }

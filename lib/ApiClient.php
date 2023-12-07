@@ -30,7 +30,7 @@ use WeArePlanet\Sdk\Http\HttpClientFactory;
  *
  * @category Class
  * @package  WeArePlanet\Sdk
- * @author   customweb GmbH
+ * @author   Planet Merchant Services Ltd.
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
 final class ApiClient {
@@ -48,7 +48,7 @@ final class ApiClient {
 	 * @var array
 	 */
 	private $defaultHeaders = [
-        'x-meta-sdk-version' => "4.0.1",
+        'x-meta-sdk-version' => "4.0.2",
         'x-meta-sdk-language' => 'php',
         'x-meta-sdk-provider' => "WeArePlanet",
     ];
@@ -58,7 +58,7 @@ final class ApiClient {
 	 *
 	 * @var string
 	 */
-	private $userAgent = 'PHP-Client/4.0.1/php';
+	private $userAgent = 'PHP-Client/4.0.2/php';
 
 	/**
 	 * The path to the certificate authority file.
