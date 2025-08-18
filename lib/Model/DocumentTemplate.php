@@ -24,15 +24,15 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ChargeFlowLevelConfiguration model
+ * DocumentTemplate model
  *
  * @category    Class
- * @description 
+ * @description A document template contains the customizations for a particular document template type.
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
  */
-class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
+class DocumentTemplate implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -41,7 +41,7 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'ChargeFlowLevelConfiguration';
+    protected static $swaggerModelName = 'DocumentTemplate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -49,14 +49,15 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'flow' => '\WeArePlanet\Sdk\Model\ChargeFlow',
+        'default_template' => 'bool',
+        'delivery_enabled' => 'bool',
         'id' => 'int',
         'linked_space_id' => 'int',
         'name' => 'string',
-        'period' => 'string',
         'planned_purge_date' => '\DateTime',
-        'priority' => 'int',
+        'space_id' => 'int',
         'state' => '\WeArePlanet\Sdk\Model\CreationEntityState',
+        'template_resource' => '\WeArePlanet\Sdk\Model\ModelResourcePath',
         'type' => 'int',
         'version' => 'int'
     ];
@@ -67,14 +68,15 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'flow' => null,
+        'default_template' => null,
+        'delivery_enabled' => null,
         'id' => 'int64',
         'linked_space_id' => 'int64',
         'name' => null,
-        'period' => null,
         'planned_purge_date' => 'date-time',
-        'priority' => 'int32',
+        'space_id' => 'int64',
         'state' => null,
+        'template_resource' => null,
         'type' => 'int64',
         'version' => 'int32'
     ];
@@ -86,14 +88,15 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'flow' => 'flow',
+        'default_template' => 'defaultTemplate',
+        'delivery_enabled' => 'deliveryEnabled',
         'id' => 'id',
         'linked_space_id' => 'linkedSpaceId',
         'name' => 'name',
-        'period' => 'period',
         'planned_purge_date' => 'plannedPurgeDate',
-        'priority' => 'priority',
+        'space_id' => 'spaceId',
         'state' => 'state',
+        'template_resource' => 'templateResource',
         'type' => 'type',
         'version' => 'version'
     ];
@@ -104,14 +107,15 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'flow' => 'setFlow',
+        'default_template' => 'setDefaultTemplate',
+        'delivery_enabled' => 'setDeliveryEnabled',
         'id' => 'setId',
         'linked_space_id' => 'setLinkedSpaceId',
         'name' => 'setName',
-        'period' => 'setPeriod',
         'planned_purge_date' => 'setPlannedPurgeDate',
-        'priority' => 'setPriority',
+        'space_id' => 'setSpaceId',
         'state' => 'setState',
+        'template_resource' => 'setTemplateResource',
         'type' => 'setType',
         'version' => 'setVersion'
     ];
@@ -122,14 +126,15 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'flow' => 'getFlow',
+        'default_template' => 'getDefaultTemplate',
+        'delivery_enabled' => 'getDeliveryEnabled',
         'id' => 'getId',
         'linked_space_id' => 'getLinkedSpaceId',
         'name' => 'getName',
-        'period' => 'getPeriod',
         'planned_purge_date' => 'getPlannedPurgeDate',
-        'priority' => 'getPriority',
+        'space_id' => 'getSpaceId',
         'state' => 'getState',
+        'template_resource' => 'getTemplateResource',
         'type' => 'getType',
         'version' => 'getVersion'
     ];
@@ -152,7 +157,9 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         
-        $this->container['flow'] = isset($data['flow']) ? $data['flow'] : null;
+        $this->container['default_template'] = isset($data['default_template']) ? $data['default_template'] : null;
+        
+        $this->container['delivery_enabled'] = isset($data['delivery_enabled']) ? $data['delivery_enabled'] : null;
         
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         
@@ -160,13 +167,13 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
         
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         
-        $this->container['period'] = isset($data['period']) ? $data['period'] : null;
-        
         $this->container['planned_purge_date'] = isset($data['planned_purge_date']) ? $data['planned_purge_date'] : null;
         
-        $this->container['priority'] = isset($data['priority']) ? $data['priority'] : null;
+        $this->container['space_id'] = isset($data['space_id']) ? $data['space_id'] : null;
         
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        
+        $this->container['template_resource'] = isset($data['template_resource']) ? $data['template_resource'] : null;
         
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         
@@ -268,25 +275,50 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets flow
+     * Gets default_template
      *
-     * @return \WeArePlanet\Sdk\Model\ChargeFlow
+     * @return bool
      */
-    public function getFlow()
+    public function getDefaultTemplate()
     {
-        return $this->container['flow'];
+        return $this->container['default_template'];
     }
 
     /**
-     * Sets flow
+     * Sets default_template
      *
-     * @param \WeArePlanet\Sdk\Model\ChargeFlow $flow The charge flow that this level configuration belongs to.
+     * @param bool $default_template Whether this is the default document template which is used whenever no specific template is specified for the same template type.
      *
      * @return $this
      */
-    public function setFlow($flow)
+    public function setDefaultTemplate($default_template)
     {
-        $this->container['flow'] = $flow;
+        $this->container['default_template'] = $default_template;
+
+        return $this;
+    }
+    
+
+    /**
+     * Gets delivery_enabled
+     *
+     * @return bool
+     */
+    public function getDeliveryEnabled()
+    {
+        return $this->container['delivery_enabled'];
+    }
+
+    /**
+     * Sets delivery_enabled
+     *
+     * @param bool $delivery_enabled Whether documents of this template should be delivered.
+     *
+     * @return $this
+     */
+    public function setDeliveryEnabled($delivery_enabled)
+    {
+        $this->container['delivery_enabled'] = $delivery_enabled;
 
         return $this;
     }
@@ -355,42 +387,17 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name used to identify the charge flow level configuration.
+     * @param string $name The name used to identify the document template.
      *
      * @return $this
      */
     public function setName($name)
     {
         if (!is_null($name) && (mb_strlen($name) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ChargeFlowLevelConfiguration., must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid length for $name when calling DocumentTemplate., must be smaller than or equal to 100.');
         }
 
         $this->container['name'] = $name;
-
-        return $this;
-    }
-    
-
-    /**
-     * Gets period
-     *
-     * @return string
-     */
-    public function getPeriod()
-    {
-        return $this->container['period'];
-    }
-
-    /**
-     * Sets period
-     *
-     * @param string $period The duration specifies how long the level remains active before transitioning to the next one.
-     *
-     * @return $this
-     */
-    public function setPeriod($period)
-    {
-        $this->container['period'] = $period;
 
         return $this;
     }
@@ -422,25 +429,25 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     
 
     /**
-     * Gets priority
+     * Gets space_id
      *
      * @return int
      */
-    public function getPriority()
+    public function getSpaceId()
     {
-        return $this->container['priority'];
+        return $this->container['space_id'];
     }
 
     /**
-     * Sets priority
+     * Sets space_id
      *
-     * @param int $priority The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
+     * @param int $space_id The ID of the space this object belongs to.
      *
      * @return $this
      */
-    public function setPriority($priority)
+    public function setSpaceId($space_id)
     {
-        $this->container['priority'] = $priority;
+        $this->container['space_id'] = $space_id;
 
         return $this;
     }
@@ -472,6 +479,31 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     
 
     /**
+     * Gets template_resource
+     *
+     * @return \WeArePlanet\Sdk\Model\ModelResourcePath
+     */
+    public function getTemplateResource()
+    {
+        return $this->container['template_resource'];
+    }
+
+    /**
+     * Sets template_resource
+     *
+     * @param \WeArePlanet\Sdk\Model\ModelResourcePath $template_resource The resource path to a custom template to be used to generate PDF documents.
+     *
+     * @return $this
+     */
+    public function setTemplateResource($template_resource)
+    {
+        $this->container['template_resource'] = $template_resource;
+
+        return $this;
+    }
+    
+
+    /**
      * Gets type
      *
      * @return int
@@ -484,7 +516,7 @@ class ChargeFlowLevelConfiguration implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int $type The type defines the method of delivering the payment link to the customer.
+     * @param int $type The document template's type.
      *
      * @return $this
      */

@@ -1447,7 +1447,7 @@ class Transaction implements ModelInterface, ArrayAccess
     /**
      * Sets environment
      *
-     * @param \WeArePlanet\Sdk\Model\Environment $environment 
+     * @param \WeArePlanet\Sdk\Model\Environment $environment The environment used when rendering resources.
      *
      * @return $this
      */

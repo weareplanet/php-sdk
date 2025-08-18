@@ -259,7 +259,7 @@ class TokenVersionType implements ModelInterface, ArrayAccess
     /**
      * Sets feature
      *
-     * @param \WeArePlanet\Sdk\Model\Feature $feature 
+     * @param \WeArePlanet\Sdk\Model\Feature $feature The feature that the token version type belongs to.
      *
      * @return $this
      */

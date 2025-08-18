@@ -248,7 +248,7 @@ class RestCountry implements ModelInterface, ArrayAccess
     /**
      * Sets address_format
      *
-     * @param \WeArePlanet\Sdk\Model\RestAddressFormat $address_format Specifies the country's way of formatting addresses.
+     * @param \WeArePlanet\Sdk\Model\RestAddressFormat $address_format The country's way of formatting addresses.
      *
      * @return $this
      */
