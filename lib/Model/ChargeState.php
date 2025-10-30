@@ -1,8 +1,12 @@
 <?php
 /**
- * WeArePlanet SDK
+ * We Are Planet Php SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the We Are Planet payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://www.weareplanet.com
+ * Developer email: ecosystem-team@wallee.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +21,6 @@
  * limitations under the License.
  */
 
-
 namespace WeArePlanet\Sdk\Model;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
@@ -25,20 +28,24 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * ChargeState model
  *
  * @category    Class
- * @description 
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
+ * @license     Apache-2.0
+ * The Apache License, Version 2.0
+ * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
+ * @version     5.0.0
  */
 class ChargeState
 {
     /**
      * Possible values of this enum
      */
-    const PENDING = 'PENDING';
-    const FAILED = 'FAILED';
-    const SUCCESSFUL = 'SUCCESSFUL';
-    
+    public const PENDING = 'PENDING';
+
+    public const FAILED = 'FAILED';
+
+    public const SUCCESSFUL = 'SUCCESSFUL';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -48,7 +55,7 @@ class ChargeState
         return [
             self::PENDING,
             self::FAILED,
-            self::SUCCESSFUL,
+            self::SUCCESSFUL
         ];
     }
 }

@@ -1,8 +1,12 @@
 <?php
 /**
- * WeArePlanet SDK
+ * We Are Planet Php SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the We Are Planet payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://www.weareplanet.com
+ * Developer email: ecosystem-team@wallee.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +21,6 @@
  * limitations under the License.
  */
 
-
 namespace WeArePlanet\Sdk\Model;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
@@ -25,25 +28,34 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * PanType model
  *
  * @category    Class
- * @description 
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
+ * @license     Apache-2.0
+ * The Apache License, Version 2.0
+ * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
+ * @version     5.0.0
  */
 class PanType
 {
     /**
      * Possible values of this enum
      */
-    const PLAIN = 'PLAIN';
-    const PLAIN_GOOGLE_PAY = 'PLAIN_GOOGLE_PAY';
-    const SCHEME_TOKEN = 'SCHEME_TOKEN';
-    const SCHEME_TOKEN_CLICK_TO_PAY = 'SCHEME_TOKEN_CLICK_TO_PAY';
-    const DEVICE_TOKEN_APPLE_PAY = 'DEVICE_TOKEN_APPLE_PAY';
-    const DEVICE_TOKEN_GOOGLE_PAY = 'DEVICE_TOKEN_GOOGLE_PAY';
-    const DEVICE_TOKEN_SAMSUNG_PAY = 'DEVICE_TOKEN_SAMSUNG_PAY';
-    const DEVICE_TOKEN_ANDROID_PAY = 'DEVICE_TOKEN_ANDROID_PAY';
-    
+    public const PLAIN = 'PLAIN';
+
+    public const PLAIN_GOOGLE_PAY = 'PLAIN_GOOGLE_PAY';
+
+    public const SCHEME_TOKEN = 'SCHEME_TOKEN';
+
+    public const SCHEME_TOKEN_CLICK_TO_PAY = 'SCHEME_TOKEN_CLICK_TO_PAY';
+
+    public const DEVICE_TOKEN_APPLE_PAY = 'DEVICE_TOKEN_APPLE_PAY';
+
+    public const DEVICE_TOKEN_GOOGLE_PAY = 'DEVICE_TOKEN_GOOGLE_PAY';
+
+    public const DEVICE_TOKEN_SAMSUNG_PAY = 'DEVICE_TOKEN_SAMSUNG_PAY';
+
+    public const DEVICE_TOKEN_ANDROID_PAY = 'DEVICE_TOKEN_ANDROID_PAY';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -58,7 +70,7 @@ class PanType
             self::DEVICE_TOKEN_APPLE_PAY,
             self::DEVICE_TOKEN_GOOGLE_PAY,
             self::DEVICE_TOKEN_SAMSUNG_PAY,
-            self::DEVICE_TOKEN_ANDROID_PAY,
+            self::DEVICE_TOKEN_ANDROID_PAY
         ];
     }
 }

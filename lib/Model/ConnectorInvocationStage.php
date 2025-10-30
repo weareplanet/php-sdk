@@ -1,8 +1,12 @@
 <?php
 /**
- * WeArePlanet SDK
+ * We Are Planet Php SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the We Are Planet payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://www.weareplanet.com
+ * Developer email: ecosystem-team@wallee.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +21,6 @@
  * limitations under the License.
  */
 
-
 namespace WeArePlanet\Sdk\Model;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
@@ -25,21 +28,26 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * ConnectorInvocationStage model
  *
  * @category    Class
- * @description 
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
+ * @license     Apache-2.0
+ * The Apache License, Version 2.0
+ * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
+ * @version     5.0.0
  */
 class ConnectorInvocationStage
 {
     /**
      * Possible values of this enum
      */
-    const PAYMENT_METHOD_LIST = 'PAYMENT_METHOD_LIST';
-    const FORM_GENERATION = 'FORM_GENERATION';
-    const VALIDATION = 'VALIDATION';
-    const AUTHORIZATION = 'AUTHORIZATION';
-    
+    public const PAYMENT_METHOD_LIST = 'PAYMENT_METHOD_LIST';
+
+    public const FORM_GENERATION = 'FORM_GENERATION';
+
+    public const VALIDATION = 'VALIDATION';
+
+    public const AUTHORIZATION = 'AUTHORIZATION';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -50,7 +58,7 @@ class ConnectorInvocationStage
             self::PAYMENT_METHOD_LIST,
             self::FORM_GENERATION,
             self::VALIDATION,
-            self::AUTHORIZATION,
+            self::AUTHORIZATION
         ];
     }
 }

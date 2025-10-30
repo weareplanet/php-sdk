@@ -1,8 +1,12 @@
 <?php
 /**
- * WeArePlanet SDK
+ * We Are Planet Php SDK
  *
- * This library allows to interact with the WeArePlanet payment service.
+ * This library allows to interact with the We Are Planet payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://www.weareplanet.com
+ * Developer email: ecosystem-team@wallee.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +21,6 @@
  * limitations under the License.
  */
 
-
 namespace WeArePlanet\Sdk\Model;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
@@ -25,22 +28,28 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * FailureCategory model
  *
  * @category    Class
- * @description 
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
- * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache License v2
+ * @license     Apache-2.0
+ * The Apache License, Version 2.0
+ * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
+ * @version     5.0.0
  */
 class FailureCategory
 {
     /**
      * Possible values of this enum
      */
-    const TEMPORARY_ISSUE = 'TEMPORARY_ISSUE';
-    const INTERNAL = 'INTERNAL';
-    const END_USER = 'END_USER';
-    const CONFIGURATION = 'CONFIGURATION';
-    const DEVELOPER = 'DEVELOPER';
-    
+    public const TEMPORARY_ISSUE = 'TEMPORARY_ISSUE';
+
+    public const INTERNAL = 'INTERNAL';
+
+    public const END_USER = 'END_USER';
+
+    public const CONFIGURATION = 'CONFIGURATION';
+
+    public const DEVELOPER = 'DEVELOPER';
+
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -52,7 +61,7 @@ class FailureCategory
             self::INTERNAL,
             self::END_USER,
             self::CONFIGURATION,
-            self::DEVELOPER,
+            self::DEVELOPER
         ];
     }
 }
