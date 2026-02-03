@@ -1,6 +1,6 @@
 <?php
 /**
- * We Are Planet Php SDK
+ * We Are Planet PHP SDK
  *
  * This library allows to interact with the We Are Planet payment service.
  *
@@ -67,7 +67,7 @@ class TransactionCompletionsServiceTest extends TestCase
             'State must be FULFILL'
         );
 
-        $transactionCompletion = self::$transactionsService->postPaymentTransactionsIdCompleteOffline(
+        $transactionCompletion = self::$transactionsService->postPaymentTransactionsIdCompleteOnline(
             $transaction->getId(),
             Constants::$spaceId
         );

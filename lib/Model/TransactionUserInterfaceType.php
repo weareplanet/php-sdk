@@ -1,6 +1,6 @@
 <?php
 /**
- * We Are Planet Php SDK
+ * We Are Planet PHP SDK
  *
  * This library allows to interact with the We Are Planet payment service.
  *
@@ -27,13 +27,13 @@ use \WeArePlanet\Sdk\ObjectSerializer;
 /**
  * TransactionUserInterfaceType model
  *
- * @category    Class
+ * @category Class
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.1.0
+ * @version     5.2.0
  */
 class TransactionUserInterfaceType
 {
@@ -50,6 +50,8 @@ class TransactionUserInterfaceType
 
     public const TERMINAL = 'TERMINAL';
 
+    public const CLOUD_TILL_INTERFACE = 'CLOUD_TILL_INTERFACE';
+
     public const EXPRESS_CHECKOUT = 'EXPRESS_CHECKOUT';
 
     /**
@@ -64,6 +66,7 @@ class TransactionUserInterfaceType
             self::PAYMENT_PAGE,
             self::MOBILE_SDK,
             self::TERMINAL,
+            self::CLOUD_TILL_INTERFACE,
             self::EXPRESS_CHECKOUT
         ];
     }

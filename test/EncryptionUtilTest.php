@@ -1,6 +1,6 @@
 <?php
 /**
- * We Are Planet Php SDK
+ * We Are Planet PHP SDK
  *
  * This library allows to interact with the We Are Planet payment service.
  *
