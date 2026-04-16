@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutShippingAddressChangeResponse model
+ * WalleejoinPartnership model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class WalleejoinPartnership implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutShippingAddressChangeResponse';
+    protected static $openAPIModelName = 'WalleejoinPartnership';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order_total' => 'float',
-        'shipping_options' => '\WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]'
+        'pricing_profile_sell_rate' => 'object',
+        'merchant_account' => 'int',
+        'partnership_type' => '\WeArePlanet\Sdk\Model\WalleejoinPartnershipType',
+        'state' => '\WeArePlanet\Sdk\Model\WalleejoinPartnershipState',
+        'version' => 'int',
+        'subscription_product_id' => 'int',
+        'partner_account' => 'int'
     ];
 
     /**
@@ -67,8 +72,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order_total' => null,
-        'shipping_options' => null
+        'pricing_profile_sell_rate' => null,
+        'merchant_account' => 'int64',
+        'partnership_type' => null,
+        'state' => null,
+        'version' => 'int32',
+        'subscription_product_id' => 'int64',
+        'partner_account' => 'int64'
     ];
 
     /**
@@ -77,8 +87,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order_total' => false,
-        'shipping_options' => false
+        'pricing_profile_sell_rate' => false,
+        'merchant_account' => false,
+        'partnership_type' => false,
+        'state' => false,
+        'version' => false,
+        'subscription_product_id' => false,
+        'partner_account' => false
     ];
 
     /**
@@ -167,8 +182,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'order_total' => 'orderTotal',
-        'shipping_options' => 'shippingOptions'
+        'pricing_profile_sell_rate' => 'pricingProfileSellRate',
+        'merchant_account' => 'merchantAccount',
+        'partnership_type' => 'partnershipType',
+        'state' => 'state',
+        'version' => 'version',
+        'subscription_product_id' => 'subscriptionProductId',
+        'partner_account' => 'partnerAccount'
     ];
 
     /**
@@ -177,8 +197,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'order_total' => 'setOrderTotal',
-        'shipping_options' => 'setShippingOptions'
+        'pricing_profile_sell_rate' => 'setPricingProfileSellRate',
+        'merchant_account' => 'setMerchantAccount',
+        'partnership_type' => 'setPartnershipType',
+        'state' => 'setState',
+        'version' => 'setVersion',
+        'subscription_product_id' => 'setSubscriptionProductId',
+        'partner_account' => 'setPartnerAccount'
     ];
 
     /**
@@ -187,8 +212,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'order_total' => 'getOrderTotal',
-        'shipping_options' => 'getShippingOptions'
+        'pricing_profile_sell_rate' => 'getPricingProfileSellRate',
+        'merchant_account' => 'getMerchantAccount',
+        'partnership_type' => 'getPartnershipType',
+        'state' => 'getState',
+        'version' => 'getVersion',
+        'subscription_product_id' => 'getSubscriptionProductId',
+        'partner_account' => 'getPartnerAccount'
     ];
 
     /**
@@ -248,8 +278,13 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order_total', $data ?? [], null);
-        $this->setIfExists('shipping_options', $data ?? [], null);
+        $this->setIfExists('pricing_profile_sell_rate', $data ?? [], null);
+        $this->setIfExists('merchant_account', $data ?? [], null);
+        $this->setIfExists('partnership_type', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('subscription_product_id', $data ?? [], null);
+        $this->setIfExists('partner_account', $data ?? [], null);
     }
 
     /**
@@ -279,6 +314,9 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -295,55 +333,190 @@ class ExpressCheckoutShippingAddressChangeResponse implements ModelInterface, Ar
 
 
     /**
-     * Gets order_total
+     * Gets pricing_profile_sell_rate
      *
-     * @return float|null
+     * @return object|null
      */
-    public function getOrderTotal()
+    public function getPricingProfileSellRate()
     {
-        return $this->container['order_total'];
+        return $this->container['pricing_profile_sell_rate'];
     }
 
     /**
-     * Sets order_total
+     * Sets pricing_profile_sell_rate
      *
-     * @param float|null $order_total order_total
+     * @param object|null $pricing_profile_sell_rate pricing_profile_sell_rate
      *
      * @return self
      */
-    public function setOrderTotal($order_total)
+    public function setPricingProfileSellRate($pricing_profile_sell_rate)
     {
-        if (is_null($order_total)) {
-            throw new \InvalidArgumentException('non-nullable order_total cannot be null');
+        if (is_null($pricing_profile_sell_rate)) {
+            throw new \InvalidArgumentException('non-nullable pricing_profile_sell_rate cannot be null');
         }
-        $this->container['order_total'] = $order_total;
+        $this->container['pricing_profile_sell_rate'] = $pricing_profile_sell_rate;
 
         return $this;
     }
 
     /**
-     * Gets shipping_options
+     * Gets merchant_account
      *
-     * @return \WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]|null
+     * @return int|null
      */
-    public function getShippingOptions()
+    public function getMerchantAccount()
     {
-        return $this->container['shipping_options'];
+        return $this->container['merchant_account'];
     }
 
     /**
-     * Sets shipping_options
+     * Sets merchant_account
      *
-     * @param \WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]|null $shipping_options shipping_options
+     * @param int|null $merchant_account The ID of the merchant account.
      *
      * @return self
      */
-    public function setShippingOptions($shipping_options)
+    public function setMerchantAccount($merchant_account)
     {
-        if (is_null($shipping_options)) {
-            throw new \InvalidArgumentException('non-nullable shipping_options cannot be null');
+        if (is_null($merchant_account)) {
+            throw new \InvalidArgumentException('non-nullable merchant_account cannot be null');
         }
-        $this->container['shipping_options'] = $shipping_options;
+        $this->container['merchant_account'] = $merchant_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets partnership_type
+     *
+     * @return \WeArePlanet\Sdk\Model\WalleejoinPartnershipType|null
+     */
+    public function getPartnershipType()
+    {
+        return $this->container['partnership_type'];
+    }
+
+    /**
+     * Sets partnership_type
+     *
+     * @param \WeArePlanet\Sdk\Model\WalleejoinPartnershipType|null $partnership_type partnership_type
+     *
+     * @return self
+     */
+    public function setPartnershipType($partnership_type)
+    {
+        if (is_null($partnership_type)) {
+            throw new \InvalidArgumentException('non-nullable partnership_type cannot be null');
+        }
+        $this->container['partnership_type'] = $partnership_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return \WeArePlanet\Sdk\Model\WalleejoinPartnershipState|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param \WeArePlanet\Sdk\Model\WalleejoinPartnershipState|null $state state
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        }
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int $version The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_product_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionProductId()
+    {
+        return $this->container['subscription_product_id'];
+    }
+
+    /**
+     * Sets subscription_product_id
+     *
+     * @param int|null $subscription_product_id The ID of the product.
+     *
+     * @return self
+     */
+    public function setSubscriptionProductId($subscription_product_id)
+    {
+        if (is_null($subscription_product_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_id cannot be null');
+        }
+        $this->container['subscription_product_id'] = $subscription_product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets partner_account
+     *
+     * @return int|null
+     */
+    public function getPartnerAccount()
+    {
+        return $this->container['partner_account'];
+    }
+
+    /**
+     * Sets partner_account
+     *
+     * @param int|null $partner_account The ID of the partner account.
+     *
+     * @return self
+     */
+    public function setPartnerAccount($partner_account)
+    {
+        if (is_null($partner_account)) {
+            throw new \InvalidArgumentException('non-nullable partner_account cannot be null');
+        }
+        $this->container['partner_account'] = $partner_account;
 
         return $this;
     }

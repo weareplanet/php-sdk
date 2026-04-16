@@ -27,18 +27,19 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutShippingMethodChangeRequest model
+ * SubscriptionComponentGroupConfigurationRequest model
  *
  * @category Class
+ * @description Model used to configure the Subscription Product to be assigned to the Account
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubscriptionComponentGroupConfigurationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +48,7 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutShippingMethodChangeRequest';
+    protected static $openAPIModelName = 'SubscriptionComponentGroupConfigurationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +56,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'shipping_method_id' => 'string'
+        'quantity' => 'float',
+        'subscription_product_component_group_id' => 'int',
+        'subscription_product_component_reference_id' => 'int'
     ];
 
     /**
@@ -66,7 +69,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'shipping_method_id' => null
+        'quantity' => null,
+        'subscription_product_component_group_id' => 'int64',
+        'subscription_product_component_reference_id' => 'int64'
     ];
 
     /**
@@ -75,7 +80,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipping_method_id' => false
+        'quantity' => false,
+        'subscription_product_component_group_id' => false,
+        'subscription_product_component_reference_id' => false
     ];
 
     /**
@@ -164,7 +171,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'shipping_method_id' => 'shippingMethodId'
+        'quantity' => 'quantity',
+        'subscription_product_component_group_id' => 'subscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'subscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -173,7 +182,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'shipping_method_id' => 'setShippingMethodId'
+        'quantity' => 'setQuantity',
+        'subscription_product_component_group_id' => 'setSubscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'setSubscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -182,7 +193,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'shipping_method_id' => 'getShippingMethodId'
+        'quantity' => 'getQuantity',
+        'subscription_product_component_group_id' => 'getSubscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'getSubscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -242,7 +255,9 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('shipping_method_id', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('subscription_product_component_group_id', $data ?? [], null);
+        $this->setIfExists('subscription_product_component_reference_id', $data ?? [], null);
     }
 
     /**
@@ -288,28 +303,82 @@ class ExpressCheckoutShippingMethodChangeRequest implements ModelInterface, Arra
 
 
     /**
-     * Gets shipping_method_id
+     * Gets quantity
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getShippingMethodId()
+    public function getQuantity()
     {
-        return $this->container['shipping_method_id'];
+        return $this->container['quantity'];
     }
 
     /**
-     * Sets shipping_method_id
+     * Sets quantity
      *
-     * @param string|null $shipping_method_id Identifier of the selected shipping option.
+     * @param float|null $quantity quantity
      *
      * @return self
      */
-    public function setShippingMethodId($shipping_method_id)
+    public function setQuantity($quantity)
     {
-        if (is_null($shipping_method_id)) {
-            throw new \InvalidArgumentException('non-nullable shipping_method_id cannot be null');
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-        $this->container['shipping_method_id'] = $shipping_method_id;
+        $this->container['quantity'] = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_product_component_group_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionProductComponentGroupId()
+    {
+        return $this->container['subscription_product_component_group_id'];
+    }
+
+    /**
+     * Sets subscription_product_component_group_id
+     *
+     * @param int|null $subscription_product_component_group_id subscription_product_component_group_id
+     *
+     * @return self
+     */
+    public function setSubscriptionProductComponentGroupId($subscription_product_component_group_id)
+    {
+        if (is_null($subscription_product_component_group_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_component_group_id cannot be null');
+        }
+        $this->container['subscription_product_component_group_id'] = $subscription_product_component_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_product_component_reference_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionProductComponentReferenceId()
+    {
+        return $this->container['subscription_product_component_reference_id'];
+    }
+
+    /**
+     * Sets subscription_product_component_reference_id
+     *
+     * @param int|null $subscription_product_component_reference_id subscription_product_component_reference_id
+     *
+     * @return self
+     */
+    public function setSubscriptionProductComponentReferenceId($subscription_product_component_reference_id)
+    {
+        if (is_null($subscription_product_component_reference_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_component_reference_id cannot be null');
+        }
+        $this->container['subscription_product_component_reference_id'] = $subscription_product_component_reference_id;
 
         return $this;
     }

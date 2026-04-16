@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * BogusExpressCheckoutPaymentData model
+ * WalleejoinCreatePartnershipRequestDto model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \JsonSerializable
+class WalleejoinCreatePartnershipRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BogusExpressCheckoutPaymentData';
+    protected static $openAPIModelName = 'WalleejoinCreatePartnershipRequestDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'payment_token' => 'string',
-        'cryptogram' => 'string'
+        'partner_account_id' => 'int',
+        'pricing_profile_sell_rate_id' => 'int',
+        'subscription_product_id' => 'int',
+        'merchant_email_address' => 'string'
     ];
 
     /**
@@ -67,8 +69,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'payment_token' => null,
-        'cryptogram' => null
+        'partner_account_id' => 'int64',
+        'pricing_profile_sell_rate_id' => 'int64',
+        'subscription_product_id' => 'int64',
+        'merchant_email_address' => null
     ];
 
     /**
@@ -77,8 +81,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'payment_token' => false,
-        'cryptogram' => false
+        'partner_account_id' => false,
+        'pricing_profile_sell_rate_id' => false,
+        'subscription_product_id' => false,
+        'merchant_email_address' => false
     ];
 
     /**
@@ -167,8 +173,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'payment_token' => 'paymentToken',
-        'cryptogram' => 'cryptogram'
+        'partner_account_id' => 'partnerAccountId',
+        'pricing_profile_sell_rate_id' => 'pricingProfileSellRateId',
+        'subscription_product_id' => 'subscriptionProductId',
+        'merchant_email_address' => 'merchantEmailAddress'
     ];
 
     /**
@@ -177,8 +185,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'payment_token' => 'setPaymentToken',
-        'cryptogram' => 'setCryptogram'
+        'partner_account_id' => 'setPartnerAccountId',
+        'pricing_profile_sell_rate_id' => 'setPricingProfileSellRateId',
+        'subscription_product_id' => 'setSubscriptionProductId',
+        'merchant_email_address' => 'setMerchantEmailAddress'
     ];
 
     /**
@@ -187,8 +197,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'payment_token' => 'getPaymentToken',
-        'cryptogram' => 'getCryptogram'
+        'partner_account_id' => 'getPartnerAccountId',
+        'pricing_profile_sell_rate_id' => 'getPricingProfileSellRateId',
+        'subscription_product_id' => 'getSubscriptionProductId',
+        'merchant_email_address' => 'getMerchantEmailAddress'
     ];
 
     /**
@@ -248,8 +260,10 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('payment_token', $data ?? [], null);
-        $this->setIfExists('cryptogram', $data ?? [], null);
+        $this->setIfExists('partner_account_id', $data ?? [], null);
+        $this->setIfExists('pricing_profile_sell_rate_id', $data ?? [], null);
+        $this->setIfExists('subscription_product_id', $data ?? [], null);
+        $this->setIfExists('merchant_email_address', $data ?? [], null);
     }
 
     /**
@@ -295,55 +309,109 @@ class BogusExpressCheckoutPaymentData implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets payment_token
+     * Gets partner_account_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getPaymentToken()
+    public function getPartnerAccountId()
     {
-        return $this->container['payment_token'];
+        return $this->container['partner_account_id'];
     }
 
     /**
-     * Sets payment_token
+     * Sets partner_account_id
      *
-     * @param string|null $payment_token Wallet-generated payment token collected during approval.
+     * @param int|null $partner_account_id partner_account_id
      *
      * @return self
      */
-    public function setPaymentToken($payment_token)
+    public function setPartnerAccountId($partner_account_id)
     {
-        if (is_null($payment_token)) {
-            throw new \InvalidArgumentException('non-nullable payment_token cannot be null');
+        if (is_null($partner_account_id)) {
+            throw new \InvalidArgumentException('non-nullable partner_account_id cannot be null');
         }
-        $this->container['payment_token'] = $payment_token;
+        $this->container['partner_account_id'] = $partner_account_id;
 
         return $this;
     }
 
     /**
-     * Gets cryptogram
+     * Gets pricing_profile_sell_rate_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCryptogram()
+    public function getPricingProfileSellRateId()
     {
-        return $this->container['cryptogram'];
+        return $this->container['pricing_profile_sell_rate_id'];
     }
 
     /**
-     * Sets cryptogram
+     * Sets pricing_profile_sell_rate_id
      *
-     * @param string|null $cryptogram Wallet-generated cryptogram collected during approval.
+     * @param int|null $pricing_profile_sell_rate_id pricing_profile_sell_rate_id
      *
      * @return self
      */
-    public function setCryptogram($cryptogram)
+    public function setPricingProfileSellRateId($pricing_profile_sell_rate_id)
     {
-        if (is_null($cryptogram)) {
-            throw new \InvalidArgumentException('non-nullable cryptogram cannot be null');
+        if (is_null($pricing_profile_sell_rate_id)) {
+            throw new \InvalidArgumentException('non-nullable pricing_profile_sell_rate_id cannot be null');
         }
-        $this->container['cryptogram'] = $cryptogram;
+        $this->container['pricing_profile_sell_rate_id'] = $pricing_profile_sell_rate_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_product_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionProductId()
+    {
+        return $this->container['subscription_product_id'];
+    }
+
+    /**
+     * Sets subscription_product_id
+     *
+     * @param int|null $subscription_product_id subscription_product_id
+     *
+     * @return self
+     */
+    public function setSubscriptionProductId($subscription_product_id)
+    {
+        if (is_null($subscription_product_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_id cannot be null');
+        }
+        $this->container['subscription_product_id'] = $subscription_product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_email_address
+     *
+     * @return string|null
+     */
+    public function getMerchantEmailAddress()
+    {
+        return $this->container['merchant_email_address'];
+    }
+
+    /**
+     * Sets merchant_email_address
+     *
+     * @param string|null $merchant_email_address merchant_email_address
+     *
+     * @return self
+     */
+    public function setMerchantEmailAddress($merchant_email_address)
+    {
+        if (is_null($merchant_email_address)) {
+            throw new \InvalidArgumentException('non-nullable merchant_email_address cannot be null');
+        }
+        $this->container['merchant_email_address'] = $merchant_email_address;
 
         return $this;
     }

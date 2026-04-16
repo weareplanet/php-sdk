@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutSessionCreate model
+ * WalleeJoinPartnershipSearchResponse model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutSession.Create';
+    protected static $openAPIModelName = 'Wallee_Join_Partnership_Search_Response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
-        'merchant_shipping_callback_url' => 'string',
-        'currency' => 'string',
-        'shipping_options' => '\WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]'
+        'data' => '\WeArePlanet\Sdk\Model\WalleejoinPartnership[]',
+        'offset' => 'int',
+        'has_more' => 'bool',
+        'limit' => 'int'
     ];
 
     /**
@@ -69,10 +69,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'line_items' => null,
-        'merchant_shipping_callback_url' => null,
-        'currency' => null,
-        'shipping_options' => null
+        'data' => null,
+        'offset' => 'int32',
+        'has_more' => null,
+        'limit' => 'int32'
     ];
 
     /**
@@ -81,10 +81,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'line_items' => false,
-        'merchant_shipping_callback_url' => false,
-        'currency' => false,
-        'shipping_options' => false
+        'data' => false,
+        'offset' => false,
+        'has_more' => false,
+        'limit' => false
     ];
 
     /**
@@ -173,10 +173,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'line_items' => 'lineItems',
-        'merchant_shipping_callback_url' => 'merchantShippingCallbackUrl',
-        'currency' => 'currency',
-        'shipping_options' => 'shippingOptions'
+        'data' => 'data',
+        'offset' => 'offset',
+        'has_more' => 'hasMore',
+        'limit' => 'limit'
     ];
 
     /**
@@ -185,10 +185,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'line_items' => 'setLineItems',
-        'merchant_shipping_callback_url' => 'setMerchantShippingCallbackUrl',
-        'currency' => 'setCurrency',
-        'shipping_options' => 'setShippingOptions'
+        'data' => 'setData',
+        'offset' => 'setOffset',
+        'has_more' => 'setHasMore',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -197,10 +197,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'line_items' => 'getLineItems',
-        'merchant_shipping_callback_url' => 'getMerchantShippingCallbackUrl',
-        'currency' => 'getCurrency',
-        'shipping_options' => 'getShippingOptions'
+        'data' => 'getData',
+        'offset' => 'getOffset',
+        'has_more' => 'getHasMore',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -260,10 +260,10 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('line_items', $data ?? [], null);
-        $this->setIfExists('merchant_shipping_callback_url', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('shipping_options', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
     }
 
     /**
@@ -309,109 +309,109 @@ class ExpressCheckoutSessionCreate implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets line_items
+     * Gets data
      *
-     * @return \WeArePlanet\Sdk\Model\LineItem[]|null
+     * @return \WeArePlanet\Sdk\Model\WalleejoinPartnership[]|null
      */
-    public function getLineItems()
+    public function getData()
     {
-        return $this->container['line_items'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets line_items
+     * Sets data
      *
-     * @param \WeArePlanet\Sdk\Model\LineItem[]|null $line_items line_items
+     * @param \WeArePlanet\Sdk\Model\WalleejoinPartnership[]|null $data An array containing the actual response objects.
      *
      * @return self
      */
-    public function setLineItems($line_items)
+    public function setData($data)
     {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['line_items'] = $line_items;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets merchant_shipping_callback_url
+     * Gets offset
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getMerchantShippingCallbackUrl()
+    public function getOffset()
     {
-        return $this->container['merchant_shipping_callback_url'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets merchant_shipping_callback_url
+     * Sets offset
      *
-     * @param string|null $merchant_shipping_callback_url The URL to fetch the shipping options from.
+     * @param int|null $offset The number of skipped objects.
      *
      * @return self
      */
-    public function setMerchantShippingCallbackUrl($merchant_shipping_callback_url)
+    public function setOffset($offset)
     {
-        if (is_null($merchant_shipping_callback_url)) {
-            throw new \InvalidArgumentException('non-nullable merchant_shipping_callback_url cannot be null');
+        if (is_null($offset)) {
+            throw new \InvalidArgumentException('non-nullable offset cannot be null');
         }
-        $this->container['merchant_shipping_callback_url'] = $merchant_shipping_callback_url;
+        $this->container['offset'] = $offset;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets has_more
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getCurrency()
+    public function getHasMore()
     {
-        return $this->container['currency'];
+        return $this->container['has_more'];
     }
 
     /**
-     * Sets currency
+     * Sets has_more
      *
-     * @param string|null $currency The currency of the session.
+     * @param bool|null $has_more Whether there are more objects available after this set. If false, there are no more objects to retrieve.
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setHasMore($has_more)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
         }
-        $this->container['currency'] = $currency;
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }
 
     /**
-     * Gets shipping_options
+     * Gets limit
      *
-     * @return \WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]|null
+     * @return int|null
      */
-    public function getShippingOptions()
+    public function getLimit()
     {
-        return $this->container['shipping_options'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets shipping_options
+     * Sets limit
      *
-     * @param \WeArePlanet\Sdk\Model\ExpressCheckoutShippingOption[]|null $shipping_options shipping_options
+     * @param int|null $limit The applied limit on the number of objects returned.
      *
      * @return self
      */
-    public function setShippingOptions($shipping_options)
+    public function setLimit($limit)
     {
-        if (is_null($shipping_options)) {
-            throw new \InvalidArgumentException('non-nullable shipping_options cannot be null');
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-        $this->container['shipping_options'] = $shipping_options;
+        $this->container['limit'] = $limit;
 
         return $this;
     }

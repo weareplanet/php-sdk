@@ -186,10 +186,15 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /application-users/{userId}/space-roles
   &nbsp;&nbsp;&nbsp;&nbsp;Assign a role to an application user for a space
   <br><br>
-- <strong>BogusExpressCheckoutService</strong><br>
-  &nbsp;&nbsp;* <code>postBogusExpressCheckoutOnApprove</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /bogus-express-checkout/on-approve
-  &nbsp;&nbsp;&nbsp;&nbsp;Approve express checkout wallet payment
+- <strong>BoardingSubscriptionStrategyService</strong><br>
+  &nbsp;&nbsp;* <code>postBoardingSubscriptionStrategyInformation</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /boarding/subscription-strategy/information
+  &nbsp;&nbsp;&nbsp;&nbsp;Create a boarding subscription information for an account
+  <br><br>
+- <strong>BoardingSubscriptionStrategyService</strong><br>
+  &nbsp;&nbsp;* <code>postBoardingSubscriptionStrategyPlans</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /boarding/subscription-strategy/plans
+  &nbsp;&nbsp;&nbsp;&nbsp;Create new Boarding Trial Subscription to Account
   <br><br>
 - <strong>ChargeAttemptsService</strong><br>
   &nbsp;&nbsp;* <code>getPaymentChargeAttempts</code>
@@ -501,21 +506,6 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /document-templates/search
   &nbsp;&nbsp;&nbsp;&nbsp;Search document templates
   <br><br>
-- <strong>ExpressCheckoutService</strong><br>
-  &nbsp;&nbsp;* <code>patchExpressCheckoutShippingAddressChange</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /express-checkout/shipping/address-change
-  &nbsp;&nbsp;&nbsp;&nbsp;Change shipping address
-  <br><br>
-- <strong>ExpressCheckoutService</strong><br>
-  &nbsp;&nbsp;* <code>patchExpressCheckoutShippingMethodChange</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /express-checkout/shipping/method-change
-  &nbsp;&nbsp;&nbsp;&nbsp;Change shipping method
-  <br><br>
-- <strong>ExpressCheckoutService</strong><br>
-  &nbsp;&nbsp;* <code>postExpressCheckoutCreateSession</code>
-  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /express-checkout/create-session
-  &nbsp;&nbsp;&nbsp;&nbsp;Create a new Express Checkout Session
-  <br><br>
 - <strong>HumanUsersService</strong><br>
   &nbsp;&nbsp;* <code>deleteHumanUsersId</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /human-users/{id}
@@ -580,6 +570,66 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;* <code>postHumanUsersUserIdSpaceRoles</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /human-users/{userId}/space-roles
   &nbsp;&nbsp;&nbsp;&nbsp;Assign a role to a human user for a space
+  <br><br>
+- <strong>JoinAdminPartnerConfigurationService</strong><br>
+  &nbsp;&nbsp;* <code>deleteAdminJoinProgramPartnersConfigurationsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /admin/join-program/partners/configurations/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Delete a join admin partner configuration
+  <br><br>
+- <strong>JoinAdminPartnerConfigurationService</strong><br>
+  &nbsp;&nbsp;* <code>getAdminJoinProgramPartnersConfigurationsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /admin/join-program/partners/configurations/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Retrieve a join admin partner configuration
+  <br><br>
+- <strong>JoinAdminPartnerConfigurationService</strong><br>
+  &nbsp;&nbsp;* <code>patchAdminJoinProgramPartnersConfigurationsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /admin/join-program/partners/configurations/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Update a join admin partner configuration
+  <br><br>
+- <strong>JoinAdminPartnerConfigurationService</strong><br>
+  &nbsp;&nbsp;* <code>postAdminJoinProgramPartnersConfigurations</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /admin/join-program/partners/configurations
+  &nbsp;&nbsp;&nbsp;&nbsp;Create a join admin partner configuration
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>deleteJoinProgramPartnershipsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /join-program/partnerships/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Delete a join partnership
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>getJoinProgramPartnerships</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /join-program/partnerships
+  &nbsp;&nbsp;&nbsp;&nbsp;List all join partnerships
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>getJoinProgramPartnershipsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /join-program/partnerships/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Retrieve a join partnership
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>getJoinProgramPartnershipsSearch</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /join-program/partnerships/search
+  &nbsp;&nbsp;&nbsp;&nbsp;Search join partnerships
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>patchJoinProgramPartnershipsId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>PATCH</strong> /join-program/partnerships/{id}
+  &nbsp;&nbsp;&nbsp;&nbsp;Update a join partnership
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>postJoinProgramPartnershipsCreateAffiliate</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /join-program/partnerships/create-affiliate
+  &nbsp;&nbsp;&nbsp;&nbsp;Create a join account partnership
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>postJoinProgramPartnershipsCreateIsv</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /join-program/partnerships/create-isv
+  &nbsp;&nbsp;&nbsp;&nbsp;Create a join platform partnership
+  <br><br>
+- <strong>JoinPartnershipService</strong><br>
+  &nbsp;&nbsp;* <code>postJoinProgramPartnershipsCreateSimple</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /join-program/partnerships/create-simple
+  &nbsp;&nbsp;&nbsp;&nbsp;Create a join partnership for an existing merchant
   <br><br>
 - <strong>LabelDescriptorsService</strong><br>
   &nbsp;&nbsp;* <code>getLabelDescriptors</code>
@@ -800,6 +850,11 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;* <code>postPaymentProcessorConfigurations</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /payment/processor-configurations
   &nbsp;&nbsp;&nbsp;&nbsp;Create a payment processor configuration
+  <br><br>
+- <strong>PaymentProcessorConfigurationsService</strong><br>
+  &nbsp;&nbsp;* <code>postPaymentProcessorConfigurationsIdLinkContract</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /payment/processor-configurations/{id}/link-contract
+  &nbsp;&nbsp;&nbsp;&nbsp;Link a contract with a payment processor configuration
   <br><br>
 - <strong>PaymentProcessorsService</strong><br>
   &nbsp;&nbsp;* <code>getPaymentProcessors</code>
@@ -1307,6 +1362,11 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;Derecognize a transaction invoice
   <br><br>
 - <strong>TransactionInvoicesService</strong><br>
+  &nbsp;&nbsp;* <code>postPaymentTransactionsInvoicesIdInstantPaymentUrl</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /payment/transactions/invoices/{id}/instant-payment-url
+  &nbsp;&nbsp;&nbsp;&nbsp;Create an instant invoice payment URL
+  <br><br>
+- <strong>TransactionInvoicesService</strong><br>
   &nbsp;&nbsp;* <code>postPaymentTransactionsInvoicesIdMarkPaid</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /payment/transactions/invoices/{id}/mark-paid
   &nbsp;&nbsp;&nbsp;&nbsp;Mark a transaction invoice as paid
@@ -1551,6 +1611,21 @@ Web Api client: [*link*](https://paymentshub.weareplanet.com//api/client)<br>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /web-apps/uninstall
   &nbsp;&nbsp;&nbsp;&nbsp;Uninstall a web app
   <br><br>
+- <strong>WebUiAccountThemeService</strong><br>
+  &nbsp;&nbsp;* <code>deleteAccountUiThemesAccountId</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /account/ui-themes/{accountId}
+  &nbsp;&nbsp;&nbsp;&nbsp;Delete account UI theme
+  <br><br>
+- <strong>WebUiAccountThemeService</strong><br>
+  &nbsp;&nbsp;* <code>deleteAccountUiThemesAccountIdLogo</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DELETE</strong> /account/ui-themes/{accountId}/logo
+  &nbsp;&nbsp;&nbsp;&nbsp;Delete account theme logo
+  <br><br>
+- <strong>WebUiAccountThemeService</strong><br>
+  &nbsp;&nbsp;* <code>postAccountUiThemesCreate</code>
+  &nbsp;&nbsp;&nbsp;&nbsp;<strong>POST</strong> /account/ui-themes/create
+  &nbsp;&nbsp;&nbsp;&nbsp;Create account UI theme
+  <br><br>
 - <strong>WebhookEncryptionKeysService</strong><br>
   &nbsp;&nbsp;* <code>getWebhooksEncryptionKeysId</code>
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>GET</strong> /webhooks/encryption-keys/{id}
@@ -1673,6 +1748,7 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>AbstractTransactionCommentActive</strong>
 * <strong>AbstractTransactionInvoiceCommentActive</strong>
 * <strong>AbstractTransactionPending</strong>
+* <strong>AbstractWalleejoinPartnership</strong>
 * <strong>AbstractWebhookListenerUpdate</strong>
 * <strong>AbstractWebhookUrlUpdate</strong>
 * <strong>Account</strong>
@@ -1694,8 +1770,7 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>AuthenticatedCardData</strong>
 * <strong>AuthenticatedCardDataCreate</strong>
 * <strong>AuthenticatedCardRequest</strong>
-* <strong>BogusExpressCheckoutApprovalRequest</strong>
-* <strong>BogusExpressCheckoutPaymentData</strong>
+* <strong>BoardingStrategyInformationRequest</strong>
 * <strong>CardAuthenticationResponse</strong>
 * <strong>CardAuthenticationVersion</strong>
 * <strong>CardCryptogram</strong>
@@ -1773,17 +1848,6 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>DocumentTemplateTypeListResponse</strong>
 * <strong>DocumentTemplateTypeSearchResponse</strong>
 * <strong>Environment</strong>
-* <strong>ExpressCheckoutApprovalResponse</strong>
-* <strong>ExpressCheckoutCreateResponse</strong>
-* <strong>ExpressCheckoutSession</strong>
-* <strong>ExpressCheckoutSessionCreate</strong>
-* <strong>ExpressCheckoutSessionState</strong>
-* <strong>ExpressCheckoutShippingAddressChangeRequest</strong>
-* <strong>ExpressCheckoutShippingAddressChangeResponse</strong>
-* <strong>ExpressCheckoutShippingMethodChangeRequest</strong>
-* <strong>ExpressCheckoutShippingMethodChangeResponse</strong>
-* <strong>ExpressCheckoutShippingOption</strong>
-* <strong>ExpressCheckoutWalletType</strong>
 * <strong>FailureCategory</strong>
 * <strong>FailureReason</strong>
 * <strong>Feature</strong>
@@ -1863,6 +1927,8 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>PaymentContract</strong>
 * <strong>PaymentContractState</strong>
 * <strong>PaymentContractType</strong>
+* <strong>PaymentFacilitatorPricingProfileDto</strong>
+* <strong>PaymentFacilitatorPricingProfileState</strong>
 * <strong>PaymentInformationHash</strong>
 * <strong>PaymentInformationHashType</strong>
 * <strong>PaymentMethod</strong>
@@ -1939,6 +2005,7 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>SalesChannelSearchResponse</strong>
 * <strong>Scope</strong>
 * <strong>ScopeSingleSignOnProvider</strong>
+* <strong>Setter</strong>
 * <strong>SingleSignOnUser</strong>
 * <strong>SingleSignOnUserCreate</strong>
 * <strong>SingleSignOnUserListResponse</strong>
@@ -1953,9 +2020,15 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>SpaceSearchResponse</strong>
 * <strong>SpaceUpdate</strong>
 * <strong>SpaceView</strong>
+* <strong>StateListResponse</strong>
 * <strong>StaticValue</strong>
 * <strong>StaticValueListResponse</strong>
 * <strong>StaticValueSearchResponse</strong>
+* <strong>StoreTrialSubscriptionRequest</strong>
+* <strong>StoreTrialSubscriptionRequestSetter</strong>
+* <strong>SubscriptionComponentGroupConfigurationRequest</strong>
+* <strong>SubscriptionComponentGroupConfigurationRequestSetter</strong>
+* <strong>SubscriptionProductDto</strong>
 * <strong>Tax</strong>
 * <strong>TaxCreate</strong>
 * <strong>TenantDatabase</strong>
@@ -2017,8 +2090,20 @@ Additional Api models documentation: [*link*](https://paymentshub.weareplanet.co
 * <strong>UserSpaceRole</strong>
 * <strong>UserSpaceRoleListResponse</strong>
 * <strong>UserType</strong>
+* <strong>WalleeJoinPartnershipListResponse</strong>
+* <strong>WalleeJoinPartnershipSearchResponse</strong>
+* <strong>WalleejoinAdminPartnerConfigurationRequestDto</strong>
+* <strong>WalleejoinAdminPartnerConfigurationResponseDto</strong>
+* <strong>WalleejoinAdminPricingType</strong>
+* <strong>WalleejoinCreatePartnershipRequestDto</strong>
+* <strong>WalleejoinPartnership</strong>
+* <strong>WalleejoinPartnershipCreate</strong>
+* <strong>WalleejoinPartnershipState</strong>
+* <strong>WalleejoinPartnershipType</strong>
+* <strong>WalleejoinPartnershipUpdate</strong>
 * <strong>WalletType</strong>
 * <strong>WebAppConfirmationResponse</strong>
+* <strong>WebUiAccountTheme</strong>
 * <strong>WebhookIdentity</strong>
 * <strong>WebhookListener</strong>
 * <strong>WebhookListenerCreate</strong>

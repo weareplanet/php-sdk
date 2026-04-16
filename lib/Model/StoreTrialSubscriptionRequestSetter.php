@@ -27,18 +27,19 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutApprovalResponse model
+ * StoreTrialSubscriptionRequestSetter model
  *
  * @category Class
+ * @description Model used to store a Trial Subscription, assigning it to an Account
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class StoreTrialSubscriptionRequestSetter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +48,7 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutApprovalResponse';
+    protected static $openAPIModelName = 'StoreTrialSubscriptionRequest.Setter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,9 +56,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'merchant_redirect_url' => 'string',
-        'session_id' => 'int',
-        'state' => '\WeArePlanet\Sdk\Model\ExpressCheckoutSessionState'
+        'coupon_codes' => 'string[]',
+        'component_configurations' => '\WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]',
+        'product_id' => 'int',
+        'currency' => 'string',
+        'affiliate_id' => 'int'
     ];
 
     /**
@@ -68,9 +71,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'merchant_redirect_url' => null,
-        'session_id' => 'int64',
-        'state' => null
+        'coupon_codes' => null,
+        'component_configurations' => null,
+        'product_id' => 'int64',
+        'currency' => null,
+        'affiliate_id' => 'int64'
     ];
 
     /**
@@ -79,9 +84,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'merchant_redirect_url' => false,
-        'session_id' => false,
-        'state' => false
+        'coupon_codes' => false,
+        'component_configurations' => false,
+        'product_id' => false,
+        'currency' => false,
+        'affiliate_id' => false
     ];
 
     /**
@@ -170,9 +177,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'merchant_redirect_url' => 'merchantRedirectUrl',
-        'session_id' => 'sessionId',
-        'state' => 'state'
+        'coupon_codes' => 'couponCodes',
+        'component_configurations' => 'componentConfigurations',
+        'product_id' => 'productId',
+        'currency' => 'currency',
+        'affiliate_id' => 'affiliateId'
     ];
 
     /**
@@ -181,9 +190,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'merchant_redirect_url' => 'setMerchantRedirectUrl',
-        'session_id' => 'setSessionId',
-        'state' => 'setState'
+        'coupon_codes' => 'setCouponCodes',
+        'component_configurations' => 'setComponentConfigurations',
+        'product_id' => 'setProductId',
+        'currency' => 'setCurrency',
+        'affiliate_id' => 'setAffiliateId'
     ];
 
     /**
@@ -192,9 +203,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'merchant_redirect_url' => 'getMerchantRedirectUrl',
-        'session_id' => 'getSessionId',
-        'state' => 'getState'
+        'coupon_codes' => 'getCouponCodes',
+        'component_configurations' => 'getComponentConfigurations',
+        'product_id' => 'getProductId',
+        'currency' => 'getCurrency',
+        'affiliate_id' => 'getAffiliateId'
     ];
 
     /**
@@ -254,9 +267,11 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('merchant_redirect_url', $data ?? [], null);
-        $this->setIfExists('session_id', $data ?? [], null);
-        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('coupon_codes', $data ?? [], null);
+        $this->setIfExists('component_configurations', $data ?? [], null);
+        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('affiliate_id', $data ?? [], null);
     }
 
     /**
@@ -286,6 +301,12 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['product_id'] === null) {
+            $invalidProperties[] = "'product_id' can't be null";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -302,82 +323,136 @@ class ExpressCheckoutApprovalResponse implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets merchant_redirect_url
+     * Gets coupon_codes
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getMerchantRedirectUrl()
+    public function getCouponCodes()
     {
-        return $this->container['merchant_redirect_url'];
+        return $this->container['coupon_codes'];
     }
 
     /**
-     * Sets merchant_redirect_url
+     * Sets coupon_codes
      *
-     * @param string|null $merchant_redirect_url merchant_redirect_url
+     * @param string[]|null $coupon_codes coupon_codes
      *
      * @return self
      */
-    public function setMerchantRedirectUrl($merchant_redirect_url)
+    public function setCouponCodes($coupon_codes)
     {
-        if (is_null($merchant_redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable merchant_redirect_url cannot be null');
+        if (is_null($coupon_codes)) {
+            throw new \InvalidArgumentException('non-nullable coupon_codes cannot be null');
         }
-        $this->container['merchant_redirect_url'] = $merchant_redirect_url;
+        $this->container['coupon_codes'] = $coupon_codes;
 
         return $this;
     }
 
     /**
-     * Gets session_id
+     * Gets component_configurations
+     *
+     * @return \WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]|null
+     */
+    public function getComponentConfigurations()
+    {
+        return $this->container['component_configurations'];
+    }
+
+    /**
+     * Sets component_configurations
+     *
+     * @param \WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]|null $component_configurations component_configurations
+     *
+     * @return self
+     */
+    public function setComponentConfigurations($component_configurations)
+    {
+        if (is_null($component_configurations)) {
+            throw new \InvalidArgumentException('non-nullable component_configurations cannot be null');
+        }
+        $this->container['component_configurations'] = $component_configurations;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
+     *
+     * @return int
+     */
+    public function getProductId()
+    {
+        return $this->container['product_id'];
+    }
+
+    /**
+     * Sets product_id
+     *
+     * @param int $product_id ID of the product that will be used for the Trial Subscription assigned to the Account.
+     *
+     * @return self
+     */
+    public function setProductId($product_id)
+    {
+        if (is_null($product_id)) {
+            throw new \InvalidArgumentException('non-nullable product_id cannot be null');
+        }
+        $this->container['product_id'] = $product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string $currency currency
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets affiliate_id
      *
      * @return int|null
      */
-    public function getSessionId()
+    public function getAffiliateId()
     {
-        return $this->container['session_id'];
+        return $this->container['affiliate_id'];
     }
 
     /**
-     * Sets session_id
+     * Sets affiliate_id
      *
-     * @param int|null $session_id session_id
+     * @param int|null $affiliate_id ID of the affiliate to be added in the subscription assignment.
      *
      * @return self
      */
-    public function setSessionId($session_id)
+    public function setAffiliateId($affiliate_id)
     {
-        if (is_null($session_id)) {
-            throw new \InvalidArgumentException('non-nullable session_id cannot be null');
+        if (is_null($affiliate_id)) {
+            throw new \InvalidArgumentException('non-nullable affiliate_id cannot be null');
         }
-        $this->container['session_id'] = $session_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets state
-     *
-     * @return \WeArePlanet\Sdk\Model\ExpressCheckoutSessionState|null
-     */
-    public function getState()
-    {
-        return $this->container['state'];
-    }
-
-    /**
-     * Sets state
-     *
-     * @param \WeArePlanet\Sdk\Model\ExpressCheckoutSessionState|null $state state
-     *
-     * @return self
-     */
-    public function setState($state)
-    {
-        if (is_null($state)) {
-            throw new \InvalidArgumentException('non-nullable state cannot be null');
-        }
-        $this->container['state'] = $state;
+        $this->container['affiliate_id'] = $affiliate_id;
 
         return $this;
     }

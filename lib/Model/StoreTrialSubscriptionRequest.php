@@ -27,18 +27,19 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutCreateResponse model
+ * StoreTrialSubscriptionRequest model
  *
  * @category Class
+ * @description Model used to store a Trial Subscription, assigning it to an Account
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class StoreTrialSubscriptionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +48,7 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutCreateResponse';
+    protected static $openAPIModelName = 'StoreTrialSubscriptionRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,9 +56,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'iframe_src' => 'string',
-        'session' => 'int',
-        'session_token' => 'string'
+        'coupon_codes' => 'string[]',
+        'component_configurations' => '\WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]',
+        'product_id' => 'int',
+        'currency' => 'string',
+        'affiliate_id' => 'int'
     ];
 
     /**
@@ -68,9 +71,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'iframe_src' => null,
-        'session' => 'int64',
-        'session_token' => null
+        'coupon_codes' => null,
+        'component_configurations' => null,
+        'product_id' => 'int64',
+        'currency' => null,
+        'affiliate_id' => 'int64'
     ];
 
     /**
@@ -79,9 +84,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'iframe_src' => false,
-        'session' => false,
-        'session_token' => false
+        'coupon_codes' => false,
+        'component_configurations' => false,
+        'product_id' => false,
+        'currency' => false,
+        'affiliate_id' => false
     ];
 
     /**
@@ -170,9 +177,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'iframe_src' => 'iframeSrc',
-        'session' => 'session',
-        'session_token' => 'sessionToken'
+        'coupon_codes' => 'couponCodes',
+        'component_configurations' => 'componentConfigurations',
+        'product_id' => 'productId',
+        'currency' => 'currency',
+        'affiliate_id' => 'affiliateId'
     ];
 
     /**
@@ -181,9 +190,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'iframe_src' => 'setIframeSrc',
-        'session' => 'setSession',
-        'session_token' => 'setSessionToken'
+        'coupon_codes' => 'setCouponCodes',
+        'component_configurations' => 'setComponentConfigurations',
+        'product_id' => 'setProductId',
+        'currency' => 'setCurrency',
+        'affiliate_id' => 'setAffiliateId'
     ];
 
     /**
@@ -192,9 +203,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'iframe_src' => 'getIframeSrc',
-        'session' => 'getSession',
-        'session_token' => 'getSessionToken'
+        'coupon_codes' => 'getCouponCodes',
+        'component_configurations' => 'getComponentConfigurations',
+        'product_id' => 'getProductId',
+        'currency' => 'getCurrency',
+        'affiliate_id' => 'getAffiliateId'
     ];
 
     /**
@@ -254,9 +267,11 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('iframe_src', $data ?? [], null);
-        $this->setIfExists('session', $data ?? [], null);
-        $this->setIfExists('session_token', $data ?? [], null);
+        $this->setIfExists('coupon_codes', $data ?? [], null);
+        $this->setIfExists('component_configurations', $data ?? [], null);
+        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('affiliate_id', $data ?? [], null);
     }
 
     /**
@@ -302,82 +317,136 @@ class ExpressCheckoutCreateResponse implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets iframe_src
+     * Gets coupon_codes
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getIframeSrc()
+    public function getCouponCodes()
     {
-        return $this->container['iframe_src'];
+        return $this->container['coupon_codes'];
     }
 
     /**
-     * Sets iframe_src
+     * Sets coupon_codes
      *
-     * @param string|null $iframe_src iframe_src
+     * @param string[]|null $coupon_codes coupon_codes
      *
      * @return self
      */
-    public function setIframeSrc($iframe_src)
+    public function setCouponCodes($coupon_codes)
     {
-        if (is_null($iframe_src)) {
-            throw new \InvalidArgumentException('non-nullable iframe_src cannot be null');
+        if (is_null($coupon_codes)) {
+            throw new \InvalidArgumentException('non-nullable coupon_codes cannot be null');
         }
-        $this->container['iframe_src'] = $iframe_src;
+        $this->container['coupon_codes'] = $coupon_codes;
 
         return $this;
     }
 
     /**
-     * Gets session
+     * Gets component_configurations
+     *
+     * @return \WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]|null
+     */
+    public function getComponentConfigurations()
+    {
+        return $this->container['component_configurations'];
+    }
+
+    /**
+     * Sets component_configurations
+     *
+     * @param \WeArePlanet\Sdk\Model\SubscriptionComponentGroupConfigurationRequestSetter[]|null $component_configurations component_configurations
+     *
+     * @return self
+     */
+    public function setComponentConfigurations($component_configurations)
+    {
+        if (is_null($component_configurations)) {
+            throw new \InvalidArgumentException('non-nullable component_configurations cannot be null');
+        }
+        $this->container['component_configurations'] = $component_configurations;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id
      *
      * @return int|null
      */
-    public function getSession()
+    public function getProductId()
     {
-        return $this->container['session'];
+        return $this->container['product_id'];
     }
 
     /**
-     * Sets session
+     * Sets product_id
      *
-     * @param int|null $session session
+     * @param int|null $product_id ID of the product that will be used for the Trial Subscription assigned to the Account.
      *
      * @return self
      */
-    public function setSession($session)
+    public function setProductId($product_id)
     {
-        if (is_null($session)) {
-            throw new \InvalidArgumentException('non-nullable session cannot be null');
+        if (is_null($product_id)) {
+            throw new \InvalidArgumentException('non-nullable product_id cannot be null');
         }
-        $this->container['session'] = $session;
+        $this->container['product_id'] = $product_id;
 
         return $this;
     }
 
     /**
-     * Gets session_token
+     * Gets currency
      *
      * @return string|null
      */
-    public function getSessionToken()
+    public function getCurrency()
     {
-        return $this->container['session_token'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets session_token
+     * Sets currency
      *
-     * @param string|null $session_token session_token
+     * @param string|null $currency currency
      *
      * @return self
      */
-    public function setSessionToken($session_token)
+    public function setCurrency($currency)
     {
-        if (is_null($session_token)) {
-            throw new \InvalidArgumentException('non-nullable session_token cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['session_token'] = $session_token;
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets affiliate_id
+     *
+     * @return int|null
+     */
+    public function getAffiliateId()
+    {
+        return $this->container['affiliate_id'];
+    }
+
+    /**
+     * Sets affiliate_id
+     *
+     * @param int|null $affiliate_id ID of the affiliate to be added in the subscription assignment.
+     *
+     * @return self
+     */
+    public function setAffiliateId($affiliate_id)
+    {
+        if (is_null($affiliate_id)) {
+            throw new \InvalidArgumentException('non-nullable affiliate_id cannot be null');
+        }
+        $this->container['affiliate_id'] = $affiliate_id;
 
         return $this;
     }

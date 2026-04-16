@@ -27,18 +27,19 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutShippingOption model
+ * SubscriptionComponentGroupConfigurationRequestSetter model
  *
  * @category Class
+ * @description Model used to configure the Subscription Product to be assigned to the Account
  * @package     WeArePlanet\Sdk
  * @author      Planet Merchant Services Ltd.
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubscriptionComponentGroupConfigurationRequestSetter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +48,7 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutShippingOption';
+    protected static $openAPIModelName = 'SubscriptionComponentGroupConfigurationRequest.Setter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,13 +56,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'description' => 'string',
-        'currency' => 'string',
-        'id' => 'string',
-        'label' => 'string',
-        'tax_amount' => 'float',
-        'selected' => 'bool'
+        'quantity' => 'float',
+        'subscription_product_component_group_id' => 'int',
+        'subscription_product_component_reference_id' => 'int'
     ];
 
     /**
@@ -72,13 +69,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'description' => null,
-        'currency' => null,
-        'id' => null,
-        'label' => null,
-        'tax_amount' => null,
-        'selected' => null
+        'quantity' => null,
+        'subscription_product_component_group_id' => 'int64',
+        'subscription_product_component_reference_id' => 'int64'
     ];
 
     /**
@@ -87,13 +80,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-        'description' => false,
-        'currency' => false,
-        'id' => false,
-        'label' => false,
-        'tax_amount' => false,
-        'selected' => false
+        'quantity' => false,
+        'subscription_product_component_group_id' => false,
+        'subscription_product_component_reference_id' => false
     ];
 
     /**
@@ -182,13 +171,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'description' => 'description',
-        'currency' => 'currency',
-        'id' => 'id',
-        'label' => 'label',
-        'tax_amount' => 'taxAmount',
-        'selected' => 'selected'
+        'quantity' => 'quantity',
+        'subscription_product_component_group_id' => 'subscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'subscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -197,13 +182,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'description' => 'setDescription',
-        'currency' => 'setCurrency',
-        'id' => 'setId',
-        'label' => 'setLabel',
-        'tax_amount' => 'setTaxAmount',
-        'selected' => 'setSelected'
+        'quantity' => 'setQuantity',
+        'subscription_product_component_group_id' => 'setSubscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'setSubscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -212,13 +193,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'description' => 'getDescription',
-        'currency' => 'getCurrency',
-        'id' => 'getId',
-        'label' => 'getLabel',
-        'tax_amount' => 'getTaxAmount',
-        'selected' => 'getSelected'
+        'quantity' => 'getQuantity',
+        'subscription_product_component_group_id' => 'getSubscriptionProductComponentGroupId',
+        'subscription_product_component_reference_id' => 'getSubscriptionProductComponentReferenceId'
     ];
 
     /**
@@ -278,13 +255,9 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('label', $data ?? [], null);
-        $this->setIfExists('tax_amount', $data ?? [], null);
-        $this->setIfExists('selected', $data ?? [], null);
+        $this->setIfExists('quantity', $data ?? [], null);
+        $this->setIfExists('subscription_product_component_group_id', $data ?? [], null);
+        $this->setIfExists('subscription_product_component_reference_id', $data ?? [], null);
     }
 
     /**
@@ -330,190 +303,82 @@ class ExpressCheckoutShippingOption implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets amount
+     * Gets quantity
      *
      * @return float|null
      */
-    public function getAmount()
+    public function getQuantity()
     {
-        return $this->container['amount'];
+        return $this->container['quantity'];
     }
 
     /**
-     * Sets amount
+     * Sets quantity
      *
-     * @param float|null $amount Total cost of this shipping option.
+     * @param float|null $quantity quantity
      *
      * @return self
      */
-    public function setAmount($amount)
+    public function setQuantity($quantity)
     {
-        if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+        if (is_null($quantity)) {
+            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
         }
-        $this->container['amount'] = $amount;
+        $this->container['quantity'] = $quantity;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets subscription_product_component_group_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getDescription()
+    public function getSubscriptionProductComponentGroupId()
     {
-        return $this->container['description'];
+        return $this->container['subscription_product_component_group_id'];
     }
 
     /**
-     * Sets description
+     * Sets subscription_product_component_group_id
      *
-     * @param string|null $description Description of the option
+     * @param int|null $subscription_product_component_group_id subscription_product_component_group_id
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setSubscriptionProductComponentGroupId($subscription_product_component_group_id)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($subscription_product_component_group_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_component_group_id cannot be null');
         }
-        $this->container['description'] = $description;
+        $this->container['subscription_product_component_group_id'] = $subscription_product_component_group_id;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets subscription_product_component_reference_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCurrency()
+    public function getSubscriptionProductComponentReferenceId()
     {
-        return $this->container['currency'];
+        return $this->container['subscription_product_component_reference_id'];
     }
 
     /**
-     * Sets currency
+     * Sets subscription_product_component_reference_id
      *
-     * @param string|null $currency Currency code (ISO-4217) of this shipping option.
+     * @param int|null $subscription_product_component_reference_id subscription_product_component_reference_id
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setSubscriptionProductComponentReferenceId($subscription_product_component_reference_id)
     {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        if (is_null($subscription_product_component_reference_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_component_reference_id cannot be null');
         }
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Identifier of the option.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets label
-     *
-     * @return string|null
-     */
-    public function getLabel()
-    {
-        return $this->container['label'];
-    }
-
-    /**
-     * Sets label
-     *
-     * @param string|null $label Label of the option.
-     *
-     * @return self
-     */
-    public function setLabel($label)
-    {
-        if (is_null($label)) {
-            throw new \InvalidArgumentException('non-nullable label cannot be null');
-        }
-        $this->container['label'] = $label;
-
-        return $this;
-    }
-
-    /**
-     * Gets tax_amount
-     *
-     * @return float|null
-     */
-    public function getTaxAmount()
-    {
-        return $this->container['tax_amount'];
-    }
-
-    /**
-     * Sets tax_amount
-     *
-     * @param float|null $tax_amount Amount related to taxes.
-     *
-     * @return self
-     */
-    public function setTaxAmount($tax_amount)
-    {
-        if (is_null($tax_amount)) {
-            throw new \InvalidArgumentException('non-nullable tax_amount cannot be null');
-        }
-        $this->container['tax_amount'] = $tax_amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets selected
-     *
-     * @return bool|null
-     */
-    public function getSelected()
-    {
-        return $this->container['selected'];
-    }
-
-    /**
-     * Sets selected
-     *
-     * @param bool|null $selected Whether it was the option selected by the customer.
-     *
-     * @return self
-     */
-    public function setSelected($selected)
-    {
-        if (is_null($selected)) {
-            throw new \InvalidArgumentException('non-nullable selected cannot be null');
-        }
-        $this->container['selected'] = $selected;
+        $this->container['subscription_product_component_reference_id'] = $subscription_product_component_reference_id;
 
         return $this;
     }

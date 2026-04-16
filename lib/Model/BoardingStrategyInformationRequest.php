@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutShippingMethodChangeResponse model
+ * BoardingStrategyInformationRequest model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class BoardingStrategyInformationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutShippingMethodChangeResponse';
+    protected static $openAPIModelName = 'BoardingStrategyInformationRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'line_items' => '\WeArePlanet\Sdk\Model\LineItem[]',
-        'order_total' => 'float'
+        'billing_address' => '\WeArePlanet\Sdk\Model\Setter'
     ];
 
     /**
@@ -67,8 +66,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'line_items' => null,
-        'order_total' => null
+        'billing_address' => null
     ];
 
     /**
@@ -77,8 +75,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'line_items' => false,
-        'order_total' => false
+        'billing_address' => false
     ];
 
     /**
@@ -167,8 +164,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'line_items' => 'lineItems',
-        'order_total' => 'orderTotal'
+        'billing_address' => 'billingAddress'
     ];
 
     /**
@@ -177,8 +173,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'line_items' => 'setLineItems',
-        'order_total' => 'setOrderTotal'
+        'billing_address' => 'setBillingAddress'
     ];
 
     /**
@@ -187,8 +182,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'line_items' => 'getLineItems',
-        'order_total' => 'getOrderTotal'
+        'billing_address' => 'getBillingAddress'
     ];
 
     /**
@@ -248,8 +242,7 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('line_items', $data ?? [], null);
-        $this->setIfExists('order_total', $data ?? [], null);
+        $this->setIfExists('billing_address', $data ?? [], null);
     }
 
     /**
@@ -279,6 +272,9 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
+        if ($this->container['billing_address'] === null) {
+            $invalidProperties[] = "'billing_address' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -295,55 +291,28 @@ class ExpressCheckoutShippingMethodChangeResponse implements ModelInterface, Arr
 
 
     /**
-     * Gets line_items
+     * Gets billing_address
      *
-     * @return \WeArePlanet\Sdk\Model\LineItem[]|null
+     * @return \WeArePlanet\Sdk\Model\Setter
      */
-    public function getLineItems()
+    public function getBillingAddress()
     {
-        return $this->container['line_items'];
+        return $this->container['billing_address'];
     }
 
     /**
-     * Sets line_items
+     * Sets billing_address
      *
-     * @param \WeArePlanet\Sdk\Model\LineItem[]|null $line_items line_items
+     * @param \WeArePlanet\Sdk\Model\Setter $billing_address billing_address
      *
      * @return self
      */
-    public function setLineItems($line_items)
+    public function setBillingAddress($billing_address)
     {
-        if (is_null($line_items)) {
-            throw new \InvalidArgumentException('non-nullable line_items cannot be null');
+        if (is_null($billing_address)) {
+            throw new \InvalidArgumentException('non-nullable billing_address cannot be null');
         }
-        $this->container['line_items'] = $line_items;
-
-        return $this;
-    }
-
-    /**
-     * Gets order_total
-     *
-     * @return float|null
-     */
-    public function getOrderTotal()
-    {
-        return $this->container['order_total'];
-    }
-
-    /**
-     * Sets order_total
-     *
-     * @param float|null $order_total order_total
-     *
-     * @return self
-     */
-    public function setOrderTotal($order_total)
-    {
-        if (is_null($order_total)) {
-            throw new \InvalidArgumentException('non-nullable order_total cannot be null');
-        }
-        $this->container['order_total'] = $order_total;
+        $this->container['billing_address'] = $billing_address;
 
         return $this;
     }

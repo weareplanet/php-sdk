@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * ExpressCheckoutShippingAddressChangeRequest model
+ * WebUiAccountTheme model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.0
+ * @version     5.2.2
  * @implements \ArrayAccess<string, mixed>
  */
-class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebUiAccountTheme implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExpressCheckoutShippingAddressChangeRequest';
+    protected static $openAPIModelName = 'WebUiAccountTheme';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,8 +55,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'shipping_address' => '\WeArePlanet\Sdk\Model\Address',
-        'billing_address' => '\WeArePlanet\Sdk\Model\Address'
+        'properties' => 'string'
     ];
 
     /**
@@ -67,8 +66,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'shipping_address' => null,
-        'billing_address' => null
+        'properties' => null
     ];
 
     /**
@@ -77,8 +75,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shipping_address' => false,
-        'billing_address' => false
+        'properties' => false
     ];
 
     /**
@@ -167,8 +164,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'shipping_address' => 'shippingAddress',
-        'billing_address' => 'billingAddress'
+        'properties' => 'properties'
     ];
 
     /**
@@ -177,8 +173,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'shipping_address' => 'setShippingAddress',
-        'billing_address' => 'setBillingAddress'
+        'properties' => 'setProperties'
     ];
 
     /**
@@ -187,8 +182,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'shipping_address' => 'getShippingAddress',
-        'billing_address' => 'getBillingAddress'
+        'properties' => 'getProperties'
     ];
 
     /**
@@ -248,8 +242,7 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('shipping_address', $data ?? [], null);
-        $this->setIfExists('billing_address', $data ?? [], null);
+        $this->setIfExists('properties', $data ?? [], null);
     }
 
     /**
@@ -295,55 +288,28 @@ class ExpressCheckoutShippingAddressChangeRequest implements ModelInterface, Arr
 
 
     /**
-     * Gets shipping_address
+     * Gets properties
      *
-     * @return \WeArePlanet\Sdk\Model\Address|null
+     * @return string|null
      */
-    public function getShippingAddress()
+    public function getProperties()
     {
-        return $this->container['shipping_address'];
+        return $this->container['properties'];
     }
 
     /**
-     * Sets shipping_address
+     * Sets properties
      *
-     * @param \WeArePlanet\Sdk\Model\Address|null $shipping_address shipping_address
+     * @param string|null $properties properties
      *
      * @return self
      */
-    public function setShippingAddress($shipping_address)
+    public function setProperties($properties)
     {
-        if (is_null($shipping_address)) {
-            throw new \InvalidArgumentException('non-nullable shipping_address cannot be null');
+        if (is_null($properties)) {
+            throw new \InvalidArgumentException('non-nullable properties cannot be null');
         }
-        $this->container['shipping_address'] = $shipping_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets billing_address
-     *
-     * @return \WeArePlanet\Sdk\Model\Address|null
-     */
-    public function getBillingAddress()
-    {
-        return $this->container['billing_address'];
-    }
-
-    /**
-     * Sets billing_address
-     *
-     * @param \WeArePlanet\Sdk\Model\Address|null $billing_address billing_address
-     *
-     * @return self
-     */
-    public function setBillingAddress($billing_address)
-    {
-        if (is_null($billing_address)) {
-            throw new \InvalidArgumentException('non-nullable billing_address cannot be null');
-        }
-        $this->container['billing_address'] = $billing_address;
+        $this->container['properties'] = $properties;
 
         return $this;
     }
