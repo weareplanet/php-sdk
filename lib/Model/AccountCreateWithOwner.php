@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * UserAccountRoleListResponse model
+ * AccountCreateWithOwner model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.2
+ * @version     5.2.3
  * @implements \ArrayAccess<string, mixed>
  */
-class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AccountCreateWithOwner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'User_Account_Role_List_Response';
+    protected static $openAPIModelName = 'Account.CreateWithOwner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,9 +55,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\WeArePlanet\Sdk\Model\UserAccountRole[]',
-        'has_more' => 'bool',
-        'limit' => 'int'
+        'name' => 'string',
+        'subaccount_limit' => 'int',
+        'scope' => 'int',
+        'parent_account' => 'int',
+        'owner_email_address' => 'string'
     ];
 
     /**
@@ -68,9 +70,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'has_more' => null,
-        'limit' => 'int32'
+        'name' => null,
+        'subaccount_limit' => 'int64',
+        'scope' => 'int64',
+        'parent_account' => 'int64',
+        'owner_email_address' => null
     ];
 
     /**
@@ -79,9 +83,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'has_more' => false,
-        'limit' => false
+        'name' => false,
+        'subaccount_limit' => false,
+        'scope' => false,
+        'parent_account' => false,
+        'owner_email_address' => false
     ];
 
     /**
@@ -170,9 +176,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'has_more' => 'hasMore',
-        'limit' => 'limit'
+        'name' => 'name',
+        'subaccount_limit' => 'subaccountLimit',
+        'scope' => 'scope',
+        'parent_account' => 'parentAccount',
+        'owner_email_address' => 'ownerEmailAddress'
     ];
 
     /**
@@ -181,9 +189,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'has_more' => 'setHasMore',
-        'limit' => 'setLimit'
+        'name' => 'setName',
+        'subaccount_limit' => 'setSubaccountLimit',
+        'scope' => 'setScope',
+        'parent_account' => 'setParentAccount',
+        'owner_email_address' => 'setOwnerEmailAddress'
     ];
 
     /**
@@ -192,9 +202,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'has_more' => 'getHasMore',
-        'limit' => 'getLimit'
+        'name' => 'getName',
+        'subaccount_limit' => 'getSubaccountLimit',
+        'scope' => 'getScope',
+        'parent_account' => 'getParentAccount',
+        'owner_email_address' => 'getOwnerEmailAddress'
     ];
 
     /**
@@ -254,9 +266,11 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('has_more', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('subaccount_limit', $data ?? [], null);
+        $this->setIfExists('scope', $data ?? [], null);
+        $this->setIfExists('parent_account', $data ?? [], null);
+        $this->setIfExists('owner_email_address', $data ?? [], null);
     }
 
     /**
@@ -286,6 +300,17 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 200)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 3)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 3.";
+        }
+
+        if ($this->container['scope'] === null) {
+            $invalidProperties[] = "'scope' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -302,82 +327,143 @@ class UserAccountRoleListResponse implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets data
+     * Gets name
      *
-     * @return \WeArePlanet\Sdk\Model\UserAccountRole[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getName()
     {
-        return $this->container['data'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets data
+     * Sets name
      *
-     * @param \WeArePlanet\Sdk\Model\UserAccountRole[]|null $data An array containing the actual response objects.
+     * @param string|null $name The name used to identify the account.
      *
      * @return self
      */
-    public function setData($data)
+    public function setName($name)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['data'] = $data;
+        if ((mb_strlen($name) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling AccountCreateWithOwner., must be smaller than or equal to 200.');
+        }
+        if ((mb_strlen($name) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling AccountCreateWithOwner., must be bigger than or equal to 3.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets has_more
-     *
-     * @return bool|null
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool|null $has_more Whether there are more objects available after this set. If false, there are no more objects to retrieve.
-     *
-     * @return self
-     */
-    public function setHasMore($has_more)
-    {
-        if (is_null($has_more)) {
-            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
-        }
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit
+     * Gets subaccount_limit
      *
      * @return int|null
      */
-    public function getLimit()
+    public function getSubaccountLimit()
     {
-        return $this->container['limit'];
+        return $this->container['subaccount_limit'];
     }
 
     /**
-     * Sets limit
+     * Sets subaccount_limit
      *
-     * @param int|null $limit The applied limit on the number of objects returned.
+     * @param int|null $subaccount_limit The number of sub-accounts that can be created within this account.
      *
      * @return self
      */
-    public function setLimit($limit)
+    public function setSubaccountLimit($subaccount_limit)
     {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        if (is_null($subaccount_limit)) {
+            throw new \InvalidArgumentException('non-nullable subaccount_limit cannot be null');
         }
-        $this->container['limit'] = $limit;
+        $this->container['subaccount_limit'] = $subaccount_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     *
+     * @return int
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     *
+     * @param int $scope The scope that the account belongs to.
+     *
+     * @return self
+     */
+    public function setScope($scope)
+    {
+        if (is_null($scope)) {
+            throw new \InvalidArgumentException('non-nullable scope cannot be null');
+        }
+        $this->container['scope'] = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_account
+     *
+     * @return int|null
+     */
+    public function getParentAccount()
+    {
+        return $this->container['parent_account'];
+    }
+
+    /**
+     * Sets parent_account
+     *
+     * @param int|null $parent_account The parent account responsible for administering this account.
+     *
+     * @return self
+     */
+    public function setParentAccount($parent_account)
+    {
+        if (is_null($parent_account)) {
+            throw new \InvalidArgumentException('non-nullable parent_account cannot be null');
+        }
+        $this->container['parent_account'] = $parent_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_email_address
+     *
+     * @return string|null
+     */
+    public function getOwnerEmailAddress()
+    {
+        return $this->container['owner_email_address'];
+    }
+
+    /**
+     * Sets owner_email_address
+     *
+     * @param string|null $owner_email_address The email address for the person who will be invited to assume the role of account admin.
+     *
+     * @return self
+     */
+    public function setOwnerEmailAddress($owner_email_address)
+    {
+        if (is_null($owner_email_address)) {
+            throw new \InvalidArgumentException('non-nullable owner_email_address cannot be null');
+        }
+        $this->container['owner_email_address'] = $owner_email_address;
 
         return $this;
     }

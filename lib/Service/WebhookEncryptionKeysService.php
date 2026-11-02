@@ -23,7 +23,6 @@
 
 namespace WeArePlanet\Sdk\Service;
 
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -36,6 +35,7 @@ use WeArePlanet\Sdk\ApiException;
 use WeArePlanet\Sdk\Configuration;
 use WeArePlanet\Sdk\FormDataProcessor;
 use WeArePlanet\Sdk\HeaderSelector;
+use WeArePlanet\Sdk\CaBundleFallbackClientFactory;
 use WeArePlanet\Sdk\ObjectSerializer;
 use WeArePlanet\Sdk\Auth\HttpBearerAuth;
 use WeArePlanet\Sdk\Utils\EncryptionUtil;
@@ -51,7 +51,7 @@ use WeArePlanet\Sdk\SdkExceptionErrorCodes;
  * @license  Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version  5.2.2
+ * @version  5.2.3
  */
 class WebhookEncryptionKeysService
 {
@@ -103,7 +103,7 @@ class WebhookEncryptionKeysService
         ?ClientInterface $client = null,
         ?HeaderSelector  $selector = null,
     ) {
-        $this->client = $client ?: new Client();
+        $this->client = $client ?: CaBundleFallbackClientFactory::create();
         $this->config = $config ?: Configuration::getDefaultConfiguration();
         $this->headerSelector = $selector ?: new HeaderSelector();
         $this->hostIndex = $hostIndex;

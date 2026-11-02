@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * WalleeJoinPartnershipSearchResponse model
+ * WalleejoinCreatePartnershipApiRequestDto model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.2
+ * @version     5.2.3
  * @implements \ArrayAccess<string, mixed>
  */
-class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class WalleejoinCreatePartnershipApiRequestDto implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Wallee_Join_Partnership_Search_Response';
+    protected static $openAPIModelName = 'WalleejoinCreatePartnershipApiRequestDto';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,10 +55,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\WeArePlanet\Sdk\Model\WalleejoinPartnership[]',
-        'offset' => 'int',
-        'has_more' => 'bool',
-        'limit' => 'int'
+        'email_message' => 'string',
+        'partner_account_id' => 'int',
+        'pricing_profile_sell_rate_id' => 'int',
+        'subscription_product_id' => 'int',
+        'merchant_email_address' => 'string'
     ];
 
     /**
@@ -69,10 +70,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'offset' => 'int32',
-        'has_more' => null,
-        'limit' => 'int32'
+        'email_message' => null,
+        'partner_account_id' => 'int64',
+        'pricing_profile_sell_rate_id' => 'int64',
+        'subscription_product_id' => 'int64',
+        'merchant_email_address' => null
     ];
 
     /**
@@ -81,10 +83,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-        'offset' => false,
-        'has_more' => false,
-        'limit' => false
+        'email_message' => false,
+        'partner_account_id' => false,
+        'pricing_profile_sell_rate_id' => false,
+        'subscription_product_id' => false,
+        'merchant_email_address' => false
     ];
 
     /**
@@ -173,10 +176,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'offset' => 'offset',
-        'has_more' => 'hasMore',
-        'limit' => 'limit'
+        'email_message' => 'emailMessage',
+        'partner_account_id' => 'partnerAccountId',
+        'pricing_profile_sell_rate_id' => 'pricingProfileSellRateId',
+        'subscription_product_id' => 'subscriptionProductId',
+        'merchant_email_address' => 'merchantEmailAddress'
     ];
 
     /**
@@ -185,10 +189,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'offset' => 'setOffset',
-        'has_more' => 'setHasMore',
-        'limit' => 'setLimit'
+        'email_message' => 'setEmailMessage',
+        'partner_account_id' => 'setPartnerAccountId',
+        'pricing_profile_sell_rate_id' => 'setPricingProfileSellRateId',
+        'subscription_product_id' => 'setSubscriptionProductId',
+        'merchant_email_address' => 'setMerchantEmailAddress'
     ];
 
     /**
@@ -197,10 +202,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'offset' => 'getOffset',
-        'has_more' => 'getHasMore',
-        'limit' => 'getLimit'
+        'email_message' => 'getEmailMessage',
+        'partner_account_id' => 'getPartnerAccountId',
+        'pricing_profile_sell_rate_id' => 'getPricingProfileSellRateId',
+        'subscription_product_id' => 'getSubscriptionProductId',
+        'merchant_email_address' => 'getMerchantEmailAddress'
     ];
 
     /**
@@ -260,10 +266,11 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('offset', $data ?? [], null);
-        $this->setIfExists('has_more', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('email_message', $data ?? [], null);
+        $this->setIfExists('partner_account_id', $data ?? [], null);
+        $this->setIfExists('pricing_profile_sell_rate_id', $data ?? [], null);
+        $this->setIfExists('subscription_product_id', $data ?? [], null);
+        $this->setIfExists('merchant_email_address', $data ?? [], null);
     }
 
     /**
@@ -309,109 +316,136 @@ class WalleeJoinPartnershipSearchResponse implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
+     * Gets email_message
      *
-     * @return \WeArePlanet\Sdk\Model\WalleejoinPartnership[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getEmailMessage()
     {
-        return $this->container['data'];
+        return $this->container['email_message'];
     }
 
     /**
-     * Sets data
+     * Sets email_message
      *
-     * @param \WeArePlanet\Sdk\Model\WalleejoinPartnership[]|null $data An array containing the actual response objects.
+     * @param string|null $email_message email_message
      *
      * @return self
      */
-    public function setData($data)
+    public function setEmailMessage($email_message)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($email_message)) {
+            throw new \InvalidArgumentException('non-nullable email_message cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['email_message'] = $email_message;
 
         return $this;
     }
 
     /**
-     * Gets offset
+     * Gets partner_account_id
      *
      * @return int|null
      */
-    public function getOffset()
+    public function getPartnerAccountId()
     {
-        return $this->container['offset'];
+        return $this->container['partner_account_id'];
     }
 
     /**
-     * Sets offset
+     * Sets partner_account_id
      *
-     * @param int|null $offset The number of skipped objects.
+     * @param int|null $partner_account_id partner_account_id
      *
      * @return self
      */
-    public function setOffset($offset)
+    public function setPartnerAccountId($partner_account_id)
     {
-        if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+        if (is_null($partner_account_id)) {
+            throw new \InvalidArgumentException('non-nullable partner_account_id cannot be null');
         }
-        $this->container['offset'] = $offset;
+        $this->container['partner_account_id'] = $partner_account_id;
 
         return $this;
     }
 
     /**
-     * Gets has_more
-     *
-     * @return bool|null
-     */
-    public function getHasMore()
-    {
-        return $this->container['has_more'];
-    }
-
-    /**
-     * Sets has_more
-     *
-     * @param bool|null $has_more Whether there are more objects available after this set. If false, there are no more objects to retrieve.
-     *
-     * @return self
-     */
-    public function setHasMore($has_more)
-    {
-        if (is_null($has_more)) {
-            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
-        }
-        $this->container['has_more'] = $has_more;
-
-        return $this;
-    }
-
-    /**
-     * Gets limit
+     * Gets pricing_profile_sell_rate_id
      *
      * @return int|null
      */
-    public function getLimit()
+    public function getPricingProfileSellRateId()
     {
-        return $this->container['limit'];
+        return $this->container['pricing_profile_sell_rate_id'];
     }
 
     /**
-     * Sets limit
+     * Sets pricing_profile_sell_rate_id
      *
-     * @param int|null $limit The applied limit on the number of objects returned.
+     * @param int|null $pricing_profile_sell_rate_id pricing_profile_sell_rate_id
      *
      * @return self
      */
-    public function setLimit($limit)
+    public function setPricingProfileSellRateId($pricing_profile_sell_rate_id)
     {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        if (is_null($pricing_profile_sell_rate_id)) {
+            throw new \InvalidArgumentException('non-nullable pricing_profile_sell_rate_id cannot be null');
         }
-        $this->container['limit'] = $limit;
+        $this->container['pricing_profile_sell_rate_id'] = $pricing_profile_sell_rate_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subscription_product_id
+     *
+     * @return int|null
+     */
+    public function getSubscriptionProductId()
+    {
+        return $this->container['subscription_product_id'];
+    }
+
+    /**
+     * Sets subscription_product_id
+     *
+     * @param int|null $subscription_product_id subscription_product_id
+     *
+     * @return self
+     */
+    public function setSubscriptionProductId($subscription_product_id)
+    {
+        if (is_null($subscription_product_id)) {
+            throw new \InvalidArgumentException('non-nullable subscription_product_id cannot be null');
+        }
+        $this->container['subscription_product_id'] = $subscription_product_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchant_email_address
+     *
+     * @return string|null
+     */
+    public function getMerchantEmailAddress()
+    {
+        return $this->container['merchant_email_address'];
+    }
+
+    /**
+     * Sets merchant_email_address
+     *
+     * @param string|null $merchant_email_address merchant_email_address
+     *
+     * @return self
+     */
+    public function setMerchantEmailAddress($merchant_email_address)
+    {
+        if (is_null($merchant_email_address)) {
+            throw new \InvalidArgumentException('non-nullable merchant_email_address cannot be null');
+        }
+        $this->container['merchant_email_address'] = $merchant_email_address;
 
         return $this;
     }

@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * UserSpaceRole model
+ * PaymentTerminalLocationCrudModel model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.2
+ * @version     5.2.3
  * @implements \ArrayAccess<string, mixed>
  */
-class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentTerminalLocationCrudModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UserSpaceRole';
+    protected static $openAPIModelName = 'PaymentTerminalLocationCrudModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,11 +55,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'role' => 'int',
+        'production_merchant_id' => 'string',
+        'address' => '\WeArePlanet\Sdk\Model\PaymentTerminalAddress',
+        'name' => 'string',
+        'planned_purge_date' => '\DateTime',
+        'external_id' => 'string',
+        'contact_address' => '\WeArePlanet\Sdk\Model\PaymentTerminalAddress',
+        'version_applied_immediately' => 'bool',
         'id' => 'int',
-        'user' => 'int',
-        'version' => 'int',
-        'space' => 'int'
+        'state' => '\WeArePlanet\Sdk\Model\PaymentTerminalLocationState',
+        'version' => 'int'
     ];
 
     /**
@@ -70,11 +75,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'role' => 'int64',
+        'production_merchant_id' => null,
+        'address' => null,
+        'name' => null,
+        'planned_purge_date' => 'date-time',
+        'external_id' => null,
+        'contact_address' => null,
+        'version_applied_immediately' => null,
         'id' => 'int64',
-        'user' => 'int64',
-        'version' => 'int32',
-        'space' => 'int64'
+        'state' => null,
+        'version' => 'int32'
     ];
 
     /**
@@ -83,11 +93,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'role' => false,
+        'production_merchant_id' => false,
+        'address' => false,
+        'name' => false,
+        'planned_purge_date' => false,
+        'external_id' => false,
+        'contact_address' => false,
+        'version_applied_immediately' => false,
         'id' => false,
-        'user' => false,
-        'version' => false,
-        'space' => false
+        'state' => false,
+        'version' => false
     ];
 
     /**
@@ -176,11 +191,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'role' => 'role',
+        'production_merchant_id' => 'productionMerchantId',
+        'address' => 'address',
+        'name' => 'name',
+        'planned_purge_date' => 'plannedPurgeDate',
+        'external_id' => 'externalId',
+        'contact_address' => 'contactAddress',
+        'version_applied_immediately' => 'versionAppliedImmediately',
         'id' => 'id',
-        'user' => 'user',
-        'version' => 'version',
-        'space' => 'space'
+        'state' => 'state',
+        'version' => 'version'
     ];
 
     /**
@@ -189,11 +209,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'role' => 'setRole',
+        'production_merchant_id' => 'setProductionMerchantId',
+        'address' => 'setAddress',
+        'name' => 'setName',
+        'planned_purge_date' => 'setPlannedPurgeDate',
+        'external_id' => 'setExternalId',
+        'contact_address' => 'setContactAddress',
+        'version_applied_immediately' => 'setVersionAppliedImmediately',
         'id' => 'setId',
-        'user' => 'setUser',
-        'version' => 'setVersion',
-        'space' => 'setSpace'
+        'state' => 'setState',
+        'version' => 'setVersion'
     ];
 
     /**
@@ -202,11 +227,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'role' => 'getRole',
+        'production_merchant_id' => 'getProductionMerchantId',
+        'address' => 'getAddress',
+        'name' => 'getName',
+        'planned_purge_date' => 'getPlannedPurgeDate',
+        'external_id' => 'getExternalId',
+        'contact_address' => 'getContactAddress',
+        'version_applied_immediately' => 'getVersionAppliedImmediately',
         'id' => 'getId',
-        'user' => 'getUser',
-        'version' => 'getVersion',
-        'space' => 'getSpace'
+        'state' => 'getState',
+        'version' => 'getVersion'
     ];
 
     /**
@@ -266,11 +296,16 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('role', $data ?? [], null);
+        $this->setIfExists('production_merchant_id', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('planned_purge_date', $data ?? [], null);
+        $this->setIfExists('external_id', $data ?? [], null);
+        $this->setIfExists('contact_address', $data ?? [], null);
+        $this->setIfExists('version_applied_immediately', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
         $this->setIfExists('version', $data ?? [], null);
-        $this->setIfExists('space', $data ?? [], null);
     }
 
     /**
@@ -300,6 +335,22 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['production_merchant_id']) && (mb_strlen($this->container['production_merchant_id']) > 15)) {
+            $invalidProperties[] = "invalid value for 'production_merchant_id', the character length must be smaller than or equal to 15.";
+        }
+
+        if (!is_null($this->container['production_merchant_id']) && (mb_strlen($this->container['production_merchant_id']) < 15)) {
+            $invalidProperties[] = "invalid value for 'production_merchant_id', the character length must be bigger than or equal to 15.";
+        }
+
+        if (!is_null($this->container['production_merchant_id']) && !preg_match("/([0-9a-zA-Z])+/", $this->container['production_merchant_id'])) {
+            $invalidProperties[] = "invalid value for 'production_merchant_id', must be conform to the pattern /([0-9a-zA-Z])+/.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -316,28 +367,204 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets role
+     * Gets production_merchant_id
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getRole()
+    public function getProductionMerchantId()
     {
-        return $this->container['role'];
+        return $this->container['production_merchant_id'];
     }
 
     /**
-     * Sets role
+     * Sets production_merchant_id
      *
-     * @param int|null $role The role that is assigned to the user.
+     * @param string|null $production_merchant_id The production merchant identifier assigned to the location.
      *
      * @return self
      */
-    public function setRole($role)
+    public function setProductionMerchantId($production_merchant_id)
     {
-        if (is_null($role)) {
-            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        if (is_null($production_merchant_id)) {
+            throw new \InvalidArgumentException('non-nullable production_merchant_id cannot be null');
         }
-        $this->container['role'] = $role;
+        if ((mb_strlen($production_merchant_id) > 15)) {
+            throw new \InvalidArgumentException('invalid length for $production_merchant_id when calling PaymentTerminalLocationCrudModel., must be smaller than or equal to 15.');
+        }
+        if ((mb_strlen($production_merchant_id) < 15)) {
+            throw new \InvalidArgumentException('invalid length for $production_merchant_id when calling PaymentTerminalLocationCrudModel., must be bigger than or equal to 15.');
+        }
+        if ((!preg_match("/([0-9a-zA-Z])+/", ObjectSerializer::toString($production_merchant_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$production_merchant_id when calling PaymentTerminalLocationCrudModel., must conform to the pattern /([0-9a-zA-Z])+/.");
+        }
+
+        $this->container['production_merchant_id'] = $production_merchant_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalAddress|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalAddress|null $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name used to identify the payment terminal location.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling PaymentTerminalLocationCrudModel., must be smaller than or equal to 100.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets planned_purge_date
+     *
+     * @return \DateTime|null
+     */
+    public function getPlannedPurgeDate()
+    {
+        return $this->container['planned_purge_date'];
+    }
+
+    /**
+     * Sets planned_purge_date
+     *
+     * @param \DateTime|null $planned_purge_date The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+     *
+     * @return self
+     */
+    public function setPlannedPurgeDate($planned_purge_date)
+    {
+        if (is_null($planned_purge_date)) {
+            throw new \InvalidArgumentException('non-nullable planned_purge_date cannot be null');
+        }
+        $this->container['planned_purge_date'] = $planned_purge_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets external_id
+     *
+     * @return string|null
+     */
+    public function getExternalId()
+    {
+        return $this->container['external_id'];
+    }
+
+    /**
+     * Sets external_id
+     *
+     * @param string|null $external_id A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+     *
+     * @return self
+     */
+    public function setExternalId($external_id)
+    {
+        if (is_null($external_id)) {
+            throw new \InvalidArgumentException('non-nullable external_id cannot be null');
+        }
+        $this->container['external_id'] = $external_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_address
+     *
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalAddress|null
+     */
+    public function getContactAddress()
+    {
+        return $this->container['contact_address'];
+    }
+
+    /**
+     * Sets contact_address
+     *
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalAddress|null $contact_address contact_address
+     *
+     * @return self
+     */
+    public function setContactAddress($contact_address)
+    {
+        if (is_null($contact_address)) {
+            throw new \InvalidArgumentException('non-nullable contact_address cannot be null');
+        }
+        $this->container['contact_address'] = $contact_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets version_applied_immediately
+     *
+     * @return bool|null
+     */
+    public function getVersionAppliedImmediately()
+    {
+        return $this->container['version_applied_immediately'];
+    }
+
+    /**
+     * Sets version_applied_immediately
+     *
+     * @param bool|null $version_applied_immediately Whether changes to the location are applied to terminals immediately.
+     *
+     * @return self
+     */
+    public function setVersionAppliedImmediately($version_applied_immediately)
+    {
+        if (is_null($version_applied_immediately)) {
+            throw new \InvalidArgumentException('non-nullable version_applied_immediately cannot be null');
+        }
+        $this->container['version_applied_immediately'] = $version_applied_immediately;
 
         return $this;
     }
@@ -370,28 +597,28 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets user
+     * Gets state
      *
-     * @return int|null
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalLocationState|null
      */
-    public function getUser()
+    public function getState()
     {
-        return $this->container['user'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets user
+     * Sets state
      *
-     * @param int|null $user The user whose role this defines.
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationState|null $state state
      *
      * @return self
      */
-    public function setUser($user)
+    public function setState($state)
     {
-        if (is_null($user)) {
-            throw new \InvalidArgumentException('non-nullable user cannot be null');
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        $this->container['user'] = $user;
+        $this->container['state'] = $state;
 
         return $this;
     }
@@ -419,33 +646,6 @@ class UserSpaceRole implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
         $this->container['version'] = $version;
-
-        return $this;
-    }
-
-    /**
-     * Gets space
-     *
-     * @return int|null
-     */
-    public function getSpace()
-    {
-        return $this->container['space'];
-    }
-
-    /**
-     * Sets space
-     *
-     * @param int|null $space The space in which the role is assigned to the user.
-     *
-     * @return self
-     */
-    public function setSpace($space)
-    {
-        if (is_null($space)) {
-            throw new \InvalidArgumentException('non-nullable space cannot be null');
-        }
-        $this->container['space'] = $space;
 
         return $this;
     }

@@ -27,7 +27,7 @@ use \ArrayAccess;
 use \WeArePlanet\Sdk\ObjectSerializer;
 
 /**
- * UserSpaceRoleListResponse model
+ * PaymentTerminalLocationListResponse model
  *
  * @category Class
  * @package     WeArePlanet\Sdk
@@ -35,10 +35,10 @@ use \WeArePlanet\Sdk\ObjectSerializer;
  * @license     Apache-2.0
  * The Apache License, Version 2.0
  * See the full license at https://www.apache.org/licenses/LICENSE-2.0.txt
- * @version     5.2.2
+ * @version     5.2.3
  * @implements \ArrayAccess<string, mixed>
  */
-class UserSpaceRoleListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaymentTerminalLocationListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -47,7 +47,7 @@ class UserSpaceRoleListResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'User_Space_Role_List_Response';
+    protected static $openAPIModelName = 'Payment_Terminal_Location_List_Response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -55,7 +55,7 @@ class UserSpaceRoleListResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\WeArePlanet\Sdk\Model\UserSpaceRole[]',
+        'data' => '\WeArePlanet\Sdk\Model\PaymentTerminalLocationCrudModel[]',
         'has_more' => 'bool',
         'limit' => 'int'
     ];
@@ -304,7 +304,7 @@ class UserSpaceRoleListResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \WeArePlanet\Sdk\Model\UserSpaceRole[]|null
+     * @return \WeArePlanet\Sdk\Model\PaymentTerminalLocationCrudModel[]|null
      */
     public function getData()
     {
@@ -314,7 +314,7 @@ class UserSpaceRoleListResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \WeArePlanet\Sdk\Model\UserSpaceRole[]|null $data An array containing the actual response objects.
+     * @param \WeArePlanet\Sdk\Model\PaymentTerminalLocationCrudModel[]|null $data An array containing the actual response objects.
      *
      * @return self
      */
